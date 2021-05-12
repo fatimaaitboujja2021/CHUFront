@@ -38,6 +38,7 @@ import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
 import {CommandesComponent} from './view/admin/commandes/commandes.component';
+import {FonctionnaireComponent} from './view/admin/Fonctionnaire/fonctionnaire.component';
 
 @NgModule({
     imports: [
@@ -46,6 +47,8 @@ import {CommandesComponent} from './view/admin/commandes/commandes.component';
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
+                    {path: 'view/fonctionnaire', component: FonctionnaireComponent},
+
                     {path: 'view/commande', component: CommandesComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},

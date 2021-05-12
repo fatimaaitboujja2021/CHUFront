@@ -1,0 +1,62 @@
+import {Fonction} from './fonction.model';
+import {ListeGarde} from './liste-garde.model';
+import {Specialite} from './specialite.model';
+import {Grade} from './grade.model';
+import {Echelon} from './echelon.model';
+import {IndemniteGarde} from './indemnite-garde.model';
+import {Comptebancaire} from './comptebancaire.model';
+import {ChefService} from './chefService.model';
+import {Conge} from './conge.model';
+import {IndemniteAstreinte} from './indemniteAstreinte.model';
+import {Servhopital} from './servhopital.model';
+
+export class Fonctionnaire {
+  public  id:number;
+  public  ref:string;
+  public matriculeSub:string;
+  public  matriculeSuperieur:string;
+  public nom:string;
+  public prenom:string;
+  public nationalite:string;
+  public  genre:number;
+  public nom_Ar:string;
+  public prenom_Ar:string;
+  public dateNaissance:string;
+  public lieuNaissance:string;
+  public situationFamiliale:string;
+  public dateSituationFamiliale:string;
+  public  nbEnfants:number;
+  public  nCIN:number;
+  public dateExpirationCIN:string;
+  public  nPassport:number;
+  public  adresse:string;
+  public  ville:string;
+  public  dateExpirationPassport:Date;
+  public  nPermisSejours:number;
+  public  dateExpirationPermisSejours:Date;
+  public  noImmatriculationAmo:string;
+  public  nRetraite:number;
+  public  regimeRetraite:string;
+  public  nAfficiationMutuelle:number;
+  public  organismeMutuelle:string;
+  public  dateRecrutement:Date;
+  public  indice:number;
+  public  direction:string;
+  public  division:string;
+  public  dateAffectation:string;
+  public  validiterGarde:boolean;
+
+  public  conge=new Conge();
+  public  grade=new Grade();
+  public  chefService=new ChefService();
+  public  comptebancaire=new Comptebancaire();
+  public  indemniteGarde=new IndemniteGarde();
+  public  indemniteAstreinte=new IndemniteAstreinte();
+  public  echelon=new Echelon();
+  public  specialite=new Specialite();
+  public  fonction=new Fonction();
+  public  listeGarde=new ListeGarde();
+  // public  service=new Services();
+  public servhopital=new  Servhopital();
+
+}

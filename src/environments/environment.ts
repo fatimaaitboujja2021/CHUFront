@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8036/ecom-api/'
+  urlBase : 'http://localhost:8063',
+  urlFonctionaire :'/CHU/Fonctionnairews'
 };
 
 /*

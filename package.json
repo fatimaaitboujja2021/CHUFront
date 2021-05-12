@@ -28,14 +28,14 @@
         "primeflex": "2.0.0",
         "primeicons": "4.1.0",
         "primeng": "11.2.0",
-        "prismjs": "1.20.0",
+        "prismjs": "^1.23.0",
         "rxjs": "~6.6.0",
         "tslib": "^2.0.0",
         "web-animations-js": "^2.3.2",
         "zone.js": "~0.10.2"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "~0.1100.1",
+        "@angular-devkit/build-angular": "^0.1102.12",
         "@angular/cli": "~11.0.0",
         "@angular/compiler-cli": "~11.0.0",
         "@types/jasmine": "~3.6.0",

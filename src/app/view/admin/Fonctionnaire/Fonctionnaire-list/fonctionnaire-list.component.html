@@ -16,13 +16,13 @@
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dt [value]="items" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['reference','total','totalPaye']"
+            <p-table #dt [value]="items" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['ref','nom','prenom']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
-                        <h5 class="p-m-0">Manage Commandes</h5>
+                        <h5 class="p-m-0">Manage Fonctionnaires</h5>
                         <span class="p-input-icon-left">
                         <i class="pi pi-search"></i>
                         <input pInputText type="text"  placeholder="Search..." />
@@ -34,20 +34,20 @@
                         <th style="width: 3rem">
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
-                        <th pSortableColumn="reference">Reference <p-sortIcon field="reference"></p-sortIcon></th>
-                        <th pSortableColumn="total">Total <p-sortIcon field="total"></p-sortIcon></th>
-                        <th pSortableColumn="totalPaye">Total Paye <p-sortIcon field="totalPaye"></p-sortIcon></th>
+                        <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>
+                        <th pSortableColumn="nom">nom <p-sortIcon field="nom"></p-sortIcon></th>
+                        <th pSortableColumn="prenom">prenom <p-sortIcon field="prenom"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-commande>
+                <ng-template pTemplate="body" let-fonctionnaire>
                     <tr>
                         <td>
-                            <p-tableCheckbox [value]="commande"></p-tableCheckbox>
+                            <p-tableCheckbox [value]="fonctionnaire"></p-tableCheckbox>
                         </td>
-                        <td>{{commande.reference}}</td>
-                        <td>{{commande.nom}}</td>
-                        <td>{{commande.prenom}}</td>
+                        <td>{{fonctionnaire.ref}}</td>
+                        <td>{{fonctionnaire.nom}}</td>
+                        <td>{{fonctionnaire.prenom}}</td>
 
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(commande)"></button>
@@ -64,9 +64,9 @@
             </p-table>
         </div>
 
-        <app-commande-create></app-commande-create>
-        <app-commande-edit></app-commande-edit>
-        <app-commande-view></app-commande-view>
+        <app-fonctionnaire-create></app-fonctionnaire-create>
+        <app-fonctionnaire-edit></app-fonctionnaire-edit>
+        <app-fonctionnaire-view></app-fonctionnaire-view>
         <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
     </div>
 </div>

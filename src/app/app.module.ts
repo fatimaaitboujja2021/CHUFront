@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -144,6 +144,12 @@ import { CommandesComponent } from './view/admin/commandes/commandes.component';
 import { CommandeListComponent } from './view/admin/commandes/commande-list/commande-list.component';
 import { CommandeEditComponent } from './view/admin/commandes/commande-edit/commande-edit.component';
 import { CommandeViewComponent } from './view/admin/commandes/commande-view/commande-view.component';
+import {FonctionnaireCreateComponent} from './view/admin/Fonctionnaire/Fonctionnaire-create/fonctionnaire-create.component';
+import {RouterModule} from '@angular/router';
+import {FonctionnaireComponent} from './view/admin/Fonctionnaire/fonctionnaire.component';
+import {FonctionnaireEditComponent} from './view/admin/Fonctionnaire/Fonctionnaire-edit/fonctionnaire-edit.component';
+import {FonctionnaireViewComponent} from './view/admin/Fonctionnaire/Fonctionnaire-view/fonctionnaire-view.component';
+import {FonctionnaireListComponent} from './view/admin/Fonctionnaire/Fonctionnaire-list/fonctionnaire-list.component';
 
 @NgModule({
     imports: [
@@ -232,6 +238,8 @@ import { CommandeViewComponent } from './view/admin/commandes/commande-view/comm
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
+        ReactiveFormsModule,
+        RouterModule
     ],
     declarations: [
         AppComponent,
@@ -282,7 +290,12 @@ import { CommandeViewComponent } from './view/admin/commandes/commande-view/comm
         CommandesComponent,
         CommandeListComponent,
         CommandeEditComponent,
-        CommandeViewComponent
+        CommandeViewComponent,
+        FonctionnaireCreateComponent,
+        FonctionnaireComponent,
+        FonctionnaireEditComponent,
+        FonctionnaireListComponent,
+        FonctionnaireViewComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

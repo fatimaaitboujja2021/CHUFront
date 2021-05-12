@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
 })
 export class CommandeService {
 
-    private url = environment.baseUrl + 'commande/';
+    private url = environment.urlBase + 'commande/';
     private _items: Array<Commande>;
     private _selected: Commande;
     private _selectes: Array<Commande>;
