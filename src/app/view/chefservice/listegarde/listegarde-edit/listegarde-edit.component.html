@@ -1,0 +1,75 @@
+<p-dialog [(visible)]="editDialog" [style]="{width: '450px'}" header=" Edit" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="ref">Ref</label>
+            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref"   />
+            <!--            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>-->
+        </div>
+        <div class="p-field">
+            <label for="dateGarde">dateGarde</label>
+            <input type="date" pInputText id="dateGarde" [(ngModel)]="selected.dateGarde"   />
+            <!--            <small class="p-invalid" *ngIf="submitted && !selected.total">total is required.</small>-->
+        </div>
+
+
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="dureDeGarde">dureDeGarde</label>
+                <p-inputNumber id="dureDeGarde" [(ngModel)]="selected.dureDeGarde"></p-inputNumber>
+            </div>
+        </div>
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="jourounuit">jour ou nuit</label>
+                <input type="text" id="jourounuit"  pInputText [(ngModel)]="selected.jourounuit">
+            </div>
+        </div>
+
+
+        <!--        <div class="p-formgrid p-grid">-->
+        <!--            <div class="p-field p-col">-->
+        <!--                <label for="refg">refg</label>-->
+        <!--                <input type="text" id="refg" [(ngModel)]="selected.garde.ref">-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="p-field">-->
+        <!--                        <label >Nom</label>-->
+
+        <!--                        <p-autoComplete [(ngModel)]="this.selected.fonctionnaire.nom" [suggestions]="filteredFonctionnairenom"-->
+        <!--                                        (completeMethod)="searchCountry(this.selected.fonctionnaire.nom)" field="nom"  ></p-autoComplete>-->
+        <!--        </div>-->
+
+        <!--        <div class="p-field">-->
+        <!--            <label for="autocompletee">Prenom</label>-->
+
+        <!--            <p-autoComplete Id="autocompletee" [(ngModel)]="value3" [suggestions]="filteredFonctionnaireprenom"-->
+        <!--                            (completeMethod)="searchCountry($event)" field="prenom"  ></p-autoComplete>-->
+        <!--        </div>-->
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label >nom</label>
+                <input id="e" [(ngModel)]="selected.fonctionnaire.nom"  pInputText >
+            </div>
+        </div>
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label >prenom </label>
+                <input id="matericuleSub" [(ngModel)]="selected.fonctionnaire.prenom"  pInputText>
+            </div>
+        </div>
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="matriculeSubb">ref garde</label>
+                <input id="matriculeSubb" [(ngModel)]="selected.garde.ref"  pInputText>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="edit()"></button>
+    </ng-template>
+</p-dialog>

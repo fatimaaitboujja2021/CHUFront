@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
@@ -150,6 +150,36 @@ import {FonctionnaireComponent} from './view/admin/Fonctionnaire/fonctionnaire.c
 import {FonctionnaireEditComponent} from './view/admin/Fonctionnaire/Fonctionnaire-edit/fonctionnaire-edit.component';
 import {FonctionnaireViewComponent} from './view/admin/Fonctionnaire/Fonctionnaire-view/fonctionnaire-view.component';
 import {FonctionnaireListComponent} from './view/admin/Fonctionnaire/Fonctionnaire-list/fonctionnaire-list.component';
+import {ChefserviceComponent} from './view/admin/Chefservice/chefservice.component';
+import {ChefserviceViewComponent} from './view/admin/Chefservice/Chefservice-view/chefservice-view.component';
+import {ChefserviceListComponent} from './view/admin/Chefservice/Chefservice-list/chefservice-list.component';
+import {ChefserviceEditComponent} from './view/admin/Chefservice/Chefservice-edit/chefservice-edit.component';
+import {ChefserviceCreateComponent} from './view/admin/Chefservice/Chefservice-create/chefservice-create.component';
+import {ListegardeComponent} from './view/chefservice/listegarde/listegarde.component';
+import { ListegardeCreateComponent } from './view/chefservice/listegarde/listegarde-create/listegarde-create.component';
+import { ListegardeListComponent } from './view/chefservice/listegarde/listegarde-list/listegarde-list.component';
+import {ListegardeEditComponent} from './view/chefservice/listegarde/listegarde-edit/listegarde-edit.component';
+import {ListegardeViewComponent} from './view/chefservice/listegarde/listegarde-view/listegarde-view.component';
+import {ListegardePreparerComponent} from './view/chefservice/listegarde/listegarde-preparer/listegarde-preparer.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { ValidatelisteShowComponent } from './view/Validateliste/validateliste-show/validateliste-show.component';
+import { ValidatelisteComponent } from './view/validateliste/validateliste.component';
+import { ProfileComponent } from './view/chefservice/profile/profile.component';
+import { ProfileShowComponent } from './view/chefservice/profile/profile-show/profile-show.component';
+import {NgxPrintModule} from 'ngx-print';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {HomeComponent} from './home/home.component';
+import {BoardAdminComponent} from './board-admin/board-admin.component';
+import { ToastrModule } from 'ngx-toastr';
+
+import {BoardUserComponent} from './board-user/board-user.component';
+import {UserComponent} from './view/admin/utilisateurs/user.component';
+import { UtilisateurCreateComponent } from './view/admin/utilisateurs/utilisateur-create/utilisateur-create.component';
+import {UserEditComponent} from './view/admin/utilisateurs/user-edit/user-edit.component';
+// the second parameter 'fr' is optional
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
     imports: [
@@ -239,7 +269,12 @@ import {FonctionnaireListComponent} from './view/admin/Fonctionnaire/Fonctionnai
         TreeTableModule,
         VirtualScrollerModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        NgxPrintModule,
+        ToastrModule.forRoot({
+            progressBar: true
+           }),
+
     ],
     declarations: [
         AppComponent,
@@ -295,12 +330,37 @@ import {FonctionnaireListComponent} from './view/admin/Fonctionnaire/Fonctionnai
         FonctionnaireComponent,
         FonctionnaireEditComponent,
         FonctionnaireListComponent,
-        FonctionnaireViewComponent
+        FonctionnaireViewComponent,
+        ChefserviceCreateComponent,
+        ChefserviceEditComponent,
+        ChefserviceListComponent,
+        ChefserviceViewComponent,
+        ChefserviceComponent,
+        ListegardeComponent,
+        ListegardeCreateComponent,
+        ListegardeListComponent,
+        ListegardeEditComponent,
+        ListegardeViewComponent,
+        ListegardePreparerComponent,
+        ValidatelisteShowComponent,
+        ValidatelisteComponent,
+        ProfileComponent,
+        ProfileShowComponent,
+        LoginComponent,
+        RegisterComponent,
+        HomeComponent,
+        ProfileComponent,
+        BoardAdminComponent,
+        BoardUserComponent,
+        UserComponent,
+        UtilisateurCreateComponent,
+        UserEditComponent
+
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService
+        PhotoService, ProductService, MenuService,{provide: LOCALE_ID, useValue: 'fr' }
     ],
     bootstrap: [AppComponent]
 })

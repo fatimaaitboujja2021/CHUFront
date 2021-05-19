@@ -37,6 +37,18 @@ export class CommandeCreateComponent implements OnInit {
             this.selected = new Commande();
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
     get selected(): Commande {
         return this.service.selected;
     }

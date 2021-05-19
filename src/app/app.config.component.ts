@@ -10,7 +10,7 @@ import { AppMainComponent } from './app.main.component';
                 <i class="pi pi-cog"></i>
             </a>
             <div class="layout-config-header">
-                <h3>Theme Customization</h3>
+                <h3>Theme Parametre</h3>
                 <span>Roma offers different themes for layout, topbar, menu etc.</span>
             </div>
             <div class="layout-config-content">

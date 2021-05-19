@@ -6,7 +6,8 @@ export class ListeGarde {
   public  ref:string;
   public dureDeGarde:number;
   public dateGarde:Date;
+  public  jourounuit:string;
   public   garde=new LaGarde();
-  public fonctionnaires =new Array<Fonctionnaire>();
+  public fonctionnaire =new Fonctionnaire();
 
 }

@@ -44,6 +44,10 @@ export class FonctionnaireCreateComponent implements OnInit {
         this.createDialog = false;
         this.submitted = false;
     }
+    public findAll(){
+        this.service.findAll().subscribe(data=>{
+            this.items = data  });
+    }
 
     public save() {
         this.submitted = true;
@@ -56,6 +60,8 @@ export class FonctionnaireCreateComponent implements OnInit {
                     detail: 'Fonctionnaire Created',
                     life: 3000
                 });
+                this.findAll();
+this.step=1;
             });
             this.createDialog = false;
             this.selected = new Fonctionnaire();

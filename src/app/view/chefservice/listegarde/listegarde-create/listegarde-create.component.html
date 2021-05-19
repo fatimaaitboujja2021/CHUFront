@@ -1,0 +1,137 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header=" Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="ref">Ref</label>
+            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref"   />
+<!--            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>-->
+        </div>
+        <div class="p-field">
+            <label for="dateGarde">dateGarde</label>
+            <input type="date" pInputText  id="dateGarde" [(ngModel)]="selected.dateGarde"   />
+
+<!--            <small class="p-invalid" *ngIf="submitted && !selected.total">total is required.</small>-->
+        </div>
+
+
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="dureDeGarde">dureDeGarde</label>
+                <p-inputNumber id="dureDeGarde" [(ngModel)]="selected.dureDeGarde"></p-inputNumber>
+            </div>
+        </div>
+
+<!--        <div class="p-formgrid p-grid">-->
+<!--            <div class="p-field p-col">-->
+<!--                <label for="jourounuit">jour ou nuit</label>-->
+<!--                <input type="text" id="jourounuit" [(ngModel)]="selected.jourounuit">-->
+
+
+
+            <h5>J/N</h5>
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-4">
+                        <div class="p-field-radiobutton">
+                            <p-radioButton name="jourounuit" value="jour" [(ngModel)]="selected.jourounuit" id="jourounuit"></p-radioButton>
+                            <label for="jourounuit">jour</label>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-md-4">
+                        <div class="p-field-radiobutton">
+                            <p-radioButton name="jourounuit" value="nuit" [(ngModel)]="selected.jourounuit"
+                                           id="jourounuit1"></p-radioButton>
+                            <label for="jourounuit1">nuit</label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+<!--        <div class="p-formgrid p-grid">-->
+<!--            <div class="p-field p-col">-->
+<!--                <label for="refg">refg</label>-->
+<!--                <input type="text" id="refg" [(ngModel)]="selected.garde.ref">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="p-field">-->
+<!--                        <label >Nom</label>-->
+
+<!--                        <p-autoComplete [(ngModel)]="this.selected.fonctionnaire.nom" [suggestions]="filteredFonctionnairenom"-->
+<!--                                        (completeMethod)="searchCountry(this.selected.fonctionnaire.nom)" field="nom"  ></p-autoComplete>-->
+<!--        </div>-->
+
+<!--        <div class="p-field">-->
+<!--            <label for="autocompletee">Prenom</label>-->
+
+<!--            <p-autoComplete Id="autocompletee" [(ngModel)]="value3" [suggestions]="filteredFonctionnaireprenom"-->
+<!--                            (completeMethod)="searchCountry($event)" field="prenom"  ></p-autoComplete>-->
+<!--        </div>-->
+
+
+<!--        <h5>Multiselect</h5>-->
+<!--        <p-multiSelect [options]="itemsfonctionnaire" [(ngModel)]="selectedMulti" defaultLabel="Select a Country" optionLabel="name" class="multiselect-custom">-->
+<!--            <ng-template let-value pTemplate="selectedItems">-->
+<!--                <div class="country-item country-item-value" *ngFor="let option of selectedMulti">-->
+<!--                    <div>{{option.nom}}</div>-->
+<!--                </div>-->
+<!--                <div *ngIf="!selectedMulti || selectedMulti.length === 0" class="country-placeholder">-->
+<!--                    Select Countries-->
+<!--                </div>-->
+<!--            </ng-template>-->
+<!--            <ng-template let-country pTemplate="item">-->
+<!--                <div class="country-item">-->
+<!--&lt;!&ndash;                    <img src="assets/demo/flags/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()" />&ndash;&gt;-->
+<!--                    <div>{{country.nom}}</div>-->
+<!--                </div>-->
+<!--            </ng-template>-->
+<!--        </p-multiSelect>-->
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label >nom</label>
+                <input id="e" pInputText [(ngModel)]="selected.fonctionnaire.nom" >
+            </div>
+        </div>
+
+
+
+        <div class="p-formgrid p-grid">
+        <div class="p-field p-col">
+            <label >prenom </label>
+            <input id="matericuleSub" pInputText [(ngModel)]="selected.fonctionnaire.prenom">
+        </div>
+        </div>
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="matriculeSubb">type garde</label>
+                <input id="matriculeSubb" pInputText [(ngModel)]="selected.garde.typeGarde">
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>

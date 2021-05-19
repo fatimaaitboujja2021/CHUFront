@@ -1,0 +1,26 @@
+ <h2> Nom:{{lastname}} </h2>
+<h2> Prenom:{{firstname}}</h2>
+ <h2> email:{{email}}</h2>
+<h2> role:{{roles}}</h2>
+
+
+
+
+
+
+
+
+
+<div class="profile">
+    <div class="photo"><img src="./assets/layout/images/doctor.png"/></div>
+    <div class="content">
+        <div class="text">
+            <h3>{{firstname}} {{lastname}}</h3>
+            <h6> {{username}}</h6>
+            <h6>{{roles}}</h6>
+        </div>
+        <div [ngClass]="classname"  (click)="change()"><span></span></div>
+    </div>
+    <div [ngClass]="classname1" ><i class="fa fa-codepen"></i><i class="fa fa-facebook"></i><i class="fa fa-github"></i><i class="fa fa-tumblr"></i><i class="fa fa-twitter"></i></div>
+</div>
+

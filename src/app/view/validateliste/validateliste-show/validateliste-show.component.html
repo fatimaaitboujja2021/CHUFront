@@ -1,0 +1,138 @@
+
+
+<!--<input [(ngModel)]="mindate" type="date">-->
+<!--<input type="date" pInputText  [(ngModel)]="maxdate"   />-->
+
+<div class="p-formgroup-inline">
+    <div class="p-field">
+        <input type="date" pInputText  [(ngModel)]="mindate"   />
+    </div>
+    <div class="p-field">
+        <input type="number" pInputText  [(ngModel)]="nbrligne"   />
+    </div>
+    <div class="p-field">
+        <button  pButton class="p-button-danger p-mb-2" printTitle="votre liste"
+                 [useExistingCss]="true"
+                 printSectionId="print-me" ngxPrint  label="Print to pdf"></button>    </div>
+
+ </div>
+
+
+
+
+
+
+<!--<button (click)="click(nbrligne,mindate)"></button>-->
+<!--<input [(ngModel)]="maxdate" type="date">-->
+<div  id="print-me"><div class="p-grid">
+    <div class="p-col">
+        <div class="box"></div>
+    </div>
+    <div class="p-col">
+        <div class="box" size="50px"><img src="../../../../assets/layout/images/logo-roma-white.png" alt="logo"></div>    </div>
+    <div class="p-col">
+        <div class="box"></div>
+    </div>
+</div>
+
+<!--<input type="date" placeholder="from" min="1" max="31" [(ngModel)]="from">-->
+<!--<input type="text" placeholder="Le mois"  [(ngModel)]="{{listegarde.dateGarde| date:'EEEE'}}">-->
+
+<!--<p-button label="Submit" icon="pi pi-bookmark" iconPos="right" class="p-mr-2 p-mb-2" ></p-button>-->
+
+
+
+
+
+
+<div class="p-grid">
+    <div class="p-col-12">
+
+
+        <div class="card">
+
+
+
+            <p-table [value]="items" [columns]="cols" [rows]="nbrligne" [paginator]="true" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','garde.typeGarde','fonctionnaire.nom']"
+                     [(selection)]="selectes" [rowHover]="true" dataKey="id"
+                     styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+
+
+
+                <!--                <ng-template pTemplate="caption">-->
+                <!--                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">-->
+                <!--                        <h5 class="p-m-0">Manage Liste Garde</h5>-->
+                <!--                        <span class="p-input-icon-left">-->
+                <!--                        <i class="pi pi-search"></i>-->
+                <!--                        <input pInputText type="text"  placeholder="Search..." />-->
+                <!--                    </span>-->
+                <!--                    </div>-->
+                <!--                </ng-template>-->
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th>le jour</th>
+                        <!--                        <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>-->
+                        <th pSortableColumn="dateGarde"><div class="p-d-flex p-jc-between p-ai-center">date Garde <p-sortIcon field="dategarde"></p-sortIcon><p-columnFilter type="date" field="dategarde" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
+                        <th pSortableColumn="jourounuit"><div class="p-d-flex p-jc-between p-ai-center">J/N <p-sortIcon field="jourounuit"></p-sortIcon><p-columnFilter type="text" field="jourounuit" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
+                        <th pSortableColumn="dureDeGarde"><div class="p-d-flex p-jc-between p-ai-center">dure De Garde en H <p-sortIcon field="dureDeGarde"></p-sortIcon><p-columnFilter type="text" field="dureDeGarde" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
+                        <th pSortableColumn="garde.typeGarde"><div class="p-d-flex p-jc-between p-ai-center">typeGarde <p-sortIcon field="garde.typeGarde"></p-sortIcon><p-columnFilter type="text" field="garde.typeGarde" display="menu" class="p-ml-auto"></p-columnFilter> </div></th>
+                        <th pSortableColumn="fonctionnaire.nom"><div class="p-d-flex p-jc-between p-ai-center">nom et prenom <p-sortIcon field="fonctionnaire.nom"></p-sortIcon><p-columnFilter type="text" field="fonctionnaire.nom" display="menu" class="p-ml-auto"></p-columnFilter></div></th>
+<!--                        <th></th>-->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-listegarde >
+                    <tr *ngIf="((mindate| date: 'yyyy-MM-dd') <=(listegarde.dateGarde| date: 'yyyy-MM-dd')) ">
+
+
+    <td>
+        <p-tableCheckbox [value]="listegarde"></p-tableCheckbox>
+    </td>
+    <td>{{listegarde.dateGarde| date:'EEEE'}}</td>
+    <!--                        <td>{{listegarde.ref}}</td>-->
+    <td  >{{listegarde.dateGarde| date: 'yyyy-MM-dd'}}</td>
+    <td>{{listegarde.jourounuit}}</td>
+
+    <td>{{listegarde.dureDeGarde}}</td>
+    <td>{{listegarde.garde.typeGarde}}</td>
+    <td>{{listegarde.fonctionnaire.nom}}
+        {{listegarde.fonctionnaire.prenom}}
+    </td>
+    <!--                        <td>{{chefservice.fo}}</td>-->
+
+
+<!--    <td>-->
+<!--        &lt;!&ndash;                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(listegarde)"></button>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(listegarde)"></button>&ndash;&gt;-->
+<!--        &lt;!&ndash;                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(listegarde)"></button>&ndash;&gt;-->
+<!--    </td>-->
+
+
+                    </tr>
+
+                </ng-template>
+
+            </p-table>
+        </div>
+
+<!--        <app-listegarde-create></app-listegarde-create>-->
+<!--        <app-listegarde-edit></app-listegarde-edit>-->
+<!--        <app-listegarde-view></app-listegarde-view>-->
+
+<!--        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>-->
+    </div>
+</div>
+
+
+<div *ngFor="let c of itemsfonctionnaire; index as i ">
+<div *ngIf="c.conge.typeConge!==null">
+<div></div>
+    <ul>
+        <li><strong>{{c.nom}}  {{c.prenom}}</strong> : est en conge <strong>{{c.conge.typeConge}}</strong> a partir du <i>{{c.conge.dateDebutConge}} </i>=> <i>{{c.conge.dateFinConge}}</i></li>
+    </ul>
+</div>
+</div>
+</div>

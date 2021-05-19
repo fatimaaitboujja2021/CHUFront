@@ -28,6 +28,7 @@ export class AppCalendarComponent implements OnInit{
     changedEvent: any;
 
     clickedEvent = null;
+    eventClick:any;
 
     constructor(private eventService: EventService) {}
 

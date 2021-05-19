@@ -7,7 +7,6 @@ export class LaGarde {
   public  intitule:string;
   public  typeGarde:string;
   public nbrHeursdeGarde:number;
-
   public   listeGarde=new Array<ListeGarde>();
 }
 

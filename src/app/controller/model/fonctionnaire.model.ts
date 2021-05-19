@@ -5,7 +5,7 @@ import {Grade} from './grade.model';
 import {Echelon} from './echelon.model';
 import {IndemniteGarde} from './indemnite-garde.model';
 import {Comptebancaire} from './comptebancaire.model';
-import {ChefService} from './chefService.model';
+import {Chefservice} from './chefservice.model';
 import {Conge} from './conge.model';
 import {IndemniteAstreinte} from './indemniteAstreinte.model';
 import {Servhopital} from './servhopital.model';
@@ -48,14 +48,14 @@ export class Fonctionnaire {
 
   public  conge=new Conge();
   public  grade=new Grade();
-  public  chefService=new ChefService();
+  public  chefservice=new Chefservice();
   public  comptebancaire=new Comptebancaire();
   public  indemniteGarde=new IndemniteGarde();
   public  indemniteAstreinte=new IndemniteAstreinte();
   public  echelon=new Echelon();
   public  specialite=new Specialite();
   public  fonction=new Fonction();
-  public  listeGarde=new ListeGarde();
+  public  listeGarde=new Array<ListeGarde>();
   // public  service=new Services();
   public servhopital=new  Servhopital();
 

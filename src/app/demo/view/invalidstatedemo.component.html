@@ -12,6 +12,7 @@
                     <label for="autocomplete">AutoComplete</label>
                     <p-autoComplete inputId="autocomplete" [(ngModel)]="value2" [suggestions]="filteredCountries" (completeMethod)="searchCountry($event)" field="name" class="ng-invalid ng-dirty"></p-autoComplete>
                 </div>
+
                 <div class="p-field">
                     <label for="calendar">Calendar</label>
                     <p-calendar inputId="calendar" [(ngModel)]="value3" class="ng-invalid ng-dirty" [showIcon]="true"></p-calendar>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { MenuService } from './app.menu.service';
 import {AppComponent} from './app.component';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-main',
@@ -9,6 +10,12 @@ import {AppComponent} from './app.component';
 })
 export class AppMainComponent {
 
+
+    onLogout() {
+        localStorage.removeItem('token');
+
+        this.router.navigate(['/login']);
+    }
     overlayMenuActive: boolean;
 
     staticMenuDesktopInactive: boolean;
@@ -43,7 +50,7 @@ export class AppMainComponent {
 
     inlineUserMenuActive = false;
 
-    constructor(private menuService: MenuService, private primengConfig: PrimeNGConfig, public app: AppComponent) { }
+    constructor(private menuService: MenuService, private router: Router,private primengConfig: PrimeNGConfig, public app: AppComponent) { }
 
     onLayoutClick() {
         if (!this.userMenuClick) {

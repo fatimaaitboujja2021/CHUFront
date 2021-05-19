@@ -15,6 +15,7 @@ import {FonctionnaireService} from '../../../../controller/service/fonctionnaire
 })
 export class FonctionnaireListComponent implements OnInit {
     cols: any[];
+    nbrligne:any=30;
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
                 private service: FonctionnaireService) {
@@ -46,23 +47,23 @@ export class FonctionnaireListComponent implements OnInit {
         });
     }
     public deleteMultiple() {
-        this.confirmationService.confirm({
-            message: 'Are you sure you want to delete the selected commandes?',
-            header: 'Confirm',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
+        // this.confirmationService.confirm({
+        //     message: 'Are you sure you want to delete the selected Fonctionnaires?',
+        //     header: 'Confirm',
+        //     icon: 'pi pi-exclamation-triangle',
+        //     accept: () => {
                 this.service.deleteMultipleByReference().subscribe(data =>{
                     this.service.deleteMultipleIndexById();
-                    this.selectes = null;
+                   // this.selectes = null;
                     this.messageService.add({
                         severity: 'success',
                         summary: 'Successful',
                         detail: 'Fonctionnaires Deleted',
                         life: 3000
                     });
-                });
-            }
-        });
+               });
+           // }
+      //  });
     }
     public openCreate() {
         this.selected = new Fonctionnaire();

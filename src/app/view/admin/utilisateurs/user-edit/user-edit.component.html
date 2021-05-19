@@ -1,0 +1,31 @@
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="ref">username</label>
+            <input type="text" pInputText id="ref" [(ngModel)]="selected.username" required autofocus />
+        </div>
+        <div class="p-field">
+            <label >email</label>
+            <input type="text" pInputText id="f" [(ngModel)]="selected.email" required autofocus />
+        </div>
+
+        <div class="p-field">
+            <label >email</label>
+            <input type="text" pInputText id="toftal" [(ngModel)]="selected.firstname" required autofocus />
+        </div>
+        <div class="p-field">
+            <label >email</label>
+            <input type="text" pInputText id="totfafl" [(ngModel)]="selected.lastname" required autofocus />
+        </div>
+        <div class="p-field">
+            <label >email</label>
+            <input type="text" pInputText id="totffal" [(ngModel)]="selected.password" required autofocus />
+        </div>
+
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="edit()"></button>
+    </ng-template>

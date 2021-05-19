@@ -1,22 +1,21 @@
-<p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Fonctionnaire Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="ref">Ref</label>
-            <input type="text" pInputText id="ref" [(ngModel)]="selected.prenom" disabled />
+            <label for="prenom">prenom</label>
+            <input type="text" pInputText id="prenom" [(ngModel)]="selected.prenom" disabled />
         </div>
         <div class="p-field">
-            <label for="total">Total</label>
-            <input type="text" pInputText id="total" [(ngModel)]="selected.nom" disabled />
+            <label for="nom">nom</label>
+            <input type="text" pInputText id="nom" [(ngModel)]="selected.nom" disabled />
+        </div>
+
+        <div class="p-field">
+            <label for="ref">ref</label>
+            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref" disabled />
         </div>
 
 
 
-        <div class="p-formgrid p-grid">
-            <div class="p-field p-col">
-                <label for="totalPaye">Total Paye</label>
-                <p-inputNumber id="totalPaye" [(ngModel)]="selected.ref" disabled></p-inputNumber>
-            </div>
-        </div>
     </ng-template>
 
     <ng-template pTemplate="footer">

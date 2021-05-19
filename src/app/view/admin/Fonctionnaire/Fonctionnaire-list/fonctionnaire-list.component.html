@@ -1,9 +1,13 @@
+<div class="p-field">
+    <input type="number" pInputText  [(ngModel)]="nbrligne"   />
+</div>
+
 <div class="p-grid">
     <div class="p-col-12">
 
         <p-toast></p-toast>
 
-        <div class="card">
+        <div class="card" >
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
                     <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
@@ -16,7 +20,7 @@
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dt [value]="items" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['ref','nom','prenom']"
+            <p-table #dt [value]="items" [columns]="cols" [rows]="nbrligne" [paginator]="true" [globalFilterFields]="['ref','nom','prenom']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
@@ -25,7 +29,7 @@
                         <h5 class="p-m-0">Manage Fonctionnaires</h5>
                         <span class="p-input-icon-left">
                         <i class="pi pi-search"></i>
-                        <input pInputText type="text"  placeholder="Search..." />
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')">
                     </span>
                     </div>
                 </ng-template>
@@ -40,25 +44,25 @@
                         <th></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-fonctionnaire>
+                <ng-template pTemplate="body" let-fonctionnaire >
                     <tr>
                         <td>
                             <p-tableCheckbox [value]="fonctionnaire"></p-tableCheckbox>
                         </td>
-                        <td>{{fonctionnaire.ref}}</td>
+                        <td >{{fonctionnaire.ref}}</td>
                         <td>{{fonctionnaire.nom}}</td>
                         <td>{{fonctionnaire.prenom}}</td>
 
                         <td>
-                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(commande)"></button>
-                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(commande)"></button>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(commande)"></button>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(fonctionnaire)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(fonctionnaire)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(fonctionnaire)"></button>
                         </td>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        In total there are {{items ? items.length : 0 }} items.
+                         {{items ? items.length : 0 }} fonctionnaires.
                     </div>
                 </ng-template>
             </p-table>

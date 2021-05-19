@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   urlBase : 'http://localhost:8063',
-  urlFonctionaire :'/CHU/Fonctionnairews'
+  urlFonctionaire :'/Chu/Fonctionnairews',
+  urlChefService:'/Chu/chefServiceWs',
+  urlListegarde:'/Chu/listeGardeWs',
+  urlUser:'/Chu/userWs',
 };
 
 /*

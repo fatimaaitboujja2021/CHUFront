@@ -1,0 +1,24 @@
+<p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Chef service Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="matricule">matricule</label>
+            <input type="text" pInputText id="matricule" [(ngModel)]="selected.matricule" disabled />
+        </div>
+        <div class="p-field">
+            <label for="email">email</label>
+            <input type="text" pInputText id="email" [(ngModel)]="selected.email" disabled />
+        </div>
+
+        <div class="p-field">
+            <label for="ref">ref</label>
+            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref" disabled />
+        </div>
+
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

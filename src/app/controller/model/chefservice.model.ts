@@ -1,6 +1,6 @@
 import {Fonctionnaire} from './fonctionnaire.model';
 
-export class ChefService {
+export class Chefservice {
 
   public  id:number;
   public  ref:string;

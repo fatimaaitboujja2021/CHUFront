@@ -1,0 +1,41 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '600px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <div class="card">
+            <h5>Inline</h5>
+            <div class="p-formgroup-inline">
+                <div class="p-field">
+                    <label for="ref">Ref</label>
+                    <input type="text" pInputText id="ref" [(ngModel)]="selected.ref" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !selected.ref">ref is required.</small>
+                </div>
+                <div class="p-field">
+                    <label for="matricule">matricule</label>
+                    <input type="text" pInputText id="matricule" [(ngModel)]="selected.matricule" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !selected.matricule">matricule is required.</small>
+                </div>
+                <div class="p-field">
+                    <label for="email">email</label>
+                    <input type="email" pInputText id="email" [(ngModel)]="selected.email" required autofocus />
+                    <small class="p-invalid"  *ngIf="submitted && !selected.email">email is required.</small>
+                </div>
+
+                <div class="p-field">
+                    <label for="password">password</label>
+                    <input type="password" pInputText id="password" [(ngModel)]="selected.password" required autofocus />
+                    <small class="p-invalid"  *ngIf="submitted && !selected.password">password is required.</small>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>

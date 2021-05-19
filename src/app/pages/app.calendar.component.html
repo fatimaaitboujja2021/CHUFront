@@ -2,7 +2,7 @@
 	<div class="p-col-12">
 		<div class="card">
 			<h5>Calendar</h5>
-			<p-fullCalendar [events]="events" [options]="options"></p-fullCalendar>
+			<p-fullCalendar [events]="events" [options]="options" (click)="eventClick"></p-fullCalendar>
 
 			<p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true" [closable]="true">
 				<ng-template pTemplate="content">
@@ -13,14 +13,14 @@
 						</div>
 						<div class="p-field">
 							<label for="start">From</label>
-							<p-calendar id="start" *ngIf="clickedEvent" [(ngModel)]="changedEvent.start" [showTime]="true" appendTo="body"></p-calendar>
+							<p-calendar id="start"  [(ngModel)]="changedEvent.start" [showTime]="true" appendTo="body"></p-calendar>
 						</div>
 						<div class="p-field">
 							<label for="end">To</label>
-							<p-calendar id="end" *ngIf="clickedEvent" [(ngModel)]="changedEvent.end" [showTime]="true" appendTo="body"></p-calendar>
+							<p-calendar id="end"  [(ngModel)]="changedEvent.end" [showTime]="true" appendTo="body"></p-calendar>
 						</div>
 						<div class="p-field-checkbox">
-							<p-checkbox id="allday" *ngIf="clickedEvent" [(ngModel)]="changedEvent.allday"></p-checkbox>
+							<p-checkbox id="allday" [(ngModel)]="changedEvent.allday"></p-checkbox>
 							<label for="allday">All Day</label>
 						</div>
 					</div>

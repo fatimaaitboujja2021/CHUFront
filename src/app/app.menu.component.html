@@ -1,8 +1,8 @@
 <div class="layout-menu-container" (click)="onMenuClick($event)">
-    <div class="menu-scroll-content">
+    <div class="menu-scroll-content"   >
         <div class="layout-profile" *ngIf="app.inlineUser && !appMain.isHorizontal()">
                 <a class="layout-profile-button" (click)="appMain.onProfileClick($event)">
-                    <img src="assets/layout/images/avatar.png" alt="roma-layout">
+<!--                    <img src="./assets/layout/images/doctor.png" alt="user-layout">-->
                     <div class="layout-profile-userinfo">
                         <span class="layout-profile-name">Arlene Welch</span>
                         <span class="layout-profile-role">Design Ops</span>
@@ -31,8 +31,8 @@
                     </li>
                 </ul>
         </div>
-        <ul class="layout-menu">
-            <li app-menuitem *ngFor="let item of model; let i = index;" [item]="item" [index]="i" [root]="true"></li>
+        <ul class="layout-menu" >
+            <li app-menuitem *ngFor="let item of model; let i = index;" [item]="item" [index]="i" [root]="true" ></li>
         </ul>
     </div>
 </div>
