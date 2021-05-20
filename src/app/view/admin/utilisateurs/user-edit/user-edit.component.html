@@ -1,24 +1,84 @@
+<app-user></app-user>
+
+
+
+<p-dialog [(visible)]="editDialog" [style]="{width: '450px'}" header="Éditer" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="p-field">
-            <label for="ref">username</label>
-            <input type="text" pInputText id="ref" [(ngModel)]="selected.username" required autofocus />
-        </div>
-        <div class="p-field">
-            <label >email</label>
-            <input type="text" pInputText id="f" [(ngModel)]="selected.email" required autofocus />
-        </div>
-
-        <div class="p-field">
-            <label >email</label>
+            <label >Prenom</label>
             <input type="text" pInputText id="toftal" [(ngModel)]="selected.firstname" required autofocus />
         </div>
         <div class="p-field">
-            <label >email</label>
+            <label >Nom</label>
             <input type="text" pInputText id="totfafl" [(ngModel)]="selected.lastname" required autofocus />
         </div>
+
         <div class="p-field">
-            <label >email</label>
-            <input type="text" pInputText id="totffal" [(ngModel)]="selected.password" required autofocus />
+            <label >Matricule</label>
+            <input type="text" pInputText id="matricule" [(ngModel)]="selected.matricule" required autofocus />
+        </div>
+
+        <div class="p-field">
+            <label for="ref">Nom d'utilisateur</label>
+            <input type="text" pInputText id="ref" [(ngModel)]="selected.username" required autofocus />
+        </div>
+        <div class="p-field">
+            <label >Email</label>
+            <input type="text" pInputText id="f" [(ngModel)]="selected.email" required autofocus />
+        </div>
+        <div class="p-field">
+            <label >activé</label>
+            <div class="p-col-12 p-md-6">
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-4">
+                            <div class="p-field-radiobutton">
+                                <p-radioButton name="city" value="1" [(ngModel)]="selected.enabled"
+                                               id="city2"></p-radioButton>
+                                <label for="city2">oui</label>
+                            </div>
+
+                        </div>
+
+                        <div class="p-col-12 p-md-4">
+                            <div class="p-field-radiobutton">
+                                <p-radioButton name="city" value="0" [(ngModel)]="selected.enabled" id="city1"></p-radioButton>
+                                <label for="city1">non</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+        </div>
+        <div class="p-field">
+            <label >Fermer</label>
+
+
+            <div class="p-col-12 p-md-6">
+            <div class="p-grid">
+
+                <div class="p-col-12 p-md-4">
+                    <div class="p-field-radiobutton">
+                        <p-radioButton name="city" value="1" [(ngModel)]="selected.locked"
+                                       id="locked2"></p-radioButton>
+                        <label for="locked2">Oui</label>
+                    </div>
+
+                </div>
+
+                <div class="p-col-12 p-md-4">
+                    <div class="p-field-radiobutton">
+                        <p-radioButton name="city" value="0" [(ngModel)]="selected.locked" id="locked1"></p-radioButton>
+                        <label for="locked1">Non</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="p-field">
+            <label >Mot de passe</label>
+            <input type="password" pInputText id="totffal" [(ngModel)]="selected.password" required autofocus  disabled/>
         </div>
 
 
@@ -26,6 +86,7 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideEditDialog()"></button>
-        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="edit()"></button>
+        <button pButton pRipple label="Exit" icon="pi pi-times" class="p-button-text" (click)="hideEditDialog()"></button>
+        <button pButton pRipple label="Éditer" icon="pi pi-check" class="p-button-text" (click)="edit()"></button>
     </ng-template>
+</p-dialog>

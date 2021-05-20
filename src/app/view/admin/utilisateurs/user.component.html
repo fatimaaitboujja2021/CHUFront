@@ -1,6 +1,5 @@
-<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header="Cree un compte" [modal]="true" styleClass="p-fluid">
-
-    <div class="col-md-12 ">
+<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header="Ajouter un  utilisateur" [modal]="true" styleClass="p-fluid">
+    <div class="col-md-12">
         <div class="card card-container">
             <img
                     id="profile-img"
@@ -15,30 +14,29 @@
                     novalidate
             >
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input
-                            type="text"
-                            class="form-control"
-                            name="username"
-                            [(ngModel)]="form.username"
-                            required
-                            minlength="3"
-                            maxlength="20"
-                            #username="ngModel"
+                    <label for="username">Nom d'utilisateur</label>
+                    <input id="username"
+                           type="text"
+                           class="form-control"
+                           name="username"
+                           [(ngModel)]="form.username"
+                           required
+                           minlength="3"
+                           maxlength="20"
+                           #username="ngModel"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && username.invalid">
-                        <div *ngIf="username.errors.required">Username is required</div>
+                        <div *ngIf="username.errors.required">Nom d'utilisateur est nécessaire</div>
                         <div *ngIf="username.errors.minlength">
-                            Username must be at least 3 characters
-                        </div>
+                            Le nom d'utilisateur doit comporter au moins 3 caractères                    </div>
                         <div *ngIf="username.errors.maxlength">
-                            Username must be at most 20 characters
-                        </div>
+                            Le nom d'utilisateur doit comporter au maximum 20 caractères                    </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="firstName">First Name</label>
+                    <label for="firstName">Prenom</label>
                     <input
+                            id="firstName"
                             type="text"
                             class="form-control"
                             name="firstName"
@@ -49,18 +47,17 @@
                             #firstName="ngModel"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && firstName.invalid">
-                        <div *ngIf="firstName.errors.required">First Name is required</div>
+                        <div *ngIf="firstName.errors.required">Le prénom est requis</div>
                         <div *ngIf="firstName.errors.minlength">
-                            First Name must be at least 3 characters
-                        </div>
+                            Le prénom doit comporter au moins 3 caractères                    </div>
                         <div *ngIf="firstName.errors.maxlength">
-                            First Name must be at most 20 characters
-                        </div>
+                            Le prénom doit comporter au maximum 20 caractères                    </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Last Name</label>
+                    <label for="lastName">Nom</label>
                     <input
+                            id="lastName"
                             type="text"
                             class="form-control"
                             name="lastName"
@@ -71,18 +68,44 @@
                             #lastName="ngModel"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && lastName.invalid">
-                        <div *ngIf="lastName.errors.required">Last Name is required</div>
+                        <div *ngIf="lastName.errors.required">Le nom est requis</div>
                         <div *ngIf="lastName.errors.minlength">
-                            Last Name must be at least 3 characters
-                        </div>
+                            Le nom doit comporter au moins 3 caractères                    </div>
                         <div *ngIf="lastName.errors.maxlength">
-                            Last Name must be at most 20 characters
-                        </div>
+                            Le nom doit comporter au maximum 20 caractères                    </div>
                     </div>
                 </div>
+
+
+
+                <div class="form-group">
+                    <label for="matricule">Matricule</label>
+                    <input
+                            id="matricule"
+                            type="text"
+                            class="form-control"
+                            name="matricule"
+                            [(ngModel)]="form.matricule"
+                            required
+                            minlength="3"
+                            maxlength="20"
+                            #matricule="ngModel"
+                    />
+                    <div class="alert-danger" *ngIf="f.submitted && lastName.invalid">
+                        <div *ngIf="matricule.errors.required">Le matricule est requis</div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input
+                            id="email"
                             type="email"
                             class="form-control"
                             name="email"
@@ -92,15 +115,15 @@
                             #email="ngModel"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && email.invalid">
-                        <div *ngIf="email.errors.required">Email is required</div>
+                        <div *ngIf="email.errors.required">Email est requis</div>
                         <div *ngIf="email.errors.email">
-                            Email must be a valid email address
-                        </div>
+                            L'e-mail doit être une adresse e-mail valide                    </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">Mot de passe</label>
                     <input
+                            id="password"
                             type="password"
                             class="form-control"
                             name="password"
@@ -110,24 +133,22 @@
                             #password="ngModel"
                     />
                     <div class="alert-danger" *ngIf="f.submitted && password.invalid">
-                        <div *ngIf="password.errors.required">Password is required</div>
+                        <div *ngIf="password.errors.required">Le Mot de passe est requis</div>
                         <div *ngIf="password.errors.minlength">
-                            Password must be at least 6 characters
-                        </div>
+                            Le mot de passe doit être au moins de 6 caractères                    </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-block butt1">Sign Up</button>
+                    <button  class="btn btn-primary btn-block butt1">S'inscrire</button>
                 </div>
 
                 <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                    Signup failed!<br />{{ errorMessage }}
+                    L'inscription a échoué!<br />{{ errorMessage }}
                 </div>
             </form>
 
             <div class="alert alert-success" *ngIf="isSuccessful">
-                Your registration is successful!
-            </div>
+                Votre inscription est réussie!        </div>
         </div>
     </div>
 </p-dialog>
@@ -154,11 +175,14 @@
 
                 <ng-template pTemplate="right">
                     <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
-                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+<!--                    <button (click)="exportexcel()"    >Export to Excel.xlsx</button>-->
+
+                    <button pButton pRipple label="Export to Excel.csv" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()" style="margin-right: 10px"></button>
+                    <button pButton pRipple label="Export to Excel.xlsx" icon="pi pi-upload" class="p-button-warning p-mb-2" (click)="exportexcel()"></button>
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dt [value]="items" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['username','lastname','firstname','email','password','enabled','locked']"
+            <p-table #dt [value]="items"  id="excel-table" [columns]="cols" [rows]="15" [paginator]="true" [globalFilterFields]="['username','lastname','firstname','email','password','enabled','locked','matricule']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
@@ -176,13 +200,14 @@
                         <th style="width: 3rem">
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
-                        <th pSortableColumn="firstname">firstname <p-sortIcon field="firstname"></p-sortIcon></th>
-                        <th pSortableColumn="lastname">lastname <p-sortIcon field="lastname"></p-sortIcon></th>
+                        <th pSortableColumn="firstname">Prenom <p-sortIcon field="firstname"></p-sortIcon></th>
+                        <th pSortableColumn="lastname">Nom <p-sortIcon field="lastname"></p-sortIcon></th>
+                        <th pSortableColumn="matricule">Matricule <p-sortIcon field="matricule"></p-sortIcon></th>
                         <th pSortableColumn="email">email <p-sortIcon field="email"></p-sortIcon></th>
                         <th pSortableColumn="password">password <p-sortIcon field="password"></p-sortIcon></th>
-                        <th pSortableColumn="usernam">usernam <p-sortIcon field="usernam"></p-sortIcon></th>
-                        <th pSortableColumn="enabled">enabled <p-sortIcon field="enabled"></p-sortIcon></th>
-                        <th pSortableColumn="locked">locked <p-sortIcon field="locked"></p-sortIcon></th>
+                        <th pSortableColumn="usernam">Nom d'utilisateur <p-sortIcon field="usernam"></p-sortIcon></th>
+                        <th pSortableColumn="enabled">activé <p-sortIcon field="enabled"></p-sortIcon></th>
+                        <th pSortableColumn="locked">désactivé <p-sortIcon field="locked"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>
@@ -193,17 +218,28 @@
                         </td>
                         <td>{{user.firstname}}</td>
                         <td>{{user.lastname}}</td>
+                        <td>{{user.matricule}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.password}}</td>
                         <td>{{user.username}}</td>
-                        <td class="p-d-flex p-jc-between p-ai-center customer-badge status-unqualified">{{getBoolean(user)}}</td>
-                        <td>{{getBoolean1(user)}}</td>
+                        <td>
+
+                            <span [className]=getstatue(user.enabled)>{{getBoolean(user)}}</span>
+<!--                            <span [class]="'customer-badge status-' + user.enabled">{{user.enabled}}</span></td>-->
+<!--                        <td class="p-d-flex p-jc-between p-ai-center customer-badge status-unqualified">{{getBoolean(user)}}</td>-->
+                        <td>
+
+                        <span [className]=getstatue(user.locked)>{{getBoolean1(user)}}</span>
+
+                       </td>
                         <!--                        <td>{{chefservice.fo}}</td>-->
 
 
 <!--                        <td>-->
-                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(user)"></button>
-<!--&lt;!&ndash;                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(chefservice)"></button>&ndash;&gt;-->
+<!--                            <button pButton pRipple icon="pi pi-pencil" class=" pi pi-star " (click)="edit(user)"></button>-->
+                        <button  pButton pRipple type="button" label="editer" class="p-button-success  p-mr-xl-3 p-mb-xl-3 button1" (click)="edit(user)"></button>
+
+                        <!--&lt;!&ndash;                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(chefservice)"></button>&ndash;&gt;-->
 <!--&lt;!&ndash;                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(chefservice)"></button>&ndash;&gt;-->
 <!--                        </td>-->
                     </tr>

@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Commande} from '../../../../controller/model/commande.model';
-import {MessageService} from 'primeng/api';
+import {MessageService, SelectItem} from 'primeng/api';
 import {CommandeService} from '../../../../controller/service/commande.service';
 import {Fonctionnaire} from '../../../../controller/model/fonctionnaire.model';
 import {FonctionnaireService} from '../../../../controller/service/fonctionnaire.service';
@@ -16,8 +16,14 @@ export class FonctionnaireEditComponent implements OnInit {
 
     constructor(private messageService: MessageService, private service: FonctionnaireService,private route: Router,private cdref: ChangeDetectorRef) {
     }
+    genres: SelectItem[];
 
     ngOnInit(): void {
+        this.genres = [
+            {label: 'Femme', value: 'Femme'},
+            {label: 'Homme', value: 'Homme'}
+
+        ];
     }
 
     public edit() {

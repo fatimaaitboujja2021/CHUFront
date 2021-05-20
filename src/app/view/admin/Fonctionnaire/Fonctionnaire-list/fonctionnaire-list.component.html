@@ -44,10 +44,10 @@
                         <th></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-fonctionnaire >
+                <ng-template pTemplate="body" let-fonctionnaire  >
                     <tr>
                         <td>
-                            <p-tableCheckbox [value]="fonctionnaire"></p-tableCheckbox>
+                            <p-tableCheckbox [value]="fonctionnaire" ></p-tableCheckbox>
                         </td>
                         <td >{{fonctionnaire.ref}}</td>
                         <td>{{fonctionnaire.nom}}</td>

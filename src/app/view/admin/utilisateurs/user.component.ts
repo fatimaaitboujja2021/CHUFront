@@ -3,8 +3,8 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {UserService} from '../../../controller/service/user.service';
 import {User} from '../../../controller/model/user.model';
 import {AuthService} from '../../../_services/auth.service';
-import {Commande} from '../../../controller/model/commande.model';
 import {Router} from '@angular/router';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-user',
@@ -20,6 +20,8 @@ export class UserComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   statuses: any[];
+  fileName= 'ExcelSheet.xlsx';
+
 
   constructor(private messageService: MessageService,private authService: AuthService,private confirmationService: ConfirmationService,
               private service: UserService,private router: Router) { }
@@ -56,7 +58,19 @@ export class UserComponent implements OnInit {
   }
 
 
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+
+  }
 
 
 
@@ -65,20 +79,18 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCol();
-    this.service.findAll().subscribe(data => this.items = data,
+    this.service.findAll().subscribe(data => this.items = data);
 
-    );
 
-    this.statuses = [
-      {label: 'Unqualified', value: 'unqualified'},
-      {label: 'Qualified', value: 'qualified'},
-      {label: 'New', value: 'new'},
-      {label: 'Negotiation', value: 'negotiation'},
-      {label: 'Renewal', value: 'renewal'},
-      {label: 'Proposal', value: 'proposal'}
-    ];
   }
-
+ private  getstatue(x:number){
+if(x==1){
+  return 'customer-badge status-unqualified';
+}
+else{
+  return 'customer-badge status-new';
+}
+  }
   private initCol() {
     this.cols = [
       {field: 'id', header: 'id'},
@@ -88,7 +100,8 @@ export class UserComponent implements OnInit {
       {field: 'email', header: 'email'},
       {field: 'password', header: 'password'},
       {field: 'enabled', header: 'enabled'},
-      {field: 'locked', header: 'locked'}
+      {field: 'locked', header: 'locked'},
+      {field: 'matricule', header: 'matricule'}
 
 
     ];
@@ -200,7 +213,7 @@ export class UserComponent implements OnInit {
 
   public deleteMultiple() {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete the selected commandes?',
+      message: 'Are you sure you want to delete the selected users?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -211,7 +224,7 @@ export class UserComponent implements OnInit {
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
-            detail: 'Commandes Deleted',
+            detail: 'user Deleted',
             life: 3000
           });
         });

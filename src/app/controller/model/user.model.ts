@@ -9,5 +9,5 @@ export class User {
   public  firstname:string;
   public  enabled:boolean;
   public  locked:boolean;
-
+public matricule:string;
 }

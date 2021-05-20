@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {UserComponent} from './user.component';
 
+import { FonctionnaireChefComponent } from './fonctionnaire-chef.component';
 
-describe('UtilisateursComponent', () => {
-  let component: UserComponent;
-  let fixture: ComponentFixture<UserComponent>;
+describe('FonctionnaireChefComponent', () => {
+  let component: FonctionnaireChefComponent;
+  let fixture: ComponentFixture<FonctionnaireChefComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserComponent ]
+      declarations: [ FonctionnaireChefComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserComponent);
+    fixture = TestBed.createComponent(FonctionnaireChefComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

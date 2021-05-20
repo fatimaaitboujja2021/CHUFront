@@ -18,6 +18,9 @@
     </span>
 
     <ul  class="topbar-menu" >
+
+<!--        <li><p-button class="btn pi pi-times-circle" (click)="onLogout()">Logout</p-button>-->
+
         <li class="user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}">
             <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser">
                 <img src="{{img}}" alt="roma-layout" />
@@ -26,6 +29,8 @@
                     <span class="layout-profile-role">{{roles}}</span>
                 </div>
             </a>
+
+
             <ul class="fadeInDown">
                 <li>
                 <button routerLink='profile/info' routerLinkActive='active'>afficher</button>
@@ -54,6 +59,7 @@
                     </li>
             </ul>
         </li>
+
         <li [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarNotificationMenuActive}">
                 <a href="#" class="layout-topbar-icon" (click)="appMain.onTopbarNotificationMenuButtonClick($event)">
                     <i class="topbar-icon pi pi-fw pi-bell"></i>
@@ -101,5 +107,9 @@
                     </li>
                 </ul>
         </li>
+
     </ul>
+
+
 </div>
+

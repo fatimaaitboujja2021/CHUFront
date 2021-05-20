@@ -47,7 +47,29 @@ export class FonctionnaireService {
   public deleteMultipleByReference(): Observable<number> {
     return this.http.post<number>(this.url + 'delete-multiple-by-reference' , this.selectes);
   }
+//  public findBymatriculeSuperieur(): Observable<Array<Fonctionnaire>> {
+//   return this.http.get(<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+this.selected.matriculeSuperieur));
+// }
 
+
+  public findBymatriculeSuperieur(matricule:String){
+    console.log("hhhhh");
+    this.http.get<Array<Fonctionnaire>>('http://localhost:8063/Chu/Fonctionnairews/matriculeSuperieur/'+matricule).subscribe(
+        data=>{
+          console.log("555555555555");
+
+          // console.log(data);
+
+          this.items = data;
+          // console.log(data);
+          console.log("hhhhh");
+
+
+        },error=>{
+          console.log('erreur findBymatriculeSuperieur');
+        }
+    );
+  }
   public findIndexById(id: number): number {
     let index = -1;
     for (let i = 0; i < this.items.length; i++) {

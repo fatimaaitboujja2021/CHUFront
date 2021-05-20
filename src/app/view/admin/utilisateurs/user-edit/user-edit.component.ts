@@ -4,6 +4,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {CommandeService} from '../../../../controller/service/commande.service';
 import {UserService} from '../../../../controller/service/user.service';
 import {User} from '../../../../controller/model/user.model';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-user-edit',
@@ -14,13 +15,59 @@ import {User} from '../../../../controller/model/user.model';
 })
 export class UserEditComponent implements OnInit {
 
-    constructor(private messageService: MessageService, private service: UserService) {
+    constructor(private messageService: MessageService, private service: UserService,private router: Router) {
     }
 
     ngOnInit(): void {
-        this.editDialog = true;
+
+        // this.editDialog = true;
+        // this.router.navigateByUrl('view/user');
+
 
     }
+
+
+
+
+    private getBoolean(value) {
+        switch (value.enabled) {
+            case true:
+            case "true":
+            case 1:
+            case "1":
+            case "on":
+            case "yes":
+                return true;
+            default:
+                return false;
+        }
+
+    }
+
+    private getBoolean1(value) {
+        switch (value) {
+            case true:
+            case "true":
+            case 1:
+            case "1":
+            case "on":
+            case "yes":
+                return true;
+            default:
+                return false;
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     public edit() {
         this.submitted = true;
@@ -29,9 +76,11 @@ export class UserEditComponent implements OnInit {
                 this.items[this.service.findIndexById(this.selected.id)] = this.selected;
                 this.service.edit().subscribe(data => {
                     this.selected = data;
-                    this.messageService.add({
+                    this.service.findAll().subscribe(data => this.items = data)
+
+                        this.messageService.add({
                         severity: 'success',
-                        summary: 'Successful',
+                        summary: 'À succès',
                         detail: 'User Updated',
                         life: 3000
                     });
@@ -39,11 +88,15 @@ export class UserEditComponent implements OnInit {
             }
             this.editDialog = false;
             this.selected = new User();
+            this.router.navigateByUrl('view/user');
+
         }
     }
 
   public hideEditDialog() {
-    this.editDialog = false;
+      this.router.navigateByUrl('view/user');
+
+      this.editDialog = false;
   }
     get selected(): User {
         return this.service.selected;

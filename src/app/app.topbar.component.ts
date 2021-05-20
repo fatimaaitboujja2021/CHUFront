@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
 import {TokenStorageService} from './_services/token-storage.service';
+import {MenuService} from './app.menu.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -9,7 +11,7 @@ import {TokenStorageService} from './_services/token-storage.service';
 })
 export class AppTopBarComponent {
 
-    constructor(public app: AppComponent, public appMain: AppMainComponent,private tokenStorageService: TokenStorageService) {}
+    constructor(public app: AppComponent, private router: Router, public appMain: AppMainComponent,private tokenStorageService: TokenStorageService) {}
 img:any;
      roles: string;
     isLoggedIn = false;
@@ -19,6 +21,13 @@ img:any;
 firstname:string;
 lastname:string;
 email:string;
+
+
+    onLogout() {
+        localStorage.removeItem('token');
+
+        this.router.navigate(['/login']);
+    }
     ngOnInit(): void {
         this.isLoggedIn = !!this.tokenStorageService.getToken();
 

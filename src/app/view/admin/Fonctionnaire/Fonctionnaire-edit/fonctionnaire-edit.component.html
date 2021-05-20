@@ -1,238 +1,369 @@
-<p-dialog [(visible)]="editDialog" [style]="{width: '450px'}" header="Commande Edit" [modal]="true" styleClass="p-fluid" (ngSubmit)="submitt()" [formGroup]="multistep">
+<p-dialog [(visible)]="editDialog" [style]="{width: '800px'}" header=" éditer" [modal]="true" styleClass="p-fluid" (ngSubmit)="submitt()" [formGroup]="multistep">
+
     <div  *ngIf="step == 1" formGroupName="userDetails">
+        <div class="card">
+            <h5>les info</h5>
+            <div class="p-grid p-formgrid">
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="ref">Ref</label>
+                    <input type="text" formControlName="refFonctionnaire" pInputText placeholder="Default" id="ref" [(ngModel)]="selected.ref" required autofocus>
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nom">Nom</label>
+                    <input type="text" formControlName="fname" pInputText placeholder="nom" id="nom" [(ngModel)]="selected.nom" required autofocus/>
+                    <!--                    <h5>AutoComplete</h5>-->
+                    <!--                    <p-autoComplete [(ngModel)]="selectedFonctAdvanced" formControlName="fname" [suggestions]="filterednom" (completeMethod)="filterfonctionnaire($event)" field="nom" [dropdown]="true">-->
+                    <!--                    </p-autoComplete>-->
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="prenom">Prenom</label>
+                    <input type="text"  formControlName="lname"  id="prenom" pInputText [(ngModel)]="selected.prenom" placeholder="prenom" required autofocus/>
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nom_Ar">nomAr</label>
+                    <input type="text"  formControlName="nomAr"  id="nom_Ar" pInputText [(ngModel)]="selected.nom_Ar" placeholder="nomAr" required autofocus/>
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="prenom_Ar">prenomAr</label>
+                    <input type="text"  formControlName="prenomAr"  id="prenom_Ar" pInputText [(ngModel)]="selected.prenom_Ar" placeholder="prenom_Ar" required autofocus/>
+                </div>
 
-        <div class="p-field">
-            <label for="ref" >Ref</label>
-            <input type="text" formControlName="refFonctionnaire" pInputText id="ref" [(ngModel)]="selected.ref"  autofocus />
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nationalite">nationalite</label>
+                    <input type="text"  formControlName="nationalite"  id="nationalite" pInputText [(ngModel)]="selected.nationalite" placeholder="nationalite" required autofocus/>
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="adresse">adresse</label>
+                    <input type="text"  formControlName="adresse"  id="adresse" pInputText [(ngModel)]="selected.adresse" placeholder="adresse" required autofocus/>
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="ville">ville</label>
+                    <input type="text"  formControlName="ville"  id="ville" pInputText [(ngModel)]="selected.ville" placeholder="ville" required autofocus/>
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="situationFamiliale">situation Familiale</label>
+                    <input type="text"  formControlName="situationFamiliale"  id="situationFamiliale" pInputText [(ngModel)]="selected.situationFamiliale" placeholder="situationFamiliale" required autofocus/>
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="dateSituationFamiliale">date Situation Familiale</label>
+                    <input type="date"  formControlName="dateSituationFamiliale"  id="dateSituationFamiliale" pInputText [(ngModel)]="selected.dateSituationFamiliale" placeholder="dateSituationFamiliale" required autofocus/>
+                </div>
+
+
+
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nbEnfants">nombre des Enfants</label>
+                    <input type="text"  formControlName="nbEnfants"  id="nbEnfants" pInputText [(ngModel)]="selected.nbEnfants" placeholder="nombre des Enfants" required autofocus/>
+                </div>
+
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="dateNaissance">date de Naissance</label>
+                    <input type="date" formControlName="dateNaissance" pInputText id="dateNaissance" [(ngModel)]="selected.dateNaissance" required autofocus />
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="lieuNaissance">lieu Naissance</label>
+                    <input type="text" formControlName="lieuNaissance" pInputText id="lieuNaissance" [(ngModel)]="selected.lieuNaissance" required autofocus />
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <h6>Genre</h6>
+                    <p-dropdown [options]="genres"  formControlName="genre" [(ngModel)]="selected.genre" placeholder="Sélectionnez le genre" ></p-dropdown>
+
+
+
+                </div>
+
+
+
+
+
+
+
+                <!--            </div>-->
+                <!--            </div>-->
+
+            </div>
+
+
+
         </div>
 
 
-        <div class="p-field">
-            <label for="nom">Nom</label>
-            <input type="text" formControlName="fname" pInputText id="nom" [(ngModel)]="selected.nom" required autofocus />
-        </div>
 
-        <div class="p-field">
-            <label for="prenom">Prenom</label>
-            <input type="text" formControlName="lname"  pInputText id="prenom" [(ngModel)]="selected.prenom" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="nom_Ar">nom_Ar</label>
-            <input type="text" formControlName="nomAr" pInputText id="nom_Ar" [(ngModel)]="selected.nom_Ar" required autofocus />
-        </div>
 
-        <div class="p-field">
-            <label for="prenom_Ar">prenom_Ar</label>
-            <input type="text" formControlName="prenomAr" pInputText id="prenom_Ar" [(ngModel)]="selected.prenom_Ar" required autofocus />
-        </div>
+        <!--    <div class="p-field">-->
+        <!--        <label for="prenom_Ar">prenom_Ar</label>-->
+        <!--        <input type="text" formControlName="prenomAr" pInputText id="prenom_Ar" [(ngModel)]="selected.prenom_Ar" required autofocus />-->
+        <!--    </div>-->
 
-        <div class="p-field">
-            <label for="nationalite">nationalite</label>
-            <input type="text" formControlName="nationalite" pInputText id="nationalite" [(ngModel)]="selected.nationalite" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="adresse">adresse</label>
-            <input type="text" formControlName="adresse"  pInputText id="adresse" [(ngModel)]="selected.adresse" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="ville">ville</label>
-            <input type="text" formControlName="ville"  pInputText id="ville" [(ngModel)]="selected.ville" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="situationFamiliale">situation Familiale</label>
-            <input type="text" formControlName="situationFamiliale" pInputText id="situationFamiliale" [(ngModel)]="selected.situationFamiliale" required autofocus />
-        </div>
 
-        <div class="p-field">
-            <label for="dateSituationFamiliale">date Situation Familiale</label>
-            <input type="date" formControlName="dateSituationFamiliale" pInputText id="dateSituationFamiliale" [(ngModel)]="selected.dateSituationFamiliale" required autofocus />
-        </div>
 
-        <div class="p-field">
-            <label for="nbEnfants">nombre des Enfants</label>
-            <input type="number" formControlName="nbEnfants" pInputText id="nbEnfants" [(ngModel)]="selected.nbEnfants" required autofocus />
-        </div>
+        <!--        <div class="p-field">-->
+        <!--            <label for="ref">Ref</label>-->
+        <!--            <input type="text" formControlName="refFonctionnaire" pInputText id="ref" [(ngModel)]="selected.ref" required autofocus />-->
+        <!--        </div>-->
 
-        <div class="p-field">
-            <label for="dateNaissance">date de Naissance</label>
-            <input type="date" formControlName="dateNaissance" pInputText id="dateNaissance" [(ngModel)]="selected.dateNaissance" required autofocus />
-        </div>
 
-        <div class="p-field">
-            <label for="lieuNaissance">lieu Naissance</label>
-            <input type="text" formControlName="lieuNaissance" pInputText id="lieuNaissance" [(ngModel)]="selected.lieuNaissance" required autofocus />
-        </div>
+        <!--        <div class="p-field">-->
+        <!--            <label for="nom">Nom</label>-->
+        <!--            <input type="text" formControlName="fname" pInputText id="nom" [(ngModel)]="selected.nom" required autofocus />-->
+        <!--        </div>-->
 
-        <div class="p-field">
-            <label for="genre">genre</label>
-            <input type="text" formControlName="genre" pInputText id="genre" [(ngModel)]="selected.genre" required autofocus />
-        </div>
+        <!--        <div class="p-field">-->
+        <!--            <label for="prenom">Prenom</label>-->
+        <!--            <input type="text" formControlName="lname"  pInputText id="prenom" [(ngModel)]="selected.prenom" required autofocus />-->
+        <!--        </div>-->
+        <!--        <div class="p-field">-->
+        <!--            <label for="nom_Ar">nom_Ar</label>-->
+        <!--            <input type="text" formControlName="nomAr" pInputText id="nom_Ar" [(ngModel)]="selected.nom_Ar" required autofocus />-->
+        <!--        </div>-->
+
+        <!--        <div class="p-field">-->
+        <!--            <label for="prenom_Ar">prenom_Ar</label>-->
+        <!--            <input type="text" formControlName="prenomAr" pInputText id="prenom_Ar" [(ngModel)]="selected.prenom_Ar" required autofocus />-->
+        <!--        </div>-->
+
+        <!--        <div class="p-field">-->
+        <!--            <label for="nationalite">nationalite</label>-->
+        <!--            <input type="text" formControlName="nationalite" pInputText id="nationalite" [(ngModel)]="selected.nationalite" required autofocus />-->
+        <!--        </div>-->
+        <!--<div class="p-field">-->
+        <!--            <label for="adresse">adresse</label>-->
+        <!--            <input type="text" formControlName="adresse"  pInputText id="adresse" [(ngModel)]="selected.adresse" required autofocus />-->
+        <!--        </div>-->
+        <!--<div class="p-field">-->
+        <!--            <label for="ville">ville</label>-->
+        <!--            <input type="text" formControlName="ville"  pInputText id="ville" [(ngModel)]="selected.ville" required autofocus />-->
+        <!--        </div>-->
+        <!--<div class="p-field">-->
+        <!--            <label for="situationFamiliale">situation Familiale</label>-->
+        <!--            <input type="text" formControlName="situationFamiliale" pInputText id="situationFamiliale" [(ngModel)]="selected.situationFamiliale" required autofocus />-->
+        <!--        </div>-->
+
+        <!--        <div class="p-field">-->
+        <!--            <label for="dateSituationFamiliale">date Situation Familiale</label>-->
+        <!--            <input type="date" formControlName="dateSituationFamiliale" pInputText id="dateSituationFamiliale" [(ngModel)]="selected.dateSituationFamiliale" required autofocus />-->
+        <!--        </div>-->
+
+        <!--        <div class="p-field">-->
+        <!--            <label for="nbEnfants">nombre des Enfants</label>-->
+        <!--            <input type="number" formControlName="nbEnfants" pInputText id="nbEnfants" [(ngModel)]="selected.nbEnfants" required autofocus />-->
+        <!--        </div>-->
+
+        <!--        <div class="p-field">-->
+        <!--            <label for="dateNaissance">date de Naissance</label>-->
+        <!--            <input type="date" formControlName="dateNaissance" pInputText id="dateNaissance" [(ngModel)]="selected.dateNaissance" required autofocus />-->
+        <!--        </div>-->
+
+        <!--        <div class="p-field">-->
+        <!--            <label for="lieuNaissance">lieu Naissance</label>-->
+        <!--            <input type="text" formControlName="lieuNaissance" pInputText id="lieuNaissance" [(ngModel)]="selected.lieuNaissance" required autofocus />-->
+        <!--        </div>-->
+
+        <!--        <div class="p-field">-->
+        <!--            <label for="genre">genre</label>-->
+        <!--            <input type="text" formControlName="genre" pInputText id="genre" [(ngModel)]="selected.genre" required autofocus />-->
+        <!--        </div>-->
 
     </div>
     <div  *ngIf="step == 2" formGroupName="contactDetails" >
-        <div class="p-field">
-            <label for="nCIN">nCIN</label>
-            <input type="number" formControlName="nCIN" pInputText id="nCIN" [(ngModel)]="selected.nCIN" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="dateExpirationCIN">dateExpirationCIN</label>
-            <input type="date" formControlName="dateExpirationCIN" pInputText id="dateExpirationCIN" [(ngModel)]="selected.dateExpirationCIN" required autofocus />
-        </div>
+        <div class="card">
+            <h5>les info</h5>
+            <div class="p-grid p-formgrid">
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nCIN">nCIN</label>
+                    <input type="number" formControlName="nCIN" pInputText id="nCIN" [(ngModel)]="selected.nCIN" required autofocus />
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="dateExpirationCIN">dateExpirationCIN</label>
+                    <input type="date" formControlName="dateExpirationCIN" pInputText id="dateExpirationCIN" [(ngModel)]="selected.dateExpirationCIN" required autofocus />
+                </div>
 
-        <div class="p-field">
-            <label for="nPassport">nPassport</label>
-            <input type="number" formControlName="nPassport" pInputText id="nPassport" [(ngModel)]="selected.nPassport" required autofocus />
-        </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nPassport">nPassport</label>
+                    <input type="number" formControlName="nPassport" pInputText id="nPassport" [(ngModel)]="selected.nPassport" required autofocus />
+                </div>
 
 
-        <div class="p-field">
-            <label for="dateExpirationPassport">date Expiration Passport</label>
-            <input type="date" formControlName="dateExpirationPassport" pInputText id="dateExpirationPassport" [(ngModel)]="selected.dateExpirationPassport" required autofocus />
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="dateExpirationPassport">date Expiration Passport</label>
+                    <input type="date" formControlName="dateExpirationPassport" pInputText id="dateExpirationPassport" [(ngModel)]="selected.dateExpirationPassport" required autofocus />
+                </div>
+            </div>
         </div>
+        <div class="card">
+            <h5>les informations de Sejours</h5>
+            <div class="p-grid p-formgrid">
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nPermisSejours">nPermisSejours</label>
+                    <input type="number" formControlName="nPermisSejours" pInputText id="nPermisSejours" [(ngModel)]="selected.nPermisSejours" required autofocus />
+                </div>
 
-        <h3>les informations de Sejours</h3>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="dateExpirationPermisSejours">date Expiration Permis Sejours</label>
+                    <input type="date" formControlName="dateExpirationPermisSejours" pInputText id="dateExpirationPermisSejours" [(ngModel)]="selected.dateExpirationPermisSejours" required autofocus />
+                </div></div>
+        </div>
+        <div class="card">
+            <h5>les informations de Retraite</h5>
+            <div class="p-grid p-formgrid">
 
-        <div class="p-field">
-            <label for="nPermisSejours">nPermisSejours</label>
-            <input type="number" formControlName="nPermisSejours" pInputText id="nPermisSejours" [(ngModel)]="selected.nPermisSejours" required autofocus />
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nRetraite">nRetraite</label>
+                    <input type="number" formControlName="nRetraite" pInputText id="nRetraite" [(ngModel)]="selected.nRetraite" required autofocus />
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="regimeRetraite">regime Retraite</label>
+                    <input type="text" formControlName="regimeRetraite" pInputText id="regimeRetraite" [(ngModel)]="selected.regimeRetraite" required autofocus />
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="dateRecrutement">date Recrutement</label>
+                    <input type="date" formControlName="dateRecrutement" pInputText id="dateRecrutement" [(ngModel)]="selected.dateRecrutement" required autofocus />
+                </div>
+            </div>
         </div>
-
-        <div class="p-field">
-            <label for="dateExpirationPermisSejours">date Expiration Permis Sejours</label>
-            <input type="date" formControlName="dateExpirationPermisSejours" pInputText id="dateExpirationPermisSejours" [(ngModel)]="selected.dateExpirationPermisSejours" required autofocus />
-        </div>
-        <h3>les informations de Retraite</h3>
-        <div class="p-field">
-            <label for="nRetraite">nRetraite</label>
-            <input type="number" formControlName="nRetraite" pInputText id="nRetraite" [(ngModel)]="selected.nRetraite" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="regimeRetraite">regime Retraite</label>
-            <input type="text" formControlName="regimeRetraite" pInputText id="regimeRetraite" [(ngModel)]="selected.regimeRetraite" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="dateRecrutement">date Recrutement</label>
-            <input type="date" formControlName="dateRecrutement" pInputText id="dateRecrutement" [(ngModel)]="selected.dateRecrutement" required autofocus />
-        </div>
-
     </div>
-
     <div   *ngIf="step == 3" formGroupName="contactDetailss">
-        <h4>les informations Mutuelle</h4>
-        <div class="p-field">
-            <label for="nAfficiationMutuelle">nAfficiationMutuelle</label>
-            <input type="number" formControlName="nAfficiationMutuelle" pInputText id="nAfficiationMutuelle" [(ngModel)]="selected.nAfficiationMutuelle" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="organismeMutuelle">organisme Mutuelle</label>
-            <input type="text" formControlName="organismeMutuelle" pInputText id="organismeMutuelle" [(ngModel)]="selected.organismeMutuelle" required autofocus />
-        </div>
-        <h3>les informations grade</h3>
+        <div class="card">
+            <div class="p-grid p-formgrid">
 
-        <div class="p-field">
-            <label for="gradenom">gradenom</label>
-            <input type="text" formControlName="gradenom" pInputText id="gradenom" [(ngModel)]="selected.grade.gradenom" required autofocus />
-        </div>
-        <h3>les informations echelon</h3>
+                <!--        <h4>les informations Mutuelle</h4>-->
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nAfficiationMutuelle">nAfficiationMutuelle</label>
+                    <input type="number" formControlName="nAfficiationMutuelle" pInputText id="nAfficiationMutuelle" [(ngModel)]="selected.nAfficiationMutuelle" required autofocus />
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="organismeMutuelle">organisme Mutuelle</label>
+                    <input type="text" formControlName="organismeMutuelle" pInputText id="organismeMutuelle" [(ngModel)]="selected.organismeMutuelle" required autofocus />
+                </div>
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--        <div class="card">-->
+                <!--            <div class="p-grid p-formgrid">-->
+                <!--        <h3>les informations grade</h3>-->
 
-        <div class="p-field">
-            <label for="echelonnom">echelon nom</label>
-            <input type="text" formControlName="echelonnom" pInputText id="echelonnom" [(ngModel)]="selected.echelon.echelonnom" required autofocus />
-        </div>
-        <h3>Autre info</h3>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="gradenom">gradenom</label>
+                    <input type="text" formControlName="gradenom" pInputText id="gradenom" [(ngModel)]="selected.grade.gradenom" required autofocus />
+                </div>
+                <!--        <h3>les informations echelon</h3>-->
 
-
-        <div class="p-field">
-            <label for="matriculeSub">matriculeSub</label>
-            <input type="text" formControlName="matriculeSub" pInputText id="matriculeSub" [(ngModel)]="selected.matriculeSub" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="indice">indice</label>
-            <input type="number" formControlName="indice" pInputText id="indice" [(ngModel)]="selected.indice" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="noImmatriculationAmo">noImmatriculationAmo</label>
-            <input type="number" formControlName="noImmatriculationAmo" pInputText id="noImmatriculationAmo" [(ngModel)]="selected.noImmatriculationAmo" required autofocus />
-        </div>
-
-        <div class="p-field">
-            <label for="direction">direction</label>
-            <input type="text" formControlName="direction" pInputText id="direction" [(ngModel)]="selected.direction" required autofocus />
-        </div>
-
-        <div class="p-field">
-            <label for="division">division</label>
-            <input type="text" formControlName="division" pInputText id="division" [(ngModel)]="selected.division" required autofocus />
-        </div>
-        <div class="p-field">
-            <label for="dateAffectation">date Affectation</label>
-            <input type="date" formControlName="dateAffectation" pInputText id="dateAffectation" [(ngModel)]="selected.dateAffectation" required autofocus />
-        </div>
-
-        <div class="p-field">
-            <label for="matriculeSuperieur">matriculeSuperieur</label>
-            <input type="text" formControlName="matriculeSuperieur" pInputText id="matriculeSuperieur" [(ngModel)]="selected.matriculeSuperieur" required autofocus />
-        </div>
-
-        <div class="p-field">
-            <label for="validiterGarde">validiter Garde</label>
-            <input type="text" formControlName="validiterGarde" pInputText id="validiterGarde" [(ngModel)]="selected.validiterGarde" required autofocus />
-        </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="echelonnom">echelon nom</label>
+                    <input type="text" formControlName="echelonnom" pInputText id="echelonnom" [(ngModel)]="selected.echelon.echelonnom" required autofocus />
+                </div>
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--        <div class="card">-->
+                <!--            <div class="p-grid p-formgrid">-->
+                <!--        <h3>Autre info</h3>-->
 
 
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="matriculeSub">matriculeSub</label>
+                    <input type="text" formControlName="matriculeSub" pInputText id="matriculeSub" [(ngModel)]="selected.matriculeSub" required autofocus />
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="indice">indice</label>
+                    <input type="number" formControlName="indice" pInputText id="indice" [(ngModel)]="selected.indice" required autofocus />
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="noImmatriculationAmo">noImmatriculationAmo</label>
+                    <input type="number" formControlName="noImmatriculationAmo" pInputText id="noImmatriculationAmo" [(ngModel)]="selected.noImmatriculationAmo" required autofocus />
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="direction">direction</label>
+                    <input type="text" formControlName="direction" pInputText id="direction" [(ngModel)]="selected.direction" required autofocus />
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="division">division</label>
+                    <input type="text" formControlName="division" pInputText id="division" [(ngModel)]="selected.division" required autofocus />
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="dateAffectation">date Affectation</label>
+                    <input type="date" formControlName="dateAffectation" pInputText id="dateAffectation" [(ngModel)]="selected.dateAffectation" required autofocus />
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="matriculeSuperieur">matriculeSuperieur</label>
+                    <input type="text" formControlName="matriculeSuperieur" pInputText id="matriculeSuperieur" [(ngModel)]="selected.matriculeSuperieur" required autofocus />
+                </div>
+
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="validiterGarde">validiter Garde</label>
+                    <input type="text" formControlName="validiterGarde" pInputText id="validiterGarde" [(ngModel)]="selected.validiterGarde" required autofocus />
+                </div>
+            </div>
+        </div>
     </div>
+
 
     <div   *ngIf="step == 4" formGroupName="personalDetails">
-        <h4>les informations Banque</h4>
+        <!--        <h4>les informations Banque</h4>-->
         <!--        <div class="p-field">-->
         <!--            <label for="nombanque"> nom banque</label>-->
         <!--            <input type="text" formControlName="nombanque" pInputText id="validiterGarde" [(ngModel)]="selected.validiterGarde" required autofocus />-->
         <!--        </div>-->
+        <div class="card">
+            <div class="p-grid p-formgrid">
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="nCompte">nCompte banque</label>
+                    <input type="number" formControlName="nCompte" pInputText id="nCompte" [(ngModel)]="selected.comptebancaire.nCompte" required autofocus />
+                </div>
+                <!--        <h3>les informations Conge</h3>-->
 
-        <div class="p-field">
-            <label for="nCompte">nCompte</label>
-            <input type="number" formControlName="nCompte" pInputText id="nCompte" [(ngModel)]="selected.comptebancaire.nCompte" required autofocus />
-        </div>
-        <h3>les informations Conge</h3>
 
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="refconge"> ref conge</label>
+                    <input type="text" formControlName="refconge" pInputText id="refconge" [(ngModel)]="selected.conge.ref" required autofocus />
+                </div>
+                <!--        <h3>les informations Specialite</h3>-->
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="intitulespecialite"> intitule specialite</label>
+                    <input type="text" formControlName="intitulespecialite" pInputText id="intitulespecialite" [(ngModel)]="selected.specialite.intitule" required autofocus />
+                </div>
+                <!--        <h3>les informations Fonction</h3>-->
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="intitulefonction"> intitule fonction</label>
+                    <input type="text" formControlName="intitulefonction" pInputText id="intitulefonction" [(ngModel)]="selected.fonction.intitule" required autofocus />
+                </div>
 
-        <div class="p-field">
-            <label for="refconge"> ref conge</label>
-            <input type="text" formControlName="refconge" pInputText id="refconge" [(ngModel)]="selected.conge.ref" required autofocus />
-        </div>
-        <h3>les informations Specialite</h3>
-        <div class="p-field">
-            <label for="intitulespecialite"> intitule specialite</label>
-            <input type="text" formControlName="intitulespecialite" pInputText id="intitulespecialite" [(ngModel)]="selected.specialite.intitule" required autofocus />
-        </div>
-        <h3>les informations Fonction</h3>
-        <div class="p-field">
-            <label for="intitulefonction"> intitule fonction</label>
-            <input type="text" formControlName="intitulefonction" pInputText id="intitulefonction" [(ngModel)]="selected.fonction.intitule" required autofocus />
-        </div>
+                <!--        <h3>les informations listeGarde</h3>-->
+                <!--        <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">-->
+                <!--&lt;!&ndash;            <label for="reflistegarde"> ref listegarde</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;            <input type="text" formControlName="reflistegarde" pInputText id="reflistegarde" [(ngModel)]="selected.listeGarde." required autofocus />&ndash;&gt;-->
+                <!--        </div>-->
+                <!--&lt;!&ndash;        <h3>les informations Service</h3>&ndash;&gt;-->
 
-        <h3>les informations listeGarde</h3>
-        <div class="p-field">
-            <label for="reflistegarde"> ref listegarde</label>
-            <input type="text" formControlName="reflistegarde" pInputText id="reflistegarde" [(ngModel)]="selected.listeGarde.ref" required autofocus />
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <label for="intituleservice"> intitule service</label>
+                    <input type="text" formControlName="intituleservice" pInputText id="intituleservice" [(ngModel)]="selected.servhopital.intitule" required autofocus />
+                </div>
+            </div>
         </div>
-        <h3>les informations Service</h3>
-
-        <div class="p-field">
-            <label for="intituleservice"> intitule service</label>
-            <input type="text" formControlName="intituleservice" pInputText id="intituleservice" [(ngModel)]="selected.servhopital.intitule" required autofocus />
-        </div>
-
     </div>
     <div class="p-card-footer" >
         <p class="ba" *ngIf="step!=1">
-            <a class="btn btn-primary mx-2" *ngIf="step<=4"  (click)="previous()">Previous</a>
+            <button pButton pRipple label="Previous" icon="pi pi-chevron-circle-left" class="p-button-warning p-button-rounded" style="margin-top: 14px" (click)="previous()"></button>
+
         </p>
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideEditDialog()"></button>
-        <button pButton pRipple label="Edit" icon="pi pi-check" class="p-button-text" (click)="edit()"></button>
+        <p>        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-danger p-button-rounded" style="margin-top: 14px"   *ngIf="step >=1" (click)="hideEditDialog()"></button>
+        </p>
+        <p>        <button pButton pRipple label="Edit" icon="pi pi-pencil" class="p-button-success p-button-rounded" (click)="edit()"></button>
+        </p>
 
 <!--        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" *ngIf="step == 4" (click)="edit()"></button>-->
-        <button pButton pRipple type="submit"  label="Next" icon="pi pi-angle-double-right" class=" p-button- " *ngIf="step < 4" (click)="submitt()"></button>
+        <p>        <button pButton pRipple type="submit"  label="Next" icon="pi pi-angle-double-right" class="p-button-info p-button-rounded " *ngIf="step < 4" (click)="submitt()"></button>
+        </p>
 
     </div>
 

@@ -39,6 +39,7 @@ username: string;
 firstname:string;
 lastname:string;
 email:string;
+matricule:string;
 ngOnInit(): void {
   this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -54,6 +55,7 @@ ngOnInit(): void {
   this.email=user.email;
 
   this.lastname= user.lastname;
+  this.matricule=user.matricule;
 }
 
 

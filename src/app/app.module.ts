@@ -178,6 +178,12 @@ import {BoardUserComponent} from './board-user/board-user.component';
 import {UserComponent} from './view/admin/utilisateurs/user.component';
 import { UtilisateurCreateComponent } from './view/admin/utilisateurs/utilisateur-create/utilisateur-create.component';
 import {UserEditComponent} from './view/admin/utilisateurs/user-edit/user-edit.component';
+import { LogoutComponent } from './logout/logout.component';
+import { FonctionnaireChefComponent } from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef.component';
+import { FonctionnaireChefCreateComponent } from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef-create/fonctionnaire-chef-create.component';
+import { FonctionnaireChefEditComponent } from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef-edit/fonctionnaire-chef-edit.component';
+import { FonctionnaireChefListComponent } from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef-list/fonctionnaire-chef-list.component';
+import { FonctionnaireChefViewComponent } from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef-view/fonctionnaire-chef-view.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
 
@@ -354,7 +360,13 @@ registerLocaleData(localeFr, 'fr');
         BoardUserComponent,
         UserComponent,
         UtilisateurCreateComponent,
-        UserEditComponent
+        UserEditComponent,
+        LogoutComponent,
+        FonctionnaireChefComponent,
+        FonctionnaireChefCreateComponent,
+        FonctionnaireChefEditComponent,
+        FonctionnaireChefListComponent,
+        FonctionnaireChefViewComponent
 
     ],
     providers: [

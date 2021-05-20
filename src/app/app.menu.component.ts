@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
 import {TokenStorageService} from './_services/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-menu',
@@ -40,8 +41,12 @@ export class AppMenuComponent implements OnInit {
     lastname:string;
     email:string;
 
-    constructor(public app: AppComponent, public appMain: AppMainComponent,private tokenStorageService: TokenStorageService) { }
+    constructor(public app: AppComponent, public appMain: AppMainComponent,private router: Router,private tokenStorageService: TokenStorageService) { }
+    onLogout() {
+        localStorage.removeItem('token');
 
+        this.router.navigate(['/login']);
+    }
     ngOnInit() {
 
         this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -107,23 +112,25 @@ export class AppMenuComponent implements OnInit {
                 {
                     label: 'Admin', icon: 'pi pi-fw pi-copy', routerLink: ['/Admin'],
                     items: [
-                        {label: 'Chefservice',icon: 'pi pi-fw pi-globe', routerLink: ['/view/chefservice']},
-                        {label: 'les users',icon: 'pi pi-fw pi-pencil', routerLink: ['/view/user']},
-                        {label: 'liste de garde',icon: 'pi pi-fw pi-clone', routerLink: ['/view/listegarde']},
+                        // {label: 'Chefservice',icon: 'pi pi-fw pi-globe', routerLink: ['/view/chefservice']},
+                        {label: 'les utilisateurs',icon: 'pi pi-fw pi-user', routerLink: ['/view/user']},
+                        // {label: 'liste de garde',icon: 'pi pi-fw pi-clone', routerLink: ['/view/listegarde']},
 
-                        {label: 'Fonctionnaire', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/view/fonctionnaire']},
-                        {label: 'Valider Liste garde', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/listegardevalider']},
+                        {label: 'les fonctionnaires', icon: 'pi pi-fw pi-users', routerLink: ['/view/fonctionnaire']},
+                        // {label: 'Valider Liste garde', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/listegardevalider']},
 
                         //   {label: 'Commande', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/commande']},
-                        {label: 'Crud', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/crud'],items: [
-                                { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-sign-in' },
-                                { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-sign-in' },
-                                { label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-sign-in' },
-                            ]
-                        },
+                        // {label: 'Crud', icon: 'pi pi-fw pi-pencil', routerLink: ['/pages/crud'],items: [
+                        //         { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-sign-in' },
+                        //         { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-sign-in' },
+                        //         { label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-sign-in' },
+                        //     ]
+                        // },
                         {label: 'Calendar', icon: 'pi pi-fw pi-calendar-plus', routerLink: ['/pages/calendar']},
                         {label: 'Timeline', icon: 'pi pi-fw pi-calendar', routerLink: ['/pages/timeline']},
                         {label: 'Landing', icon: 'pi pi-fw pi-globe', url: 'assets/pages/landing.html', target: '_blank'},
+                        {label: 'logout', icon: 'pi pi-fw pi-sign-in', routerLink: ['/logout'], target: '_blank'},
+
                         {label: 'Login', icon: 'pi pi-fw pi-sign-in', routerLink: ['/login'], target: '_blank'},
                         {label: 'Error', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/error'], target: '_blank'},
                         {label: '404', icon: 'pi pi-fw pi-times', routerLink: ['/404'], target: '_blank'},
@@ -194,7 +201,8 @@ export class AppMenuComponent implements OnInit {
                 {
                     label: 'Favorites', icon: 'pi pi-fw pi-home',
                     items: [
-                        {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']}
+                        {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']},
+                        {label: 'liste des fonctionnaires', icon: 'pi pi-fw pi-mobile', routerLink: ['chefservice/fonctionnaires']}
                     ]
                 },
                 {
@@ -252,6 +260,7 @@ export class AppMenuComponent implements OnInit {
                         {label: 'Timeline', icon: 'pi pi-fw pi-calendar', routerLink: ['/pages/timeline']},
                         {label: 'Landing', icon: 'pi pi-fw pi-globe', url: 'assets/pages/landing.html', target: '_blank'},
                         {label: 'Login', icon: 'pi pi-fw pi-sign-in', routerLink: ['/login'], target: '_blank'},
+                        {label: 'logout', icon: 'pi pi-fw pi-sign-in', routerLink: ['/logout'], target: '_blank'},
                         {label: 'Error', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/error'], target: '_blank'},
                         {label: '404', icon: 'pi pi-fw pi-times', routerLink: ['/404'], target: '_blank'},
                         {label: 'Access Denied', icon: 'pi pi-fw pi-ban', routerLink: ['/accessdenied'], target: '_blank'},

@@ -12,6 +12,9 @@
                 <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
                     <label for="nom">Nom</label>
                     <input type="text" formControlName="fname" pInputText placeholder="nom" id="nom" [(ngModel)]="selected.nom" required autofocus/>
+<!--                    <h5>AutoComplete</h5>-->
+<!--                    <p-autoComplete [(ngModel)]="selectedFonctAdvanced" formControlName="fname" [suggestions]="filterednom" (completeMethod)="filterfonctionnaire($event)" field="nom" [dropdown]="true">-->
+<!--                    </p-autoComplete>-->
                 </div>
                 <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
                     <label for="prenom">Prenom</label>
@@ -71,8 +74,11 @@
                 </div>
 
                 <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
-                    <label for="genre">genre</label>
-                    <input type="text" formControlName="genre" pInputText id="genre" [(ngModel)]="selected.genre" required autofocus />
+                    <h6>Genre</h6>
+                    <p-dropdown [options]="genres"  formControlName="genre" [(ngModel)]="selected.genre" placeholder="Sélectionnez le genre" ></p-dropdown>
+
+
+
                 </div>
 
 

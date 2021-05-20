@@ -10,6 +10,7 @@
     'layout-rtl': app.isRTL,
     'p-input-filled': app.inputStyle === 'filled',
     'p-ripple-disabled': !app.ripple}" [class]="app.topbarColor" (click)="onLayoutClick()">
+
     <app-topbar></app-topbar>
 
     <app-menu></app-menu>
@@ -20,8 +21,8 @@
             <router-outlet></router-outlet>
         </div>
         <app-config></app-config>
-        <a class="navbar-brand text-white">JWT Auth System</a>
-        <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+<!--        <a class="navbar-brand text-white">JWT Auth System</a>-->
+<!--        <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>-->
 
         <app-footer></app-footer>
     </div>

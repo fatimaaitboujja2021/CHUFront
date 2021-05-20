@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {MessageService} from 'primeng/api';
+import {MessageService, SelectItem} from 'primeng/api';
 import {FonctionnaireService} from '../../../../controller/service/fonctionnaire.service';
 import {Fonctionnaire} from '../../../../controller/model/fonctionnaire.model';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -13,10 +13,30 @@ import {Router} from '@angular/router';
 })
 export class FonctionnaireCreateComponent implements OnInit {
 
+    genres: SelectItem[];
+    selectedFonctAdvanced: any[];
+    filterednom: any[];
+    filterfonctionnaire(event) {
+        const filtered: any[] = [];
+        const query = event.query;
+        for (let i = 0; i < this.items.length; i++) {
+            const country = this.items[i];
+            if (country.nom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+                filtered.push(country);
+            }
+        }
+
+        this.filterednom = filtered;
+    }
     constructor(private messageService: MessageService, private service: FonctionnaireService,private route: Router, private cdref: ChangeDetectorRef) {
     }
 
     ngOnInit(): void {
+        this.genres = [
+            {label: 'Femme', value: 'Femme'},
+            {label: 'Homme', value: 'Homme'}
+
+        ];
     }
 
 

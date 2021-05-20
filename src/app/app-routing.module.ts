@@ -55,6 +55,8 @@ import {CommonModule} from '@angular/common';
 import {UserComponent} from './view/admin/utilisateurs/user.component';
 import {UtilisateurCreateComponent} from './view/admin/utilisateurs/utilisateur-create/utilisateur-create.component';
 import {UserEditComponent} from './view/admin/utilisateurs/user-edit/user-edit.component';
+import {LogoutComponent} from './logout/logout.component';
+import {FonctionnaireChefComponent} from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef.component';
 
 const routes: Routes = [
 
@@ -73,7 +75,10 @@ const routes: Routes = [
 
     {path: '', component: AppMainComponent,canActivate:[AuthGuard],
         children: [
+
+            {path: 'logout', component: LogoutComponent},
             {path: 'profile/info', component: ProfileComponent},
+            {path: 'chefservice/fonctionnaires', component: FonctionnaireChefComponent},
             // { path: 'registration', component: RegisterComponent },
             // { path: 'login', component: LoginComponent },
             {path: 'view/listegarde', component: ListegardeComponent},
