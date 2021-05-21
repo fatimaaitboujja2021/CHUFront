@@ -78,7 +78,7 @@ const routes: Routes = [
 
             {path: 'logout', component: LogoutComponent},
             {path: 'profile/info', component: ProfileComponent},
-            {path: 'chefservice/fonctionnaires', component: FonctionnaireChefComponent},
+            {path: 'listefonctionnaires', component: FonctionnaireChefComponent},
             // { path: 'registration', component: RegisterComponent },
             // { path: 'login', component: LoginComponent },
             {path: 'view/listegarde', component: ListegardeComponent},

@@ -9,6 +9,7 @@ import {Chefservice} from '../../../../controller/model/chefservice.model';
 import {Customer} from '../../../../demo/domain/customer';
 import {FonctionnaireService} from '../../../../controller/service/fonctionnaire.service';
 import {Router} from '@angular/router';
+import {TokenStorageService} from '../../../../_services/token-storage.service';
 
 @Component({
   selector: 'app-listegarde-list',
@@ -20,20 +21,46 @@ export class ListegardeListComponent implements OnInit {
 
   cols: any[];
   nbrligne:any=8;
-
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showManagerBoard = false;
+  username: string;
+  firstname:string;
+  lastname:string;
+  matricule:string;
+  email:string;
 
   private valider(){
     this.route.navigate(['/view/listegardevalider'])
 
   }
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-              private service: ListegardeService,private route: Router) {
+              private service: ListegardeService,private route: Router,private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
     this.initCol();
     this.service.init().subscribe(data => this.items = data);
 
+    // this.service.init().subscribe(data => this.items = data);
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      //this.lastname=this.tokenStorageService.getUser().lastname
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+
+      this.username = user.username;
+      this.firstname= user.firstname;
+      this.email=user.email;
+
+      this.lastname= user.lastname;
+      this.matricule=user.matricule;
+    }
+this.service.findBymatriculeSuperieur(this.matricule);
   }
 
 

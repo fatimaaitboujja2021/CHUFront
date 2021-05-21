@@ -15,7 +15,7 @@ export class FonctionnaireService {
   private _items: Array<Fonctionnaire>;
   private _selected: Fonctionnaire;
   private _selectes: Array<Fonctionnaire>;
-
+private _noms:Array<String>;
   private _createDialog: boolean;
   private _editDialog: boolean;
   private _viewDialog: boolean;
@@ -53,23 +53,25 @@ export class FonctionnaireService {
 
 
   public findBymatriculeSuperieur(matricule:String){
-    console.log("hhhhh");
-    this.http.get<Array<Fonctionnaire>>('http://localhost:8063/Chu/Fonctionnairews/matriculeSuperieur/'+matricule).subscribe(
+    this.http.get<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+matricule).subscribe(
         data=>{
-          console.log("555555555555");
-
-          // console.log(data);
-
           this.items = data;
-          // console.log(data);
-          console.log("hhhhh");
-
-
         },error=>{
           console.log('erreur findBymatriculeSuperieur');
         }
     );
   }
+
+  public findBynom(nom:String){
+    this.http.get<Array<String>>(this.url+'d/'+nom).subscribe(
+        data=>{
+          this.noms = data;
+        },error=>{
+          console.log('erreur findbynom');
+        }
+    );
+  }
+
   public findIndexById(id: number): number {
     let index = -1;
     for (let i = 0; i < this.items.length; i++) {
@@ -97,6 +99,13 @@ export class FonctionnaireService {
 
   set items(value: Array<Fonctionnaire>) {
     this._items = value;
+  }
+  get noms(): Array<String> {
+    return this._noms;
+  }
+
+  set noms(value: Array<String>) {
+    this._noms = value;
   }
 
   get selected(): Fonctionnaire {

@@ -202,7 +202,7 @@ export class AppMenuComponent implements OnInit {
                     label: 'Favorites', icon: 'pi pi-fw pi-home',
                     items: [
                         {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']},
-                        {label: 'liste des fonctionnaires', icon: 'pi pi-fw pi-mobile', routerLink: ['chefservice/fonctionnaires']}
+                        {label: 'liste des fonctionnaires', icon: 'pi pi-fw pi-mobile', routerLink: ['/listefonctionnaires']}
                     ]
                 },
                 {
@@ -244,9 +244,9 @@ export class AppMenuComponent implements OnInit {
                     label: 'Chef Service', icon: 'pi pi-fw pi-copy', routerLink: ['/Admin'],
                     items: [
                         // {label: 'Chefservice',icon: 'pi pi-fw pi-globe', routerLink: ['/view/chefservice']},
-                        // {label: 'liste de garde',icon: 'pi pi-fw pi-clone', routerLink: ['/view/listegarde']},
+                        {label: 'liste de garde',icon: 'pi pi-fw pi-clone', routerLink: ['/view/listegarde']},
 
-                        // {label: 'Fonctionnaire', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/view/fonctionnaire']},
+                        {label: 'Fonctionnaire', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/view/fonctionnaire']},
                         {label: 'Valider Liste garde', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/listegardevalider']},
 
                         //   {label: 'Commande', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/commande']},

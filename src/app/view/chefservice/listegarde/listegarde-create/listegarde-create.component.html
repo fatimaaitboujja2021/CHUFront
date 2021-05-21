@@ -21,11 +21,6 @@
             </div>
         </div>
 
-<!--        <div class="p-formgrid p-grid">-->
-<!--            <div class="p-field p-col">-->
-<!--                <label for="jourounuit">jour ou nuit</label>-->
-<!--                <input type="text" id="jourounuit" [(ngModel)]="selected.jourounuit">-->
-
 
 
             <h5>J/N</h5>
@@ -47,78 +42,16 @@
                 </div>
 
 
+<div class="p-field">
+ <label >nom</label>
+    <p-autoComplete [(ngModel)]="selected.fonctionnaire.nom" [suggestions]="filteredFonctionnairenom" (completeMethod)="searchFonctionnaire($event)"></p-autoComplete>
 
-
-
-
-
-
-
-
-
-<!--        <div class="p-formgrid p-grid">-->
-<!--            <div class="p-field p-col">-->
-<!--                <label for="refg">refg</label>-->
-<!--                <input type="text" id="refg" [(ngModel)]="selected.garde.ref">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="p-field">-->
-<!--                        <label >Nom</label>-->
-
-<!--                        <p-autoComplete [(ngModel)]="this.selected.fonctionnaire.nom" [suggestions]="filteredFonctionnairenom"-->
-<!--                                        (completeMethod)="searchCountry(this.selected.fonctionnaire.nom)" field="nom"  ></p-autoComplete>-->
-<!--        </div>-->
-
-<!--        <div class="p-field">-->
-<!--            <label for="autocompletee">Prenom</label>-->
-
-<!--            <p-autoComplete Id="autocompletee" [(ngModel)]="value3" [suggestions]="filteredFonctionnaireprenom"-->
-<!--                            (completeMethod)="searchCountry($event)" field="prenom"  ></p-autoComplete>-->
-<!--        </div>-->
-
-
-<!--        <h5>Multiselect</h5>-->
-<!--        <p-multiSelect [options]="itemsfonctionnaire" [(ngModel)]="selectedMulti" defaultLabel="Select a Country" optionLabel="name" class="multiselect-custom">-->
-<!--            <ng-template let-value pTemplate="selectedItems">-->
-<!--                <div class="country-item country-item-value" *ngFor="let option of selectedMulti">-->
-<!--                    <div>{{option.nom}}</div>-->
-<!--                </div>-->
-<!--                <div *ngIf="!selectedMulti || selectedMulti.length === 0" class="country-placeholder">-->
-<!--                    Select Countries-->
-<!--                </div>-->
-<!--            </ng-template>-->
-<!--            <ng-template let-country pTemplate="item">-->
-<!--                <div class="country-item">-->
-<!--&lt;!&ndash;                    <img src="assets/demo/flags/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()" />&ndash;&gt;-->
-<!--                    <div>{{country.nom}}</div>-->
-<!--                </div>-->
-<!--            </ng-template>-->
-<!--        </p-multiSelect>-->
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="p-formgrid p-grid">
-            <div class="p-field p-col">
-                <label >nom</label>
-                <input id="e" pInputText [(ngModel)]="selected.fonctionnaire.nom" >
-            </div>
         </div>
-
-
 
         <div class="p-formgrid p-grid">
         <div class="p-field p-col">
             <label >prenom </label>
-            <input id="matericuleSub" pInputText [(ngModel)]="selected.fonctionnaire.prenom">
+            <p-autoComplete [(ngModel)]="selected.fonctionnaire.prenom" [suggestions]="filteredFonctionnaireprenom" (completeMethod)="searchFonctionnaire($event)"></p-autoComplete>
         </div>
         </div>
 
@@ -132,6 +65,6 @@
 
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()" ></button>
     </ng-template>
 </p-dialog>

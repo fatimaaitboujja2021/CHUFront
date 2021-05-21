@@ -14,6 +14,7 @@ export class ListegardeService {
   private urlFonctionnaire = environment.urlBase + environment.urlFonctionaire +'/';
 
   private _items: Array<ListeGarde>;
+  private _itemss: Array<ListeGarde>;
   private _selected: ListeGarde;
   private _selectes: Array<ListeGarde>;
   private _itemsfonctionnaire: Array<Fonctionnaire>;
@@ -37,7 +38,15 @@ export class ListegardeService {
   public save(): Observable<ListeGarde> {
     return this.http.post<ListeGarde>(this.url,this.selected);
   }
-
+  public findBymatriculeSuperieur(matricule:String){
+    this.http.get<Array<ListeGarde>>(this.url+'matriculesup/'+matricule).subscribe(
+        data=>{
+          this.itemss = data;
+        },error=>{
+          console.log('erreur  element de la liste par findBymatriculeSuperieur');
+        }
+    );
+  }
 
   public edit(): Observable<ListeGarde> {
     return this.http.put<ListeGarde>(this.url, this.selected);
@@ -106,6 +115,13 @@ export class ListegardeService {
 
   set items(value: Array<ListeGarde>) {
     this._items = value;
+  }
+  get itemss(): Array<ListeGarde> {
+    return this._itemss;
+  }
+
+  set itemss(value: Array<ListeGarde>) {
+    this._itemss = value;
   }
 
   get selected(): ListeGarde {

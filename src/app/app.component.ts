@@ -47,6 +47,8 @@ export class AppComponent implements OnInit{
 
             this.username = user.username;
         }
+        else
+            this.router.navigateByUrl('/login');
 
 
     }
