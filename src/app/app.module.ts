@@ -184,6 +184,8 @@ import { FonctionnaireChefCreateComponent } from './view/chefservice/fonctionnai
 import { FonctionnaireChefEditComponent } from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef-edit/fonctionnaire-chef-edit.component';
 import { FonctionnaireChefListComponent } from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef-list/fonctionnaire-chef-list.component';
 import { FonctionnaireChefViewComponent } from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef-view/fonctionnaire-chef-view.component';
+import { CheckattendanceComponent } from './view/chefservice/listegarde/checkattendance/checkattendance.component';
+import { ListedepresenceComponent } from './view/chefservice/listegarde/checkattendance/listedepresence/listedepresence.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
 
@@ -366,7 +368,9 @@ registerLocaleData(localeFr, 'fr');
         FonctionnaireChefCreateComponent,
         FonctionnaireChefEditComponent,
         FonctionnaireChefListComponent,
-        FonctionnaireChefViewComponent
+        FonctionnaireChefViewComponent,
+        CheckattendanceComponent,
+        ListedepresenceComponent
 
     ],
     providers: [

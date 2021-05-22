@@ -38,16 +38,21 @@ export class ListegardeService {
   public save(): Observable<ListeGarde> {
     return this.http.post<ListeGarde>(this.url,this.selected);
   }
-  public findBymatriculeSuperieur(matricule:String){
-    this.http.get<Array<ListeGarde>>(this.url+'matriculesup/'+matricule).subscribe(
-        data=>{
-          this.itemss = data;
-        },error=>{
-          console.log('erreur  element de la liste par findBymatriculeSuperieur');
-        }
-    );
+  // public findBymatriculeSuperieur(matricule:String){
+  //   this.http.get<Array<ListeGarde>>(this.url+'matriculesup/'+matricule).subscribe(
+  //       data=>{
+  //         this.itemss = data;
+  //       },error=>{
+  //         console.log('erreur  element de la liste par findBymatriculeSuperieur');
+  //       }
+  //   );
+  // }
+public findBydateminetmax(n:String,d:Date,f:Date) :Observable<Array<ListeGarde>>{
+    return this.http.get<Array<ListeGarde>>(this.url+'minetmaxdate/'+n+'/'+d+'/'+f) ;
+}
+  public findByListebymatriculeSuperieur(matricule:string): Observable<Array<ListeGarde>>{
+   return  this.http.get<Array<ListeGarde>>(this.url+'matriculesup/'+matricule) ;
   }
-
   public edit(): Observable<ListeGarde> {
     return this.http.put<ListeGarde>(this.url, this.selected);
   }

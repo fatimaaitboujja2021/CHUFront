@@ -21,7 +21,7 @@
             </p-toolbar>
 
 
-            <p-table editMode="row" #dt id="print-me" [value]="items" [columns]="cols" [rows]="nbrligne" [paginator]="true" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','garde.typeGarde','fonctionnaire.nom']"
+            <p-table editMode="row" #dt id="print-me" [value]="items" [columns]="cols" [rows]="nbrligne" [paginator]="true" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','statue','raisondabsence','garde.typeGarde','fonctionnaire.nom']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" >
@@ -45,28 +45,30 @@
                 </ng-template>
 
 
-<!--                <ng-template pTemplate="caption">-->
-<!--                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">-->
-<!--                        <h5 class="p-m-0">Manage Liste Garde</h5>-->
-<!--                        <span class="p-input-icon-left">-->
-<!--                        <i class="pi pi-search"></i>-->
-<!--                        <input pInputText type="text"  placeholder="Search..." />-->
-<!--                    </span>-->
-<!--                    </div>-->
-<!--                </ng-template>-->
+                <!--                <ng-template pTemplate="caption">-->
+                <!--                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">-->
+                <!--                        <h5 class="p-m-0">Manage Liste Garde</h5>-->
+                <!--                        <span class="p-input-icon-left">-->
+                <!--                        <i class="pi pi-search"></i>-->
+                <!--                        <input pInputText type="text"  placeholder="Search..." />-->
+                <!--                    </span>-->
+                <!--                    </div>-->
+                <!--                </ng-template>-->
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 3rem">
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
-<th>le jour</th>
-<!--                        <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>-->
+                        <th>le jour</th>
+                        <!--                        <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>-->
                         <th pSortableColumn="dateGarde"><div class="p-d-flex p-jc-between p-ai-center">date Garde <p-sortIcon field="dateGarde"></p-sortIcon><p-columnFilter type="date" field="dateGarde" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
                         <th pSortableColumn="jourounuit"><div class="p-d-flex p-jc-between p-ai-center">J/N <p-sortIcon field="jourounuit"></p-sortIcon><p-columnFilter type="text" field="jourounuit" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
                         <th pSortableColumn="dureDeGarde"><div class="p-d-flex p-jc-between p-ai-center">dure De Garde <p-sortIcon field="dureDeGarde"></p-sortIcon><p-columnFilter type="text" field="dureDeGarde" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
                         <th pSortableColumn="garde.typeGarde"><div class="p-d-flex p-jc-between p-ai-center">typeGarde <p-sortIcon field="garde.typeGarde"></p-sortIcon><p-columnFilter type="text" field="garde.typeGarde" display="menu" class="p-ml-auto"></p-columnFilter> </div></th>
                         <th pSortableColumn="fonctionnaire.nom"><div class="p-d-flex p-jc-between p-ai-center">nom et prenom <p-sortIcon field="fonctionnaire.nom"></p-sortIcon><p-columnFilter type="text" field="fonctionnaire.nom" display="menu" class="p-ml-auto"></p-columnFilter></div></th>
-                        <th></th>
+                        <th pSortableColumn="statue"><div class="p-d-flex p-jc-between p-ai-center">statue <p-sortIcon field="statue"></p-sortIcon><p-columnFilter type="text" field="statue" display="menu" class="p-ml-auto"></p-columnFilter></div></th>
+                        <th pSortableColumn="raisondabsence"><div class="p-d-flex p-jc-between p-ai-center">raison d'absence <p-sortIcon field="raisondabsence"></p-sortIcon><p-columnFilter type="text" field="raisondabsence" display="menu" class="p-ml-auto"></p-columnFilter></div></th>
+
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-listegarde >
@@ -75,8 +77,8 @@
                         <td>
                             <p-tableCheckbox [value]="listegarde"></p-tableCheckbox>
                         </td>
-                         <td>{{listegarde.dateGarde| date:'EEEE'}}</td>
-<!--                        <td>{{listegarde.ref}}</td>-->
+                        <td>{{listegarde.dateGarde| date:'EEEE'}}</td>
+                        <!--                        <td>{{listegarde.ref}}</td>-->
                         <td>{{listegarde.dateGarde| date: 'MM/dd/yyyy'}}</td>
                         <td>{{listegarde.jourounuit}}</td>
 
@@ -86,7 +88,8 @@
                             {{listegarde.fonctionnaire.prenom}}
                         </td>
                         <!--                        <td>{{chefservice.fo}}</td>-->
-
+                        <td>{{listegarde.statue}}</td>
+                        <td >{{listegarde.raisondabsence}}</td>
 
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(listegarde)"></button>

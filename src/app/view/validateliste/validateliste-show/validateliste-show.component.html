@@ -5,11 +5,23 @@
 
 <div class="p-formgroup-inline">
     <div class="p-field">
-        <input type="date" pInputText  [(ngModel)]="mindate"   />
+        <input type="date" pInputText value="2013-01-08" [(ngModel)]="mindate"   />
+    </div>
+    <div class="p-field">
+        <input type="date" pInputText value="2022-01-08" [(ngModel)]="maxdate"   />
     </div>
     <div class="p-field">
         <input type="number" pInputText  [(ngModel)]="nbrligne"   />
     </div>
+    <div class="p-field">
+        <button  pButton class="p-button-danger p-mb-2"
+                (click)="findBydateminetmax(matricule,mindate,maxdate)"   label="show liste"></button>    </div>
+
+
+    <div class="p-field">
+        <button  pButton class="p-button-danger p-mb-2"
+                 (click)="hide()"   label="hide liste"></button>    </div>
+
     <div class="p-field">
         <button  pButton class="p-button-danger p-mb-2" printTitle="votre liste"
                  [useExistingCss]="true"
@@ -24,7 +36,7 @@
 
 <!--<button (click)="click(nbrligne,mindate)"></button>-->
 <!--<input [(ngModel)]="maxdate" type="date">-->
-<div  id="print-me"><div class="p-grid">
+<div  id="print-me"  *ngIf="step==1"><div class="p-grid">
     <div class="p-col">
         <div class="box"></div>
     </div>
@@ -33,7 +45,7 @@
     <div class="p-col">
         <div class="box"></div>
     </div>
-</div>
+
 
 <!--<input type="date" placeholder="from" min="1" max="31" [(ngModel)]="from">-->
 <!--<input type="text" placeholder="Le mois"  [(ngModel)]="{{listegarde.dateGarde| date:'EEEE'}}">-->
@@ -134,6 +146,7 @@
     <ul>
         <li><strong>{{c.nom}}  {{c.prenom}}</strong> : est en conge <strong>{{c.conge.typeConge}}</strong> a partir du <i>{{c.conge.dateDebutConge}} </i>=> <i>{{c.conge.dateFinConge}}</i></li>
     </ul>
+</div>
 </div>
 </div>
 </div>

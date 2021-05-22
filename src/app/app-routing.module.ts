@@ -57,6 +57,8 @@ import {UtilisateurCreateComponent} from './view/admin/utilisateurs/utilisateur-
 import {UserEditComponent} from './view/admin/utilisateurs/user-edit/user-edit.component';
 import {LogoutComponent} from './logout/logout.component';
 import {FonctionnaireChefComponent} from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef.component';
+import {CheckattendanceComponent} from './view/chefservice/listegarde/checkattendance/checkattendance.component';
+import {ListedepresenceComponent} from './view/chefservice/listegarde/checkattendance/listedepresence/listedepresence.component';
 
 const routes: Routes = [
 
@@ -79,9 +81,11 @@ const routes: Routes = [
             {path: 'logout', component: LogoutComponent},
             {path: 'profile/info', component: ProfileComponent},
             {path: 'listefonctionnaires', component: FonctionnaireChefComponent},
+            {path: 'presence', component: CheckattendanceComponent},
             // { path: 'registration', component: RegisterComponent },
             // { path: 'login', component: LoginComponent },
             {path: 'view/listegarde', component: ListegardeComponent},
+            {path: 'view/listedepresence', component: ListedepresenceComponent},
             {path: 'view/listegardevalider', component: ValidatelisteComponent},
             {path: 'view/user', component: UserComponent},
             {path: 'view/user/edit', component: UserEditComponent},

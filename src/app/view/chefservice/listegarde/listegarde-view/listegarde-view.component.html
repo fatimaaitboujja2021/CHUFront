@@ -47,6 +47,25 @@
         <!--            <p-autoComplete Id="autocompletee" [(ngModel)]="value3" [suggestions]="filteredFonctionnaireprenom"-->
         <!--                            (completeMethod)="searchCountry($event)" field="prenom"  ></p-autoComplete>-->
         <!--        </div>-->
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="statue">statue</label>
+                <input type="text" id="statue"  pInputText [(ngModel)]="selected.statue">
+            </div>
+        </div>
+
+
+        <div class="p-formgrid p-grid" *ngIf="selected.statue=='absent'">
+            <div class="p-field p-col">
+                <label for="raisondabsence">raison d'absence</label>
+                <input type="text" id="raisondabsence"  pInputText [(ngModel)]="selected.raisondabsence">
+            </div>
+        </div>
+
+
+
+
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
                 <label >nom</label>

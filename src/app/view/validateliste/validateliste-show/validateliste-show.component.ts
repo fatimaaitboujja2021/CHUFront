@@ -17,8 +17,8 @@ export class ValidatelisteShowComponent implements OnInit {
   constructor( private http: HttpClient,private service: ListegardeService,private tokenStorageService: TokenStorageService) { }
   cols: any[];
   nbrligne:any=30;
-mindate:any=2021-15-1;
-  maxdate:any;
+mindate:any=2021/11/11;
+  maxdate:any=2023/16/17;
 duredeconge:any;
   private roles: string[];
   isLoggedIn = false;
@@ -36,11 +36,11 @@ private  click(nbrl,mindate,maxdate){
 }
   ngOnInit(): void {
     this.initCol();
-    this.service.init().subscribe(data =>
-        this.items = data);
+    // this.service.init().subscribe(data =>
+    //     this.items = data);
     this.service.findAll().subscribe(data => this.itemsfonctionnaire = data);
     //this.duredeconge=this.selectedfonctionnaire.conge.dateFinConge.getDate()-this.selectedfonctionnaire.conge.dateDebutConge.getDate();
-
+console.log(this.maxdate);
 
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -59,9 +59,13 @@ private  click(nbrl,mindate,maxdate){
       this.matricule=user.matricule;
     }
 // this.findBymatriculeSuperieur(this.matricule);
+//     this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate).subscribe(data=> this.items=data);
     this.findBymatriculeSuperieur(this.matricule);
-console.log('jajaj'+this.itemss)
-console.log(this.matricule)
+console.log('jajaj'+this.items);
+console.log(this.matricule);
+    this.mindate=2021/11/11;
+    this.maxdate=2023/16/17;
   }
   private initCol() {
     this.cols = [
@@ -78,8 +82,19 @@ console.log(this.matricule)
     ];
   }
   private url = environment.urlBase + environment.urlFonctionaire +'/';
-
+step: any=0;
   itemss:any[];
+  public hide(){
+    this.step=0;
+  }
+  public findBydateminetmax(n:String,d:Date,f:Date){
+    this.step=1
+    n=this.matricule;
+    d=this.mindate;
+    f=this.maxdate;
+    this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate).subscribe(data=> this.items=data);
+
+  }
   public findBymatriculeSuperieur(matricule:String){
     this.http.get<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+matricule).subscribe(
         data=>{

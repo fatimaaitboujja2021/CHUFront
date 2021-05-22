@@ -1,22 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {ConfirmationService, MessageService} from 'primeng/api';
-import {CommandeService} from '../../../../controller/service/commande.service';
-import {Commande} from '../../../../controller/model/commande.model';
-import {ListegardeService} from '../../../../controller/service/listegarde.service';
 import {ListeGarde} from '../../../../controller/model/liste-garde.model';
-import {ChefserviceService} from '../../../../controller/service/chefservice.service';
-import {Chefservice} from '../../../../controller/model/chefservice.model';
-import {Customer} from '../../../../demo/domain/customer';
-import {FonctionnaireService} from '../../../../controller/service/fonctionnaire.service';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {ListegardeService} from '../../../../controller/service/listegarde.service';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../../../../_services/token-storage.service';
 
 @Component({
-  selector: 'app-listegarde-list',
-  templateUrl: './listegarde-list.component.html',
-  styleUrls: ['./listegarde-list.component.scss']
+  selector: 'app-checkattendance',
+  templateUrl: './checkattendance.component.html',
+  styleUrls: ['./checkattendance.component.scss'],
+  providers: [MessageService, ConfirmationService]
+
 })
-export class ListegardeListComponent implements OnInit {
+export class CheckattendanceComponent implements OnInit {
   selectedCustomer: ListeGarde;
 
   cols: any[];
@@ -32,7 +28,7 @@ export class ListegardeListComponent implements OnInit {
   email:string;
 
   private valider(){
-    this.route.navigate(['/view/listegardevalider'])
+    this.route.navigate(['/view/listedepresence'])
 
   }
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
@@ -60,7 +56,7 @@ export class ListegardeListComponent implements OnInit {
       this.lastname= user.lastname;
       this.matricule=user.matricule;
     }
-this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+    this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
   }
 
 
@@ -90,17 +86,17 @@ this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> th
 
 
   public inedit(s) {
-        this.items[this.service.findIndexById(s.id)] = this.selected;
-        this.service.edit().subscribe(data => {
-          this.selected = data;
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Successful',
-            detail: 'inedit Updated',
-            life: 3000
-          });
-          this.service.init();
-        });
+    this.items[this.service.findIndexById(s.id)] = this.selected;
+    this.service.edit().subscribe(data => {
+      this.selected = data;
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Successful',
+        detail: 'inedit Updated',
+        life: 3000
+      });
+      this.service.init();
+    });
 
 
   }
@@ -109,7 +105,7 @@ this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> th
   }
 
   onRowEditSave(book: ListeGarde) {
-this.inedit(book);  }
+    this.inedit(book);  }
 
   onRowEditCancel(book: ListeGarde, index: number) {
     console.log('Row edit cancelled'+book+'jj');
@@ -124,24 +120,24 @@ this.inedit(book);  }
 
   public deleteMultiple() {
     this.confirmationService.confirm({
-        message: 'Are you sure you want to delete the selected Fonctionnaires?',
-        header: 'Confirm',
-        icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-    this.service.deleteMultipleByReference().subscribe(data =>{
-      this.service.deleteMultipleIndexById();
-      // this.selectes = null;
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Successful',
-        detail: 'ListeGarde Deleted',
-        life: 3000
-      });
-      this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+      message: 'Are you sure you want to delete the selected Fonctionnaires?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.service.deleteMultipleByReference().subscribe(data =>{
+          this.service.deleteMultipleIndexById();
+          // this.selectes = null;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Successful',
+            detail: 'ListeGarde Deleted',
+            life: 3000
+          });
+          this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
 
+        });
+      }
     });
-    }
-     });
   }
   public openCreate() {
     this.selected = new ListeGarde();
@@ -172,7 +168,10 @@ this.inedit(book);  }
       {field: 'jourounuit', header: 'jourounuit'},
       {field: 'typeGarde', header: 'typeGarde'},
       {field: 'nom', header: 'nom'},
-      {field: 'prenom', header: 'prenom'}
+      {field: 'prenom', header: 'prenom'},
+      {field: 'statue', header: 'statue'},
+      {field: 'raisondabsence', header: 'raisondabsence'},
+
 
 
     ];
@@ -242,6 +241,7 @@ this.inedit(book);  }
   set selectes(value: Array<ListeGarde>) {
     this.service.selectes = value;
   }
+
 
 
 }

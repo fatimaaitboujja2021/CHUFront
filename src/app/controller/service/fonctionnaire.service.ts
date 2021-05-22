@@ -5,6 +5,7 @@ import {Commande} from '../model/commande.model';
 import {environment} from '../../../environments/environment';
 import {Observable} from "rxjs";
 import {Fonctionnaire} from '../model/fonctionnaire.model';
+import {ListeGarde} from '../model/liste-garde.model';
 
 @Injectable({
   providedIn: 'root'
@@ -52,16 +53,18 @@ private _noms:Array<String>;
 // }
 
 
-  public findBymatriculeSuperieur(matricule:String){
-    this.http.get<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+matricule).subscribe(
-        data=>{
-          this.items = data;
-        },error=>{
-          console.log('erreur findBymatriculeSuperieur');
-        }
-    );
+  // public findBymatriculeSuperieur(matricule:String){
+  //   this.http.get<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+matricule).subscribe(
+  //       data=>{
+  //         this.items = data;
+  //       },error=>{
+  //         console.log('erreur findBymatriculeSuperieur');
+  //       }
+  //   );
+  // }
+  public findBymatriculeSuperieur(matricule:string): Observable<Array<Fonctionnaire>>{
+    return  this.http.get<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+matricule) ;
   }
-
   public findBynom(nom:String){
     this.http.get<Array<String>>(this.url+'d/'+nom).subscribe(
         data=>{
