@@ -2,10 +2,11 @@
 
 <!--<input [(ngModel)]="mindate" type="date">-->
 <!--<input type="date" pInputText  [(ngModel)]="maxdate"   />-->
+<p-button icon="pi pi-times" style="margin-bottom: 10px"  (click)="returnto()" class="p-mr-2 p-mb-2"></p-button>
 
-<div class="p-formgroup-inline">
+<div class="p-formgroup-inline" style="margin-top:{{x}}">
     <div class="p-field">
-        <input type="date" pInputText value="2013-01-08" [(ngModel)]="mindate"   />
+        <input type="date" pInputText value="2020-01-08" [(ngModel)]="mindate"   />
     </div>
     <div class="p-field">
         <input type="date" pInputText value="2022-01-08" [(ngModel)]="maxdate"   />
@@ -14,18 +15,22 @@
         <input type="number" pInputText  [(ngModel)]="nbrligne"   />
     </div>
     <div class="p-field">
-        <button  pButton class="p-button-danger p-mb-2"
+        <button  pButton class="p-button-success p-mb-2"
                 (click)="findBydateminetmax(matricule,mindate,maxdate)"   label="show liste"></button>    </div>
+<!--    <button  pButton class="p-button-danger rotated-icon p-mb-2"-->
+<!--             (click)="returnto()"    style="margin-right: 8px"></button>-->
 
 
-    <div class="p-field">
-        <button  pButton class="p-button-danger p-mb-2"
-                 (click)="hide()"   label="hide liste"></button>    </div>
 
-    <div class="p-field">
-        <button  pButton class="p-button-danger p-mb-2" printTitle="votre liste"
+    <div class="p-field" *ngIf="step==1">
+            <button  pButton class="p-button-danger p-mb-2"
+                     (click)="hide()"   label="hide liste" style="margin-right: 8px"></button>
+        <button pButton pRipple label="Export Excel" icon="pi pi-file-excel" class="p-button-plain p-mb-2" (click)="exportexcel()"></button>
+        <button style="margin-left: 8px" pButton class="p-button-warning p-mb-2" printTitle="votre liste"
                  [useExistingCss]="true"
-                 printSectionId="print-me" ngxPrint  label="Print to pdf"></button>    </div>
+                 printSectionId="print-me" ngxPrint  label="Print to pdf"></button>
+    </div>
+
 
  </div>
 

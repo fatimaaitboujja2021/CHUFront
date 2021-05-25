@@ -48,7 +48,7 @@ import {ProfileComponent} from './view/chefservice/profile/profile.component';
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
-import {BoardUserComponent} from './board-user/board-user.component';
+import {BoardUserComponent} from './RAPPEL-RÉGLEMENTAIRE/board-user.component';
 import {BoardAdminComponent} from './board-admin/board-admin.component';
 import {AuthGuard} from './auth/auth.guard';
 import {CommonModule} from '@angular/common';
@@ -79,6 +79,7 @@ const routes: Routes = [
         children: [
 
             {path: 'logout', component: LogoutComponent},
+            {path: 'home', component: HomeComponent},
             {path: 'profile/info', component: ProfileComponent},
             {path: 'listefonctionnaires', component: FonctionnaireChefComponent},
             {path: 'presence', component: CheckattendanceComponent},
@@ -91,6 +92,7 @@ const routes: Routes = [
             {path: 'view/user/edit', component: UserEditComponent},
             {path: 'view/fonctionnaire', component: FonctionnaireComponent},
             {path: 'view/chefservice', component: ChefserviceComponent},
+            {path: 'view/RAPPELRÉGLEMENTAIRE', component: BoardUserComponent},
             //  {path: 'view/commande', component: CommandesComponent},
             {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
             {path: 'uikit/floatlabel', component: FloatLabelDemoComponent},

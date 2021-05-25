@@ -6,17 +6,19 @@
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
+<!--                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>-->
                     <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
 
-
+                    <span class="ll"><label>de</label>   <input type="date"  pInputText value="2020-01-08" [(ngModel)]="mindate" (change)="findBydateminetmax(matricule,mindate,maxdate)"  />
+                <label>à</label>     <input type="date" pInputText value="2022-01-08" [(ngModel)]="maxdate"  (change)="findBydateminetmax(matricule,mindate,maxdate)"/></span>
+                    <p-button icon="pi pi-times" class=" but1" (click)="ngOnInit()"></p-button>
                 </ng-template>
 
 
                 <ng-template pTemplate="right">
-                    <button pButton pRipple label="valider" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="valider()"></button>
-                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
-                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                    <button pButton pRipple label="valider" icon="pi pi-bookmark" class="p-button-help " (click)="valider()"></button>
+<!--                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>-->
+<!--                    <button pButton pRipple label="Export excel.csv" icon="pi pi-file-excel" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>-->
                 </ng-template>
             </p-toolbar>
 
@@ -80,15 +82,20 @@
                         <td>{{listegarde.dateGarde| date:'EEEE'}}</td>
                         <!--                        <td>{{listegarde.ref}}</td>-->
                         <td>{{listegarde.dateGarde| date: 'MM/dd/yyyy'}}</td>
-                        <td>{{listegarde.jourounuit}}</td>
+
+                        <td>
+                            <span [className]="getstatue(listegarde.jourounuit)"> {{listegarde.jourounuit}}</span>
+                        </td>
 
                         <td >{{listegarde.dureDeGarde}}</td>
-                        <td>{{listegarde.garde.typeGarde}}</td>
+                        <td> <span [className]="getstatue(listegarde.garde.typeGarde)">{{listegarde.garde.typeGarde}}</span></td>
                         <td>{{listegarde.fonctionnaire.nom}}
                             {{listegarde.fonctionnaire.prenom}}
                         </td>
                         <!--                        <td>{{chefservice.fo}}</td>-->
-                        <td>{{listegarde.statue}}</td>
+                        <td>
+                            <span [className]="getstatue(listegarde.statue)">{{listegarde.statue}}</span></td>
+
                         <td >{{listegarde.raisondabsence}}</td>
 
                         <td>
@@ -107,9 +114,9 @@
             </p-table>
         </div>
 
-        <app-listegarde-create></app-listegarde-create>
-        <app-listegarde-edit></app-listegarde-edit>
-        <app-listegarde-view></app-listegarde-view>
+        <app-listedepresencecreate></app-listedepresencecreate>
+        <app-listedepresence-edit></app-listedepresence-edit>
+        <app-listedepresence-view></app-listedepresence-view>
 
         <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
     </div>

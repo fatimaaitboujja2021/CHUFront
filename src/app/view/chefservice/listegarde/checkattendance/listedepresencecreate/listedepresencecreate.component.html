@@ -1,0 +1,85 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header=" Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="ref">Ref</label>
+            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref"   />
+            <!--            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>-->
+        </div>
+        <div class="p-field">
+            <label for="dateGarde">dateGarde</label>
+            <input type="date" pInputText  id="dateGarde" [(ngModel)]="selected.dateGarde"   />
+
+            <!--            <small class="p-invalid" *ngIf="submitted && !selected.total">total is required.</small>-->
+        </div>
+
+
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="dureDeGarde">dureDeGarde</label>
+                <p-inputNumber id="dureDeGarde" [(ngModel)]="selected.dureDeGarde"></p-inputNumber>
+            </div>
+        </div>
+
+
+
+        <h5>J/N</h5>
+        <div class="p-grid">
+            <div class="p-col-12 p-md-4">
+                <div class="p-field-radiobutton">
+                    <p-radioButton name="jourounuit" value="jour" [(ngModel)]="selected.jourounuit" id="jourounuit"></p-radioButton>
+                    <label for="jourounuit">jour</label>
+                </div>
+            </div>
+            <div class="p-col-12 p-md-4">
+                <div class="p-field-radiobutton">
+                    <p-radioButton name="jourounuit" value="nuit" [(ngModel)]="selected.jourounuit"
+                                   id="jourounuit1"></p-radioButton>
+                    <label for="jourounuit1">nuit</label>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="statue">statue</label>
+                <input type="text" id="statue"  pInputText [(ngModel)]="selected.statue">
+            </div>
+        </div>
+
+
+        <div class="p-formgrid p-grid" *ngIf="selected.statue=='absent'">
+            <div class="p-field p-col">
+                <label for="raisondabsence">raisondabsence</label>
+                <input type="text" id="raisondabsence"  pInputText [(ngModel)]="selected.raisondabsence">
+            </div>
+        </div>
+
+        <div class="p-field">
+            <label >nom</label>
+            <p-autoComplete [(ngModel)]="selected.fonctionnaire.nom" [suggestions]="filteredFonctionnairenom" (completeMethod)="searchFonctionnaire($event)"></p-autoComplete>
+
+        </div>
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label >prenom </label>
+                <p-autoComplete [(ngModel)]="selected.fonctionnaire.prenom" [suggestions]="filteredFonctionnaireprenom" (completeMethod)="searchFonctionnaire($event)"></p-autoComplete>
+            </div>
+        </div>
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="matriculeSubb">type garde</label>
+                <input id="matriculeSubb" pInputText [(ngModel)]="selected.garde.typeGarde">
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()" ></button>
+    </ng-template>
+</p-dialog>

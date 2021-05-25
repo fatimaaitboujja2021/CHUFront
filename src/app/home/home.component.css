@@ -1,0 +1,16 @@
+.hr{
+    font-size: 18px;
+    font-family: Consolas;
+    font-weight: bold;
+    margin-left: 400px;
+    margin-bottom: 10px;
+
+}
+span{
+    color: #0a80bb;
+    font-weight: bolder;
+    font-size: 19px;
+}
+.overview-box-title{
+    font-weight: bold;
+}

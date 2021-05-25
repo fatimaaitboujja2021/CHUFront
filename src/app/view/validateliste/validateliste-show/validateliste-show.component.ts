@@ -6,6 +6,8 @@ import {Fonctionnaire} from '../../../controller/model/fonctionnaire.model';
 import {TokenStorageService} from '../../../_services/token-storage.service';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
+import * as XLSX from 'xlsx';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-validateliste-show',
@@ -14,12 +16,12 @@ import {environment} from '../../../../environments/environment';
 })
 export class ValidatelisteShowComponent implements OnInit {
 
-  constructor( private http: HttpClient,private service: ListegardeService,private tokenStorageService: TokenStorageService) { }
+  constructor( private http: HttpClient,private service: ListegardeService,private route: Router,private tokenStorageService: TokenStorageService) { }
   cols: any[];
   nbrligne:any=30;
-mindate:any=2021/11/11;
-  maxdate:any=2023/16/17;
-duredeconge:any;
+  mindate:any=2021-11-11;
+  maxdate:any=2029-10-17;
+  duredeconge:any;
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
@@ -29,11 +31,14 @@ duredeconge:any;
   lastname:string;
   matricule:string;
   email:string;
-private  click(nbrl,mindate,maxdate){
-  this.nbrligne==nbrl;
-  this.mindate==mindate;
-  this.maxdate==maxdate;
-}
+  x:any='250px';
+  fileName= 'ExcelSheet.xlsx';
+
+
+  private returnto(){
+    this.route.navigate(['/view/listegarde'])
+
+  }
   ngOnInit(): void {
     this.initCol();
     // this.service.init().subscribe(data =>
@@ -85,9 +90,26 @@ console.log(this.matricule);
 step: any=0;
   itemss:any[];
   public hide(){
+    this.x='250px';
     this.step=0;
   }
+
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('print-me');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+
+  }
   public findBydateminetmax(n:String,d:Date,f:Date){
+    this.x='0px';
+
     this.step=1
     n=this.matricule;
     d=this.mindate;

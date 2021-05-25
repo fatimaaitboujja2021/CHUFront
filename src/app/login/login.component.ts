@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
+  roles: string;
 nom:any;
 prenom:any;
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router: Router) { }
@@ -40,7 +40,13 @@ prenom:any;
           localStorage.setItem('token', 'true');
 
           // this.reloadPage();
-        this.router.navigateByUrl('/view/listegarde');
+          if(this.roles =='ROLE_ADMIN'){
+
+              this.router.navigateByUrl('/view/user');
+
+          }else
+              this.router.navigateByUrl('/home');
+
 
       },
       err => {

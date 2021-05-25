@@ -1,26 +1,65 @@
- <h2> Nom:{{lastname}} </h2>
-<h2> Prenom:{{firstname}}</h2>
- <h2> email:{{email}}</h2>
-<h2> role:{{roles}}</h2>
 
-<h1>{{matricule}}</h1>
-
-
-
-
-
-
-
-<div class="profile">
-    <div class="photo"><img src="./assets/layout/images/doctor.png"/></div>
-    <div class="content">
-        <div class="text">
-            <h3>{{firstname}} {{lastname}}</h3>
-            <h6> {{username}}</h6>
-            <h6>{{roles}}</h6>
+<div class="container">
+    <div class="card">
+        <div class="card__image-container">
+            <img class="card__image" src="assets/layout/images/doctor1.jpg" alt="">
         </div>
-        <div [ngClass]="classname"  (click)="change()"><span></span></div>
+
+        <svg class="card__svg" viewBox="0 0 800 500">
+
+            <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+            <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+        </svg>
+
+        <div class="card__content">
+            <h1 class="card__title">{{firstname}} {{lastname}}</h1>
+                   <h4> <span>email:</span> {{email}}</h4>
+               <h4> <span>Role:</span> {{roles}}</h4>
+                <h4> <span>Matricule:</span> {{matricule}}</h4>       </div>
     </div>
-    <div [ngClass]="classname1" ><i class="fa fa-codepen"></i><i class="fa fa-facebook"></i><i class="fa fa-github"></i><i class="fa fa-tumblr"></i><i class="fa fa-twitter"></i></div>
 </div>
+
+
+
+
+
+<!--<div>-->
+<!--    <body>-->
+
+<!--    <div class="p-inline-message-icon">    <h1 class="title" id="tt" ><img src="assets/layout/images/chulog.png"  class=" pic"> <span class="Bienvenue">Bienvenue</span> à votre profil-->
+<!--    <span class="ff">{{firstname}}</span></h1>-->
+<!--</div>-->
+
+<!--    <div class="card">-->
+<!--        <img src="assets/layout/images/single_user.png" class="mx-auto d-block ">-->
+<!--        <h2> <span>Nom:</span> {{lastname}} </h2>-->
+<!--        <h2> <span>Prenom:</span> {{firstname}}</h2>-->
+<!--        <h2> <span>email:</span> {{email}}</h2>-->
+<!--        <h2> <span>Role:</span> {{roles}}</h2>-->
+
+<!--        <h2> <span>Matricule:</span> {{matricule}}</h2>-->
+<!--    </div>-->
+
+
+
+<!--    </body>-->
+
+<!--</div>-->
+
+
+
+<!--<div class="  profile">-->
+<!--    <div class="photo"><img src="./assets/layout/images/doctor.png"/></div>-->
+<!--    <div class="content">-->
+<!--        <div class="text">-->
+<!--            <h3>{{firstname}} {{lastname}}</h3>-->
+<!--            <h6> {{username}}</h6>-->
+<!--            <h6>{{roles}}</h6>-->
+<!--        </div>-->
+<!--        <div [ngClass]="classname"  (click)="change()"><span></span></div>-->
+<!--    </div>-->
+<!--    <div [ngClass]="classname1" ><i class="fa fa-codepen"></i><i class="fa fa-facebook"></i><i class="fa fa-github"></i><i class="fa fa-tumblr"></i><i class="fa fa-twitter"></i></div>-->
+<!--</div>-->
+
+
 

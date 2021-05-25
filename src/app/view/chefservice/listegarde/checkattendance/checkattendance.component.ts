@@ -26,6 +26,8 @@ export class CheckattendanceComponent implements OnInit {
   lastname:string;
   matricule:string;
   email:string;
+  maxdate:any=2029-10-17;
+  mindate:any=2021-11-11;
 
   private valider(){
     this.route.navigate(['/view/listedepresence'])
@@ -38,7 +40,8 @@ export class CheckattendanceComponent implements OnInit {
   ngOnInit(): void {
     this.initCol();
     // this.service.init().subscribe(data => this.items = data);
-
+    this.mindate='jj/mm/aaaa';
+    this.maxdate='jj/mm/aaaa';
     // this.service.init().subscribe(data => this.items = data);
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -59,6 +62,35 @@ export class CheckattendanceComponent implements OnInit {
     this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
   }
 
+  public findBydateminetmax(n:String,d:Date,f:Date){
+
+    n=this.matricule;
+    d=this.mindate;
+    f=this.maxdate;
+    this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate).subscribe(data=> this.items=data);
+
+  }
+
+  private  getstatue(x:string){
+    if(x=='jour'){
+      return 'customer-badge status-new';
+    }
+    else if(x=='nuit'){
+      return 'customer-badge status-renewal';
+    }
+    else if(x=='absent(e)'){
+      return 'customer-badge status-unqualified';
+    }
+    else if (x=='present(e)'){
+      return 'customer-badge status-qualified'
+    }
+    else if(x=='garde'){
+      return 'customer-badge status-negotiation';
+    }
+    else if (x=='astreinte'){
+      return 'customer-badge status-prop'
+    }
+  }
 
 
   public delete(selected: ListeGarde) {

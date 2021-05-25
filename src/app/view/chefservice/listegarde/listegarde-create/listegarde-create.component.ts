@@ -65,28 +65,10 @@ export class ListegardeCreateComponent implements OnInit {
 
   }
 
-  public findBynom(nom:String){
-    this.http.get<Array<String>>(this.url+'d/'+nom).subscribe(
-        data=>{
-          this.noms = data;
-          console.log(data);
 
-        },error=>{
-          console.log('erreur findbynom');
-        }
-    );
-  }
 
   itemss:any[];
-  // public findBymatriculeSuperieur(matricule:String){
-  //   this.http.get<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+matricule).subscribe(
-  //       data=>{
-  //         this.itemss = data;
-  //       },error=>{
-  //         console.log('erreur findBymatriculeSuperieur');
-  //       }
-  //   );
-  // }
+
 
   searchFonctionnaire(event) {
     // in a real application, make a request to a remote url with the query and
@@ -109,9 +91,7 @@ this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(dat
       if (this.itemss[i].prenom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
         filteredprenom.push(this.itemss[i].prenom);
       }
-      console.log('fri3'+filterednom);
 
-      console.log('++++'+this.filteredFonctionnairenom);
       // this.service.init().subscribe(data => this.items = data);
 
     }

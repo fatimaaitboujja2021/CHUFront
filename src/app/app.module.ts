@@ -166,7 +166,6 @@ import localeFr from '@angular/common/locales/fr';
 import { ValidatelisteShowComponent } from './view/Validateliste/validateliste-show/validateliste-show.component';
 import { ValidatelisteComponent } from './view/validateliste/validateliste.component';
 import { ProfileComponent } from './view/chefservice/profile/profile.component';
-import { ProfileShowComponent } from './view/chefservice/profile/profile-show/profile-show.component';
 import {NgxPrintModule} from 'ngx-print';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
@@ -174,7 +173,7 @@ import {HomeComponent} from './home/home.component';
 import {BoardAdminComponent} from './board-admin/board-admin.component';
 import { ToastrModule } from 'ngx-toastr';
 
-import {BoardUserComponent} from './board-user/board-user.component';
+import {BoardUserComponent} from './RAPPEL-RÉGLEMENTAIRE/board-user.component';
 import {UserComponent} from './view/admin/utilisateurs/user.component';
 import { UtilisateurCreateComponent } from './view/admin/utilisateurs/utilisateur-create/utilisateur-create.component';
 import {UserEditComponent} from './view/admin/utilisateurs/user-edit/user-edit.component';
@@ -186,6 +185,9 @@ import { FonctionnaireChefListComponent } from './view/chefservice/fonctionnaire
 import { FonctionnaireChefViewComponent } from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef-view/fonctionnaire-chef-view.component';
 import { CheckattendanceComponent } from './view/chefservice/listegarde/checkattendance/checkattendance.component';
 import { ListedepresenceComponent } from './view/chefservice/listegarde/checkattendance/listedepresence/listedepresence.component';
+import { ListedepresencecreateComponent } from './view/chefservice/listegarde/checkattendance/listedepresencecreate/listedepresencecreate.component';
+import { ListedepresenceEditComponent } from './view/chefservice/listegarde/checkattendance/listedepresence-edit/listedepresence-edit.component';
+import { ListedepresenceViewComponent } from './view/chefservice/listegarde/checkattendance/listedepresence-view/listedepresence-view.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
 
@@ -353,7 +355,6 @@ registerLocaleData(localeFr, 'fr');
         ValidatelisteShowComponent,
         ValidatelisteComponent,
         ProfileComponent,
-        ProfileShowComponent,
         LoginComponent,
         RegisterComponent,
         HomeComponent,
@@ -370,7 +371,10 @@ registerLocaleData(localeFr, 'fr');
         FonctionnaireChefListComponent,
         FonctionnaireChefViewComponent,
         CheckattendanceComponent,
-        ListedepresenceComponent
+        ListedepresenceComponent,
+        ListedepresencecreateComponent,
+        ListedepresenceEditComponent,
+        ListedepresenceViewComponent
 
     ],
     providers: [

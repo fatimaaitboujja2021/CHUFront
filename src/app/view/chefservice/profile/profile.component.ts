@@ -19,6 +19,7 @@ classname1:string='box';
   // $(this).toggleClass 'active'
   // $('.box').toggleClass 'open'
 
+
 private change(){
   if(this.classname=='btn' && this.classname1=='box')
   this.classname='btn active',

@@ -86,6 +86,8 @@ private _noms:Array<String>;
     return index;
   }
 
+  public findbyconge(): Observable<number>{
+    return  this.http.get<number>(this.url+'r') ;}
   public deleteIndexById(id: number) {
     this.items.splice(this.findIndexById(id), 1);
   }

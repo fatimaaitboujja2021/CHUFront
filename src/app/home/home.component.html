@@ -1,6 +1,96 @@
 <div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-    nbbbbbbbbbbbbbbbbbbbb
-  </header>
+  <header class="hr">
+<!--    <p>{{ content }}</p>-->
+    Bienvenu  <span>{{firstname}}  {{lastname}}</span> </header>
+</div>
+<div class="p-grid">
+  <div class="p-col-12 p-md-6 p-lg-3">
+    <div class="overview-box card">
+      <div class="overview-box-value">{{items ? items.length : 0 }}</div>
+      <div class="overview-box-title">Nombre de Fonctionnaire</div>
+
+      <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="roma-layout" />
+      <div class="overview-box-status">
+        {{items ? items.length/100 : 0 }}%<i class="pi pi-chevron-circle-up"></i>
+      </div>
+    </div>
+  </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="overview-box card">
+            <div class="overview-box-value">{{nbrnuit}}</div>
+            <div class="overview-box-title">N de garde de nuit</div>
+
+            <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="roma-layout" />
+            <div class="overview-box-status">
+                {{nbrnuit/100}}%<i class="pi pi-chevron-circle-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="overview-box card">
+            <div class="overview-box-value">{{nbrjour}}</div>
+            <div class="overview-box-title">N de garde de jour</div>
+
+            <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="roma-layout" />
+            <div class="overview-box-status">
+                {{nbrjour/100}}%<i class="pi pi-chevron-circle-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="overview-box card">
+            <div class="overview-box-value">{{nombredefoncConge}}</div>
+            <div class="overview-box-title">Nombre de fonctionnaire avec Conge</div>
+
+            <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="roma-layout" />
+            <div class="overview-box-status">
+                {{nombredefoncConge/100}}%<i class="pi pi-chevron-circle-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="overview-box bluebg card">
+            <div class="overview-box-value">{{nbrastreinte}}</div>
+            <div class="overview-box-title">Nombre d'Astreinte</div>
+
+            <img src="assets/layout/images/dashboard/graph-purchases-white.svg" alt="roma-layout" />
+            <div class="overview-box-status">
+                {{nbrastreinte/100}}% <i class="pi pi-chevron-circle-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="overview-box orangebg card">
+            <div class="overview-box-value">{{nbrgarde}}</div>
+            <div class="overview-box-title">Nombre de Garde</div>
+
+            <img src="assets/layout/images/dashboard/graph-purchases-white.svg" alt="roma-layout" />
+            <div class="overview-box-status">
+                {{nbrgarde/100}}% <i class="pi pi-chevron-circle-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="overview-box purplebg card">
+            <div class="overview-box-value">{{nbrabsent}}</div>
+            <div class="overview-box-title"> Nombre d'absences</div>
+
+            <img src="assets/layout/images/dashboard/graph-purchases-white.svg" alt="roma-layout" />
+            <div class="overview-box-status">
+                {{nbrabsent/100}}%<i class="pi pi-chevron-circle-up"></i>
+            </div>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="overview-box limebg card">
+            <div class="overview-box-value">{{nbrpresent}}</div>
+            <div class="overview-box-title">Nombre de Présences</div>
+
+            <img src="assets/layout/images/dashboard/graph-purchases-white.svg" alt="roma-layout" />
+            <div class="overview-box-status">
+                {{nombredefoncConge/100}}% <i class="pi pi-chevron-circle-up"></i>
+            </div>
+        </div>
+    </div>
+
 </div>

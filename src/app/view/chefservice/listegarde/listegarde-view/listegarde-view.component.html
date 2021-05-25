@@ -48,20 +48,20 @@
         <!--                            (completeMethod)="searchCountry($event)" field="prenom"  ></p-autoComplete>-->
         <!--        </div>-->
 
-        <div class="p-formgrid p-grid">
-            <div class="p-field p-col">
-                <label for="statue">statue</label>
-                <input type="text" id="statue"  pInputText [(ngModel)]="selected.statue">
-            </div>
-        </div>
+<!--        <div class="p-formgrid p-grid">-->
+<!--            <div class="p-field p-col">-->
+<!--                <label for="statue">statue</label>-->
+<!--                <input type="text" id="statue"  pInputText [(ngModel)]="selected.statue">-->
+<!--            </div>-->
+<!--        </div>-->
 
 
-        <div class="p-formgrid p-grid" *ngIf="selected.statue=='absent'">
-            <div class="p-field p-col">
-                <label for="raisondabsence">raison d'absence</label>
-                <input type="text" id="raisondabsence"  pInputText [(ngModel)]="selected.raisondabsence">
-            </div>
-        </div>
+<!--        <div class="p-formgrid p-grid" *ngIf="selected.statue=='absent'">-->
+<!--            <div class="p-field p-col">-->
+<!--                <label for="raisondabsence">raison d'absence</label>-->
+<!--                <input type="text" id="raisondabsence"  pInputText [(ngModel)]="selected.raisondabsence">-->
+<!--            </div>-->
+<!--        </div>-->
 
 
 
@@ -81,8 +81,8 @@
 
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
-                <label for="matriculeSubb">ref garde</label>
-                <input id="matriculeSubb"  pInputText [(ngModel)]="selected.garde.ref" disabled>
+                <label for="matriculeSubb">Type garde</label>
+                <input id="matriculeSubb"  pInputText [(ngModel)]="selected.garde.typeGarde" disabled>
             </div>
         </div>
     </ng-template>
