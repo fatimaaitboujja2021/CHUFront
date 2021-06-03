@@ -59,6 +59,10 @@ import {LogoutComponent} from './logout/logout.component';
 import {FonctionnaireChefComponent} from './view/chefservice/fonctionnaire-chef/fonctionnaire-chef.component';
 import {CheckattendanceComponent} from './view/chefservice/listegarde/checkattendance/checkattendance.component';
 import {ListedepresenceComponent} from './view/chefservice/listegarde/checkattendance/listedepresence/listedepresence.component';
+import {ListeastreinteListComponent} from './view/chefservice/listegarde/listeastreinte-list/listeastreinte-list.component';
+import {CalculDindemniteListeComponent} from './view/chefservice/calculDindemnite/calcul-dindemnite-liste/calcul-dindemnite-liste.component';
+import {AstreinteComponent} from './view/chefservice/calculDindemnite/calculDindemniteListeFonctionnaires/astreinte/astreinte.component';
+import {GardeComponent} from './view/chefservice/calculDindemnite/calculDindemniteListeFonctionnaires/garde/garde.component';
 
 const routes: Routes = [
 
@@ -86,8 +90,12 @@ const routes: Routes = [
             // { path: 'registration', component: RegisterComponent },
             // { path: 'login', component: LoginComponent },
             {path: 'view/listegarde', component: ListegardeComponent},
+            {path: 'view/listeastreinte', component: ListeastreinteListComponent},
             {path: 'view/listedepresence', component: ListedepresenceComponent},
             {path: 'view/listegardevalider', component: ValidatelisteComponent},
+            {path: 'view/Calculdindemnite', component: CalculDindemniteListeComponent},
+            {path: 'view/CalculdindemniteAstreinte', component: AstreinteComponent},
+            {path: 'view/CalculdindemniteGarde', component: GardeComponent},
             {path: 'view/user', component: UserComponent},
             {path: 'view/user/edit', component: UserEditComponent},
             {path: 'view/fonctionnaire', component: FonctionnaireComponent},

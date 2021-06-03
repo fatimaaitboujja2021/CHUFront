@@ -9,7 +9,9 @@ export class ListeGarde {
   public  jourounuit:string;
   public statue:string;
   public raisondabsence:string;
-
+  public nbrjf:number;
+  public trimestre:number;
+  public monthString:string
   public   garde=new LaGarde();
   public fonctionnaire =new Fonctionnaire();
 

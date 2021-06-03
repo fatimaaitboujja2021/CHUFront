@@ -89,18 +89,19 @@
         <!--            <p-autoComplete Id="autocompletee" [(ngModel)]="value3" [suggestions]="filteredFonctionnaireprenom"-->
         <!--                            (completeMethod)="searchCountry($event)" field="prenom"  ></p-autoComplete>-->
         <!--        </div>-->
+        <div class="p-field">
+            <h6 >nom</h6>
+            <p-autoComplete [(ngModel)]="selected.fonctionnaire.nom" [suggestions]="filteredFonctionnairenom" (completeMethod)="searchFonctionnaire($event)"></p-autoComplete>
+
+        </div>
+
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
-                <label >nom</label>
-                <input id="e" [(ngModel)]="selected.fonctionnaire.nom"  pInputText >
+                <h6 >prenom </h6>
+                <p-autoComplete [(ngModel)]="selected.fonctionnaire.prenom" [suggestions]="filteredFonctionnaireprenom" (completeMethod)="searchFonctionnaire($event)"></p-autoComplete>
             </div>
         </div>
-        <div class="p-formgrid p-grid">
-            <div class="p-field p-col">
-                <label >prenom </label>
-                <input id="matericuleSub" [(ngModel)]="selected.fonctionnaire.prenom"  pInputText>
-            </div>
-        </div>
+
 
         <h6>type garde</h6>
         <div class="p-field-radiobutton">

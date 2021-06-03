@@ -146,7 +146,7 @@
 
 <div *ngFor="let c of itemss; index as i ">
 
-<div *ngIf="c.conge.typeConge!==null " >
+<div *ngIf="c.conge!=null " >
 <div></div>
     <ul>
         <li><strong>{{c.nom}}  {{c.prenom}}</strong> : est en conge <strong>{{c.conge.typeConge}}</strong> a partir du <i>{{c.conge.dateDebutConge}} </i>=> <i>{{c.conge.dateFinConge}}</i></li>

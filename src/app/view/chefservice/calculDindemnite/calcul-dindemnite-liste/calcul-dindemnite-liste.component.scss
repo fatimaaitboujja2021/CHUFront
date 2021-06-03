@@ -1,0 +1,121 @@
+h3{
+  text-align: center;
+  font-weight: bolder;
+  font-family: Consolas;
+}
+
+h4{
+  text-align: center;
+  font-weight: bold;
+  margin-left: 300px;
+}
+ label{
+   margin-left: 15px;
+   margin-right: 15px;
+   font-weight: bold;
+   font-family: Consolas;
+   font-size: 16px;
+ }
+input{
+  margin: 15px;
+  border-radius: 15px;
+}
+.p-field-radiobutton{
+  margin-left: 380px;
+}
+p-radioButton{
+  margin-left: 5px;
+
+}
+
+
+
+.glow-on-hover {
+  width: 220px;
+ height: 50px;
+  //border: none;
+  outline: none;
+  color: #fff;
+  background:linear-gradient(45deg,#88C6CA, #108c94, #108c94);
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 30px;
+  margin-left: 480px;
+  font-family: Consolas;
+  font-weight: bolder;
+  font-size: 18px;
+  border-color: #28242c;
+border-width: 2px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #108c94, #b7dddf, #88c6ca, #108c94, #108c94, #b7dddf, #88c6ca, #108c94, #06383b);
+  position: absolute;
+  top: -5px;
+  left:-5px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 30px;
+  border-color: #28242c;
+  border-width: 2px;}
+
+.glow-on-hover:active {
+  background:linear-gradient(45deg,#88C6CA, #108c94, #108c94);
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:linear-gradient(45deg,#88C6CA, #108c94, #108c94);
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+  border-color: #28242c;
+  border-width: 2px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+td{
+  font-weight: bold;
+}
+th{
+  font-weight: bolder;
+}
+.title{
+  margin-left: 600px;
+  font-weight: bolder;
+
+}
+
+
+
+
+
+
+
+
+
+

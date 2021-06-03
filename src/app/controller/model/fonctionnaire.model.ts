@@ -48,7 +48,6 @@ export class Fonctionnaire {
 
   public  conge=new Conge();
   public  grade=new Grade();
-  public  chefservice=new Chefservice();
   public  comptebancaire=new Comptebancaire();
   public  indemniteGarde=new IndemniteGarde();
   public  indemniteAstreinte=new IndemniteAstreinte();
@@ -56,7 +55,6 @@ export class Fonctionnaire {
   public  specialite=new Specialite();
   public  fonction=new Fonction();
   public  listeGarde=new Array<ListeGarde>();
-  // public  service=new Services();
   public servhopital=new  Servhopital();
 
 }

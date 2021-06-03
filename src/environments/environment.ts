@@ -9,6 +9,8 @@ export const environment = {
   urlChefService:'/Chu/chefServiceWs',
   urlListegarde:'/Chu/listeGardeWs',
   urlUser:'/Chu/userWs',
+  urlIndemniteGarde:'/Chu/indemniteGardeWs',
+  urlIndemniteAstreinte:'/Chu/indemniteAstreinteWs',
 };
 
 /*

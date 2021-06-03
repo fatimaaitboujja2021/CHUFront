@@ -188,6 +188,11 @@ import { ListedepresenceComponent } from './view/chefservice/listegarde/checkatt
 import { ListedepresencecreateComponent } from './view/chefservice/listegarde/checkattendance/listedepresencecreate/listedepresencecreate.component';
 import { ListedepresenceEditComponent } from './view/chefservice/listegarde/checkattendance/listedepresence-edit/listedepresence-edit.component';
 import { ListedepresenceViewComponent } from './view/chefservice/listegarde/checkattendance/listedepresence-view/listedepresence-view.component';
+import {ListeastreinteListComponent} from './view/chefservice/listegarde/listeastreinte-list/listeastreinte-list.component';
+import { CalculDindemniteListeComponent } from './view/chefservice/calculDindemnite/calcul-dindemnite-liste/calcul-dindemnite-liste.component';
+import { AstreinteComponent } from './view/chefservice/calculDindemnite/calculDindemniteListeFonctionnaires/astreinte/astreinte.component';
+import { GardeComponent } from './view/chefservice/calculDindemnite/calculDindemniteListeFonctionnaires/garde/garde.component';
+import {Fonctionnaire} from './controller/model/fonctionnaire.model';
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
 
@@ -285,6 +290,8 @@ registerLocaleData(localeFr, 'fr');
             progressBar: true
            }),
 
+
+
     ],
     declarations: [
         AppComponent,
@@ -374,7 +381,11 @@ registerLocaleData(localeFr, 'fr');
         ListedepresenceComponent,
         ListedepresencecreateComponent,
         ListedepresenceEditComponent,
-        ListedepresenceViewComponent
+        ListedepresenceViewComponent,
+        ListeastreinteListComponent,
+        CalculDindemniteListeComponent,
+        AstreinteComponent,
+        GardeComponent
 
     ],
     providers: [

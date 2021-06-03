@@ -7,6 +7,6 @@ export class Chefservice {
   public  email:string;
   public  password:string;
   public  matricule:string;
-  public fonctionnaires =new Array<Fonctionnaire>();
+  // public fonctionnaires =new Array<Fonctionnaire>();
 
 }

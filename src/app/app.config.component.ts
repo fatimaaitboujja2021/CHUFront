@@ -124,7 +124,7 @@ export class AppConfigComponent implements OnInit {
 
     themes: any[];
 
-    themeColor = 'blue';
+    themeColor = 'cyan';
 
     topbarColors: any[];
 
@@ -179,7 +179,7 @@ export class AppConfigComponent implements OnInit {
     changeTopbarColor(topbarColor, logo) {
         this.app.topbarColor = topbarColor;
         const topbarLogoLink: HTMLImageElement = document.getElementById('topbar-logo') as HTMLImageElement;
-        topbarLogoLink.src = 'assets/layout/images/' + logo + '.svg';
+        topbarLogoLink.src = 'assets/layout/images/' + logo + '.png';
     }
 
     changeStyleSheetsColor(id, value) {

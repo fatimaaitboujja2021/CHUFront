@@ -1,0 +1,152 @@
+
+
+
+
+
+
+
+    <div class="card">
+        <h3> Calcul Des Indemnites de la garde et l'astreinte</h3>
+        <div class="p-formgroup-inline">
+            <div class="p-field">
+                <label for="nom">nom</label>
+                <input type="text" pInputText id="nom" [(ngModel)]="nom" required  />
+            </div>
+            <div class="p-field">
+                <label for="prenom">prenom</label>
+                <input type="text" pInputText id="prenom" [(ngModel)]="prenom" required  />
+            </div>
+            <div class="p-field">
+                <label for="year">Annee</label>
+                <input type="number" pInputText id="year" [(ngModel)]="year" required  />
+                <label for="montant">montant</label>
+                <input type="text" pInputText id="montant" [(ngModel)]="montant" required  />
+            </div>
+
+            <div class="p-field">
+
+            </div>
+        </div>
+        <div class="card">
+
+
+        <div class="p-field">
+
+                <div class="p-field-radiobutton">
+                    <label for="typegarde">Type de Garde:  </label>
+                    <p-radioButton (click)="step=0" name="typeGarde" value="garde" [(ngModel)]="typedegarde" id="typeGarde"></p-radioButton>
+                    <label for="typeGarde">Garde</label>
+                    <p-radioButton (click)="step=0" name="typeGarde" value="astreinte" [(ngModel)]="typedegarde"
+                                   id="typeGarde1" style="margin-left: 15px"></p-radioButton>
+                    <label for="typeGarde1">Astreinte</label>
+                </div>        <div class="p-field">
+
+        <button (click)="calculDindemnite(nom,prenom,year,montant,typedegarde)" pButton pRipple type="button" label="Calculer" class="p-button-success glow-on-hover"></button>
+            <button  pButton printTitle=""
+                     [useExistingCss]="true"
+                     printSectionId="print-me" ngxPrint  label="Print to pdf" icon="pi pi-file-pdf"></button>
+
+        </div>
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="print-me">
+    <div class="p-formgroup-inline title" *ngIf="step==1">
+        <div class="p-field">
+            <h5 for="nom"> {{prenom}} </h5>
+        </div><div class="p-field">
+        <h5 for="nom">  {{nom}}</h5>
+    </div>
+    </div>
+
+<p-table *ngIf="step==1" editMode="row"    #dt  [value]="items" [columns]="cols" [rows]="20" [paginator]="false" [globalFilterFields]="['NbrGardes','NbrHgardes','Trim','Nbr_H_Regl','Nbr_H_Supp','Nbr_unite','Unite','Rlqt_reported','Rlqt_A_reported','Mnt_Brut','Impot','Mnt_Net']"
+         [(selection)]="selectes" [rowHover]="true" dataKey="id"
+         styleClass="p-datatable-customers"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="false" >
+
+    <ng-template pTemplate="header">
+
+
+
+<!--            <th>le jour</th>-->
+            <!--                        <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>-->
+        <tr>
+            <th >year </th>
+
+            <th >Trim </th>
+            <th >Nbr{{typedegarde}}s </th>
+            <th >Nbr_heures {{typedegarde}}s </th>
+            <th>Nbr_heures Regl.</th>
+            <th>Nbr_heures Suppl.  </th>
+            <th>Nbre unités  </th>
+            <th>unite  </th>
+            <th>Reliquat reporté  </th>
+            <th>Montant net  </th>
+            <th>Reliquat_A reporté  </th>
+<!--            <th></th>-->
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-indemnite  >
+        <tr  >
+            <td class="pi pi-calendar">{{year}}</td>
+
+
+        <td>
+            <span [className]="getstatue(indemnite.trim)"> {{indemnite.trim}}</span></td>
+
+
+
+            <td *ngIf="typedegarde=='garde'">{{indemnite.NbrGardes}}</td>
+            <td *ngIf="typedegarde=='astreinte'">{{indemnite.nbrAstreinte}}</td>
+            <!--                        <td>{{listegarde.ref}}</td>-->
+            <td *ngIf="typedegarde=='garde'">{{indemnite.NbrHgardes}} h</td>
+            <td *ngIf="typedegarde=='astreinte'">{{indemnite.nbrHAstreinte}} h</td>
+            <td>{{indemnite.nbr_H_Regl}} h</td>
+            <td>{{indemnite.nbr_H_Supp}} h</td>
+            <td>{{indemnite.nbr_unite|number:'1.2-2'}} </td>
+            <td>{{indemnite.unite|number:'1.2-2'}} unite</td>
+            <td>{{indemnite.Rlqt_reported|number:'1.2-2'}}</td>
+            <td>{{indemnite.mnt_Net}} DH</td>
+            <td>{{indemnite.rlqt_A_reported|number:'1.2-2'}}</td>
+
+
+        </tr>
+
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            Montant Total Net: <span  style="color: #108c94">{{montanttotal}} DH</span>
+        </div>
+    </ng-template>
+</p-table>
+</div>

@@ -12,11 +12,13 @@ import {Router} from '@angular/router';
 import {TokenStorageService} from '../../../../_services/token-storage.service';
 
 @Component({
-  selector: 'app-listegarde-list',
-  templateUrl: './listegarde-list.component.html',
-  styleUrls: ['./listegarde-list.component.scss']
+  selector: 'app-listeastreinte-list',
+  templateUrl: './listeastreinte-list.component.html',
+  styleUrls: ['./listeastreinte-list.component.scss'],
+  providers: [MessageService, ConfirmationService]
+
 })
-export class ListegardeListComponent implements OnInit {
+export class ListeastreinteListComponent implements OnInit {
   selectedCustomer: ListeGarde;
 
   cols: any[];
@@ -40,11 +42,8 @@ export class ListegardeListComponent implements OnInit {
     d=this.mindate;
     f=this.maxdate;
     this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate).subscribe(data=> this.items=data);
-    console.log('hhhh'+this.items);
 
   }
-
-  m:any;
   private valider(){
     this.route.navigate(['/view/listegardevalider'])
 
@@ -57,8 +56,8 @@ export class ListegardeListComponent implements OnInit {
 
     this.initCol();
     // this.service.init().subscribe(data => this.items = data);
-this.mindate='jj/mm/aaaa';
-this.maxdate='jj/mm/aaaa';
+    this.mindate='jj/mm/aaaa';
+    this.maxdate='jj/mm/aaaa';
     // this.service.init().subscribe(data => this.items = data);
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -76,7 +75,8 @@ this.maxdate='jj/mm/aaaa';
       this.lastname= user.lastname;
       this.matricule=user.matricule;
     }
-this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+    this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data
+  );
 
   }
 
@@ -106,6 +106,8 @@ this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> th
   }
 
   private  getstatue(x:string){
+    console.log('ghjklkk'+this.items)
+
     if(x=='jour'){
       return 'customer-badge status-new';
     }

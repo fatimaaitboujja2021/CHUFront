@@ -11,7 +11,7 @@
 
       <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="roma-layout" />
       <div class="overview-box-status">
-        {{items ? items.length/100 : 0 }}%<i class="pi pi-chevron-circle-up"></i>
+<!--        {{items ? items.length/100 : 0 }}%<i class="pi pi-chevron-circle-up"></i>-->
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
 
             <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="roma-layout" />
             <div class="overview-box-status">
-                {{nbrnuit/100}}%<i class="pi pi-chevron-circle-up"></i>
+                {{nbrnuit*100/(nbrnuit+nbrjour)|number:'1.2-2'}}%<i class="pi pi-chevron-circle-up"></i>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
 
             <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="roma-layout" />
             <div class="overview-box-status">
-                {{nbrjour/100}}%<i class="pi pi-chevron-circle-up"></i>
+                {{nbrjour*100/(nbrnuit+nbrjour)|number:'1.2-2'}}%<i class="pi pi-chevron-circle-up"></i>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
 
             <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="roma-layout" />
             <div class="overview-box-status">
-                {{nombredefoncConge/100}}%<i class="pi pi-chevron-circle-up"></i>
+                {{nombredefoncConge*100/items.length|number:'1.2-2'}}%<i class="pi pi-chevron-circle-up"></i>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
 
             <img src="assets/layout/images/dashboard/graph-purchases-white.svg" alt="roma-layout" />
             <div class="overview-box-status">
-                {{nbrastreinte/100}}% <i class="pi pi-chevron-circle-up"></i>
+                {{nbrastreinte*100/(nbrgarde+nbrastreinte)|number:'1.2-2'}}% <i class="pi pi-chevron-circle-up"></i>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
 
             <img src="assets/layout/images/dashboard/graph-purchases-white.svg" alt="roma-layout" />
             <div class="overview-box-status">
-                {{nbrgarde/100}}% <i class="pi pi-chevron-circle-up"></i>
+                {{nbrgarde*100/(nbrgarde+nbrastreinte)|number:'1.2-2'}}% <i class="pi pi-chevron-circle-up"></i>
             </div>
         </div>
     </div>
@@ -77,7 +77,7 @@
 
             <img src="assets/layout/images/dashboard/graph-purchases-white.svg" alt="roma-layout" />
             <div class="overview-box-status">
-                {{nbrabsent/100}}%<i class="pi pi-chevron-circle-up"></i>
+                {{nbrabsent*100/(nbrpresent+nbrabsent)|number:'1.2-2'}}%<i class="pi pi-chevron-circle-up"></i>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
 
             <img src="assets/layout/images/dashboard/graph-purchases-white.svg" alt="roma-layout" />
             <div class="overview-box-status">
-                {{nombredefoncConge/100}}% <i class="pi pi-chevron-circle-up"></i>
+                {{nbrpresent*100/(nbrpresent+nbrabsent)|number:'1.2-2'}}% <i class="pi pi-chevron-circle-up"></i>
             </div>
         </div>
     </div>

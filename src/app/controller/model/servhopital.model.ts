@@ -7,5 +7,5 @@ export class Servhopital {
   public  ref:string;
   public  intitule:string;
   public pole= new Pole();
-  public fonctionnaires =new Array<Fonctionnaire>();
+ public fonctionnaires =new Array<Fonctionnaire>();
 }

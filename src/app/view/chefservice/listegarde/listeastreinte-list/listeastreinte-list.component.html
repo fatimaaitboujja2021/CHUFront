@@ -18,16 +18,16 @@
 
                 <ng-template pTemplate="right">
                     <button pButton pRipple label="valider" icon="pi pi-bookmark" class="p-button-help p-mr-2 p-mb-2" (click)="valider()"></button>
-<!--                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>-->
-<!--                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>-->
+                    <!--                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>-->
+                    <!--                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>-->
                 </ng-template>
             </p-toolbar>
 
 
-            <p-table  #dt id="print-me" [value]="items" [totalRecords]="items.length" [columns]="cols" [rows]="nbrligne" [paginator]="true" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','garde.typeGarde','fonctionnaire.nom']"
+            <p-table editMode="row" #dt id="print-me" [value]="items" [columns]="cols" [rows]="nbrligne" [paginator]="false" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','garde.typeGarde','fonctionnaire.nom']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
-                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" >
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="false" >
 
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
@@ -48,22 +48,22 @@
                 </ng-template>
 
 
-<!--                <ng-template pTemplate="caption">-->
-<!--                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">-->
-<!--                        <h5 class="p-m-0">Manage Liste Garde</h5>-->
-<!--                        <span class="p-input-icon-left">-->
-<!--                        <i class="pi pi-search"></i>-->
-<!--                        <input pInputText type="text"  placeholder="Search..." />-->
-<!--                    </span>-->
-<!--                    </div>-->
-<!--                </ng-template>-->
+                <!--                <ng-template pTemplate="caption">-->
+                <!--                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">-->
+                <!--                        <h5 class="p-m-0">Manage Liste Garde</h5>-->
+                <!--                        <span class="p-input-icon-left">-->
+                <!--                        <i class="pi pi-search"></i>-->
+                <!--                        <input pInputText type="text"  placeholder="Search..." />-->
+                <!--                    </span>-->
+                <!--                    </div>-->
+                <!--                </ng-template>-->
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 3rem">
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
-<th>le jour</th>
-<!--                        <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>-->
+                        <th>le jour</th>
+                        <!--                        <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>-->
                         <th pSortableColumn="dateGarde"><div class="p-d-flex p-jc-between p-ai-center">date Garde <p-sortIcon field="dateGarde"></p-sortIcon><p-columnFilter type="date" field="dateGarde" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
                         <th pSortableColumn="jourounuit"><div class="p-d-flex p-jc-between p-ai-center">J/N <p-sortIcon field="jourounuit"></p-sortIcon><p-columnFilter type="text" field="jourounuit" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
                         <th pSortableColumn="dureDeGarde"><div class="p-d-flex p-jc-between p-ai-center">dure De Garde <p-sortIcon field="dureDeGarde"></p-sortIcon><p-columnFilter type="text" field="dureDeGarde" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
@@ -73,13 +73,13 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-listegarde >
-                    <tr *ngIf="listegarde.garde.typeGarde=='garde'">
+                    <tr [pEditableRow]="listegarde" *ngIf="listegarde.garde.typeGarde=='astreinte'">
 
                         <td>
                             <p-tableCheckbox [value]="listegarde"></p-tableCheckbox>
                         </td>
-                         <td>{{listegarde.dateGarde| date:'EEEE'}}</td>
-<!--                        <td>{{listegarde.ref}}</td>-->
+                        <td>{{listegarde.dateGarde| date:'EEEE'}}</td>
+                        <!--                        <td>{{listegarde.ref}}</td>-->
                         <td>{{listegarde.dateGarde| date: 'dd/MM/yyyy'}}</td>
                         <td><span [className]="getstatue(listegarde.jourounuit)"> {{listegarde.jourounuit}}</span>
                         </td>
@@ -104,7 +104,7 @@
                 </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        {{items ? items.length: 0 }} lines.
+                        {{items ? items.length : 0 }} lines.
                     </div>
                 </ng-template>
             </p-table>

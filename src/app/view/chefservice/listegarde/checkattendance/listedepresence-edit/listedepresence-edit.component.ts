@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MessageService, SelectItem} from 'primeng/api';
 import {ListegardeService} from '../../../../../controller/service/listegarde.service';
 import {ListeGarde} from '../../../../../controller/model/liste-garde.model';
+import {FonctionnaireService} from '../../../../../controller/service/fonctionnaire.service';
+import {TokenStorageService} from '../../../../../_services/token-storage.service';
 
 @Component({
   selector: 'app-listedepresence-edit',
@@ -10,8 +12,12 @@ import {ListeGarde} from '../../../../../controller/model/liste-garde.model';
 })
 export class ListedepresenceEditComponent implements OnInit {
   raisons: SelectItem[];
+  filteredFonctionnairenom: any[];
+  filteredFonctionnaireprenom: any[];
+  matricule:string;
+  isLoggedIn = false;
 
-  constructor(private messageService: MessageService, private service: ListegardeService) {
+  constructor(private messageService: MessageService, private tokenStorageService: TokenStorageService  ,private servicefonctionnaire :FonctionnaireService,private service: ListegardeService) {
   }
 
   ngOnInit(): void {
@@ -23,9 +29,54 @@ export class ListedepresenceEditComponent implements OnInit {
       {label: 'Autre', value: 'Autre'},
 
     ];
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      //this.lastname=this.tokenStorageService.getUser().lastname
+      // this.roles = user.roles;
+
+      // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+
+
+      this.matricule=user.matricule;
+    }
 
   }
+  itemss:any[];
 
+
+  searchFonctionnaire(event) {
+    // in a real application, make a request to a remote url with the query and
+    // return filtered results, for demo we filter at client side
+    const filterednom: any[] = [];
+    const filteredprenom: any[] = [];
+    console.log(this.itemss +'ñññ')
+    this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(data => this.itemss = data);;
+    const query = event.query;
+    // this.findBynom(query);
+
+    for (let i = 0; i < this.itemss.length; i++) {
+      const nom = this.itemss[i];
+      console.log( 'haha'+this.itemss[i]);
+      if (this.itemss[i].nom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filterednom.push(this.itemss[i].nom);
+        console.log('d'+nom);
+      }
+      if (this.itemss[i].prenom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filteredprenom.push(this.itemss[i].prenom);
+      }
+
+      // this.service.init().subscribe(data => this.items = data);
+
+    }
+    this.filteredFonctionnairenom  =filterednom;
+    this.filteredFonctionnaireprenom=filteredprenom;
+    console.log(filterednom);
+    // this.filteredFonctionnairenom  =filterednom;
+    // this.filteredFonctionnaireprenom=filteredprenom;
+    // this.itemsfonctionnaire=filterednom;
+  }
   public edit() {
     this.submitted = true;
     if (this.selected.ref.trim()) {

@@ -1,0 +1,147 @@
+<div class="card">
+    <h3> Calcul Des Indemnites de l'astreinte</h3>
+    <div class="p-formgroup-inline">
+        <div class="p-field">
+            <label for="nom">annee</label>
+            <input type="text" pInputText id="nom" [(ngModel)]="year" required  />
+        </div>
+        <div class="p-field">
+            <label for="prenom">Trim</label>
+            <input type="text" pInputText id="prenom" [(ngModel)]="trim" required  />
+        </div>
+
+
+        <div class="p-field">
+            <button (click)="searchFonctionnaire(year,trim)"  pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded b1 p-mr-2 p-mb-2"></button>
+
+            <button (click)="reset()" pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded b2 p-mr-2 p-mb-2"></button>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div class="p-col-12">
+    <div class="card">
+        <p-table [value]="items" sortField="ref.substring(10,14)" sortMode="single" (onSort)="onSort()" [scrollable]="true" scrollHeight="600px"
+        >
+            <ng-template pTemplate="header">
+                <tr  >
+
+                    <th style="background-color: #252529;  color:#23B0A7;" >Trimestre </th>
+                    <th style="background-color: #252529;  color:#23B0A7;">Nom et Prenom</th>
+                    <th style="background-color: #252529;  color:#23B0A7;">Nbre Gd </th>
+                    <!--            <th >year </th>-->
+                    <th style="background-color: #252529;  color:#23B0A7;">Nbr_heures garde </th>
+                    <th style="background-color: #252529;  color:#23B0A7;">Nbr_heures Regl. </th>
+                    <th style="background-color: #252529;  color:#23B0A7;">Nbr_heures Suppl.  </th>
+                    <th style="background-color: #252529;  color:#23B0A7;">Nbre unités  </th>
+                    <th style="background-color: #252529;  color:#23B0A7;">Reliquat reporté  </th>
+                    <th style="background-color: #252529;  color:#23B0A7;">Montant net  </th>
+                    <th style="background-color: #252529;  color:#23B0A7;">Reliquat_A reporté  </th>
+                    <!--                    <th>Date</th>-->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-indemnite let-rowIndex="rowIndex">
+                <tr *ngIf="rowGroupMetadata[indemnite.ref.substring(10,14)].index === rowIndex">
+                    <td colspan="10" class="rowspan">
+                        <img  src="assets/layout/images/chulog.png" width="15" style="vertical-align: middle" />
+                        <span class="p-text-bold p-ml-2 rowspan" >{{indemnite.ref.substring(10,14)}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{indemnite.trim}}
+                    </td>
+                    <td>
+                        <span class="image-text" style="margin-left: .5em"> {{indemnite.fonctionnaire.nom}} {{indemnite.fonctionnaire.prenom}}
+                    </span>
+                    </td>
+                    <td>
+                        {{indemnite.nbrAstreinte}}  </td>
+                    <td>
+                        <span [class]="'customer-badge status-'"> {{indemnite.nbrHAstreinte}}
+                    </span>
+                    </td>
+                    <td>{{indemnite.nbr_H_Regl}}</td>
+                    <td>{{indemnite.nbr_H_Supp}}</td>
+                    <td>{{indemnite.nbr_unite|number:'1.2-2'}}</td>
+                    <td>{{indemnite.rlqt_reported|number:'1.2-2'}}</td>
+                    <td>{{indemnite.mnt_Net|number:'1.2-2'}}</td>
+                    <td>{{indemnite.rlqt_A_reported|number:'1.2-2'}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    Montant Total Net de l'année {{year}}: <span  style="color: #108c94">{{totalMontantNet}} DH</span>
+                </div>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,5 +5,5 @@ export class Grade {
   public  ref:string;
   public  gradenom:string;
   public  dTGrade:string;
-  public   fonctionnaire=new Array<Fonctionnaire>();
+ public   fonctionnaire=new Array<Fonctionnaire>();
 }

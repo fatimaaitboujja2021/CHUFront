@@ -23,7 +23,11 @@ present:string='present(e)';
   absent:string='absent';
 garde:string='garde';
 astreinte:string='astreinte';
-  constructor(private http: HttpClient,private userService: UserService,private tokenStorageService: TokenStorageService,private service: FonctionnaireService,private listeGardeservice: ListegardeService) { }
+  currentDate = new Date();
+
+  constructor(private http: HttpClient,private userService: UserService,private tokenStorageService: TokenStorageService,private service: FonctionnaireService,private listeGardeservice: ListegardeService) {
+
+  }
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
@@ -41,7 +45,14 @@ astreinte:string='astreinte';
   nbrgarde:any;
   nbrastreinte:any;
 nombredefoncConge:any;
+m:any;
+  d1:Date;
+
   ngOnInit(): void {
+    this.m =  new Date().getFullYear().toString()+ '-' + '0'+(new Date().getMonth() + 1).toString().slice(-2)+'-' +(new Date().getDay() + 1).toString();
+this.d1=this.m;
+    console.log('month'+this.m);
+    console.log('montjjjjjjjjjjh'+this.currentDate.toJSON());
     this.userService.getPublicContent().subscribe(
       data => {
         this.content = data;

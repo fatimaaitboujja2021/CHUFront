@@ -1,10 +1,11 @@
 import {Fonctionnaire} from './fonctionnaire.model';
+import {ListeGarde} from './liste-garde.model';
 
 export class IndemniteAstreinte {
 
   public id:number;
-  public  nbrAstree :number;
-  public nbrHAstree :number;
+  public  nbrAstreinte :number;
+  public nbrHAstreinte :number;
   public  ref:string;
   public  Presence :boolean;
   public  Trim:number;
@@ -18,7 +19,9 @@ export class IndemniteAstreinte {
   public  Impot :number;
   public  Mnt_Net :number;
   public  Rlqt_A_reported :number;
-  public fonctionnaires =new Array<Fonctionnaire>();
+  public  Nbr_JrsOuvrable:number ;
+  public  Montantdindemniteparunite :number;
+  public listeGardes =new Array<ListeGarde>();
 
 
 }

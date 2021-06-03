@@ -23,9 +23,7 @@ private _noms:Array<String>;
   private _submitted: boolean;
 
 
-  // constructor(private messageService: MessageService,
-  //             private confirmationService: ConfirmationService, private http: HttpClient) {
-  // }
+
   constructor(private http: HttpClient) {
   }
 

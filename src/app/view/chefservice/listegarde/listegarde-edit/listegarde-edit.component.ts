@@ -14,7 +14,7 @@ import {TokenStorageService} from '../../../../_services/token-storage.service';
     styleUrls: ['./listegarde-edit.component.scss']
 })
 export class ListegardeEditComponent implements OnInit {
-    filteredFonctionnairenom: string[];
+    filteredFonctionnairenom: any[];
     filteredFonctionnaireprenom: any[];
     private url = environment.urlBase + environment.urlFonctionaire +'/';
     private roles: string[];
@@ -101,7 +101,7 @@ export class ListegardeEditComponent implements OnInit {
         }
         this.filteredFonctionnairenom  =filterednom;
         this.filteredFonctionnaireprenom=filteredprenom;
-
+console.log(filterednom);
         // this.filteredFonctionnairenom  =filterednom;
         // this.filteredFonctionnaireprenom=filteredprenom;
         // this.itemsfonctionnaire=filterednom;
