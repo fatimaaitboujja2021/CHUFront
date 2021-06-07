@@ -17,11 +17,13 @@
     font-weight: bold;
 }
 .wrapper {
-    /*height: 100vh;*/
-    /*This part is important for centering*/
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
+    background: linear-gradient(to bottom,#108c94,  #2e236b);
+    background: -webkit-linear-gradient(#108c94, #2e236b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font: 16px chilanka, segoe script, purisa, comic sans ms, cursive;
+font-weight: bold;
+
 }
 
 .typing-demo {
@@ -44,4 +46,18 @@
     50% {
         border-color: transparent
     }
+}
+input{
+   border-color:#108c94 ;
+    border-style: groove;
+
+    color: #108c94;
+    width: 250px;
+    margin-left: 28px;
+    border-radius: 20px;
+    margin-right: 5px;
+}
+.searchchart,button{
+margin-top: 22px;
+margin-bottom: 22px;
 }

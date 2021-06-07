@@ -58,17 +58,17 @@ public findBydateminetmax(n:String,d:Date,f:Date,t:string) :Observable<Array<Lis
     return  this.http.get<Array<ListeGarde>>(this.url+'matriculesupG/'+matricule) ;
   }
 
-  public findbystatue(n:string): Observable<number>{
-    return  this.http.get<number>(this.url+'statue/'+n) ;
+  public findbystatue(n:string,matricule:string): Observable<number>{
+    return  this.http.get<number>(this.url+'statue/'+n+'/'+matricule) ;
   }
 
-  public findBygarde(n:string): Observable<number>{
-    return  this.http.get<number>(this.url+'typegarde/'+n) ;
+  public findBygarde(n:string,matricule:string): Observable<number>{
+    return  this.http.get<number>(this.url+'typegarde/'+n+'/'+matricule) ;
   }
 
 
-  public findbyjourounuit(n:string): Observable<number>{
-    return  this.http.get<number>(this.url+'nombre/'+n) ;
+  public findbyjourounuit(n:string,matricule:string): Observable<number>{
+    return  this.http.get<number>(this.url+'nombre/'+n+'/'+matricule) ;
   }
 
 

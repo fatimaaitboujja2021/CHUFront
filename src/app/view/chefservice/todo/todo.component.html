@@ -15,9 +15,10 @@
             </div>
         </form>
     </div>
-    <ul class="todo-list">
 
-        <li *ngFor="let todo of todos" [class.completed]= "todo.completed === true" >
+    <ul class="todo-list" >
+
+        <li *ngFor="let todo of todos ;index as i" [class.completed]= "todo.completed === true"  >
             <div class="todo-row" *ngIf="!editing || editingTodo.id != todo.id">
                 <a class="todo-completed "  >
                     <input (click)="toggleCompleted(todo)" type="checkbox" [defaultChecked]="todo.completed==true" id="todo_1">

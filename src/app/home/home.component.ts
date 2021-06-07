@@ -28,7 +28,7 @@ astreinte:string='astreinte';
   constructor(private http: HttpClient,private userService: UserService,private tokenStorageService: TokenStorageService,private service: FonctionnaireService,private listeGardeservice: ListegardeService) {
 
   }
-  private roles: string[];
+  roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
   showManagerBoard = false;
@@ -37,7 +37,7 @@ astreinte:string='astreinte';
   lastname:string;
   email:string;
   matricule:string;
-  lineData: any;
+  matricule1:string;
   nbrjour: number;
   nbrnuit: any;
   nbrpresent: any;
@@ -51,8 +51,6 @@ m:any;
   ngOnInit(): void {
     this.m =  new Date().getFullYear().toString()+ '-' + '0'+(new Date().getMonth() + 1).toString().slice(-2)+'-' +(new Date().getDay() + 1).toString();
 this.d1=this.m;
-    console.log('month'+this.m);
-    console.log('montjjjjjjjjjjh'+this.currentDate.toJSON());
     this.userService.getPublicContent().subscribe(
       data => {
         this.content = data;
@@ -77,35 +75,25 @@ this.d1=this.m;
       this.lastname= user.lastname;
       this.matricule=user.matricule;
     }
-this.listeGardeservice.findbyjourounuit(this.nuit).subscribe(data=> this.nbrnuit=data);
-console.log('hhh'+this.nbrjour);
-    this.service.findBymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
-    this.listeGardeservice.findbyjourounuit(this.jour).subscribe(data=> this.nbrjour=data);
-    this.listeGardeservice.findbystatue(this.present).subscribe(data=> this.nbrpresent=data);
-    this.listeGardeservice.findbystatue(this.absent).subscribe(data=> this.nbrabsent=data);
-    this.listeGardeservice.findBygarde(this.garde).subscribe(data=> this.nbrgarde=data);
-    this.listeGardeservice.findBygarde(this.astreinte).subscribe(data=> this.nbrastreinte=data);
-this.service.findbyconge().subscribe(data=>this.nombredefoncConge=data)
-    this.lineData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          fill: false,
-          backgroundColor: 'rgb(255, 205, 86)',
-          borderColor: 'rgb(255, 205, 86)'
-        }
-]
-
-}
-
+this.chart(this.matricule)
 
   }
 
 
 
+chart(matricule:string){
+    this.listeGardeservice.findbyjourounuit(this.nuit,matricule).subscribe(data=> this.nbrnuit=data);
+    console.log('hhh'+this.nbrjour);
+    this.service.findBymatriculeSuperieur(matricule).subscribe(data=> this.items=data);
+    this.listeGardeservice.findbyjourounuit(this.jour,matricule).subscribe(data=> this.nbrjour=data);
+    this.listeGardeservice.findbystatue(this.present,matricule).subscribe(data=> this.nbrpresent=data);
+    this.listeGardeservice.findbystatue(this.absent,matricule).subscribe(data=> this.nbrabsent=data);
+    this.listeGardeservice.findBygarde(this.garde,matricule).subscribe(data=> this.nbrgarde=data);
+    this.listeGardeservice.findBygarde(this.astreinte,matricule).subscribe(data=> this.nbrastreinte=data);
+    this.service.findbyconge().subscribe(data=>this.nombredefoncConge=data)
 
+
+}
 
   get items(): Array<Fonctionnaire> {
     return this.service.items;

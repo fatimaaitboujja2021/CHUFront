@@ -3,6 +3,7 @@ import {Todo} from '../../../controller/model/todo.model';
 import {NgForm} from '@angular/forms';
 import {TodoService} from '../../../controller/service/todo.service';
 import {Fonctionnaire} from '../../../controller/model/fonctionnaire.model';
+import {TokenStorageService} from '../../../_services/token-storage.service';
 
 @Component({
   selector: 'app-todo',
@@ -15,18 +16,38 @@ export class TodoComponent implements OnInit {
   newTodo: Todo = new Todo();
   editing: boolean = false;
   editingTodo: Todo = new Todo();
-
+  roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showManagerBoard = false;
+  username: string;
+  firstname:string;
+  lastname:string;
+  email:string;
+  matricule:string;
   constructor(
-      private todoService: TodoService,
+      private todoService: TodoService,private tokenStorageService: TokenStorageService
   ) {}
 
   ngOnInit(): void {
 
-    this.getTodos();
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      //this.lastname=this.tokenStorageService.getUser().lastname
+      this.roles = user.roles;
+
+      this.matricule=user.matricule;
+    }
+    this.getTodos()
+
   }
 
   getTodos(): void {
-    this.todoService.getTodos().subscribe(todos => this.todos = todos)
+    console.log(this.matricule);
+    this.todoService.getTodos(this.matricule).subscribe(todos => this.todos = todos)
+    console.log(this.todos+'kkkkkkk')
         // .then(todos => this.todos = todos );
   }
   get items(): Array<Todo> {

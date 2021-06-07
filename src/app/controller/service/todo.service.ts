@@ -24,8 +24,8 @@ import {Fonctionnaire} from '../model/fonctionnaire.model';
   constructor(private http: HttpClient) { }
 
 
-  public getTodos(): Observable<Array<Todo>> {
-    return this.http.get<Array<Todo>>(this.url+'todos/');
+  public getTodos(matricule:string): Observable<Array<Todo>> {
+    return this.http.get<Array<Todo>>(this.url+'todoss/'+matricule);
   }
 
 

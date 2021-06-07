@@ -12,7 +12,12 @@
 
 
       </div>
-<!--    <p>{{ content }}</p>-->
+      <label class="searchchart">
+          <input [(ngModel)]="matricule1"  type="text" style="color: #0a80bb">
+      </label>
+      <button pButton pRipple label="Save" icon="pi pi-search" (click)="chart(matricule1)"></button>
+
+      <!--    <p>{{ content }}</p>-->
       <span>  </span> </header>
 </div>
 <div class="p-grid">
@@ -108,10 +113,13 @@
 </div>
 <div class="p-grid layout-dashboard">
 
-<div class="p-col-12 p-xl-8">
+<div class="p-col-12 p-xl-8" *ngIf="roles=='ROLE_USER'">
     <app-fonctionnaire-chef-list></app-fonctionnaire-chef-list>
 
 </div>
+    <div class="p-col-12 p-xl-8" *ngIf="roles=='ROLE_ADMIN'">
+<app-fonctionnaire-list></app-fonctionnaire-list>
+    </div>
 <div class="p-col-12 p-xl-4">
     
    <app-todo ></app-todo>

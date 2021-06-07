@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
+*{
+}
 .todo-content {
+  position: relative;
   font-size: 18px;
   line-height: 1.58;
   background: #24b1a8;
@@ -14,9 +16,11 @@
 #todo_1{
 
   width: 20px;
+
 }
 h1 {
-  font-size: 36px;
+  font: 30px chilanka, segoe script, purisa, comic sans ms, cursive;
+
 }
 
 * {
@@ -41,10 +45,12 @@ input {
   width: 100%;
   height: 500px;
   margin: 0 auto;
-  margin-top: 60px;
+  //margin-top: 60px;
   background-color: #fff;
   padding: 15px;
   box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+  font: 15px chilanka, segoe script, purisa, comic sans ms, cursive;
+
 }
 
 .form-control {
