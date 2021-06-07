@@ -1,0 +1,65 @@
+button{
+  margin-left: 15px;
+  height: 40px;
+  border-radius: 15px;
+  text-align: center;
+
+}
+//img{
+//  height: 38px;
+//}
+.print{
+
+  margin-left: 850px;
+  margin-bottom: 200px;
+  font-weight: bold;
+  color: black;
+
+}
+
+th, td {
+  margin: 0;
+  text-align: center;
+  border-collapse: collapse;
+  outline: 1px solid black;
+
+}
+td {
+  padding: 2.5px 5px;
+
+}
+th:hover {
+  background: black;
+  color: white;
+  padding: 2.5px 5px;
+}
+td:hover {
+  cursor: pointer;
+  background: #666;
+  color: white;
+}
+table tr:first-of-type {
+  font-size:30px;
+}
+
+.a{
+  background-color: transparent;
+  border-radius: 0px;
+  height: 50px;
+  border-color: transparent;
+  color: #28242c;
+  font-weight: bolder;
+
+}
+
+h3{
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+label{
+  margin-left: 15px;
+  margin-right: 15px;
+  font-weight: bold;
+  font-size: 16px;
+}

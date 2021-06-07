@@ -31,6 +31,12 @@ public findByyearTrim(annee:number,trim:number){
   return  this.http.get<Array<IndemniteAstreinte>>(this.url+'anneetrim/'+annee+'/'+trim) ;
 
 }
+
+  public calculAll(matricule:string,annee:number): Observable<number>{
+    return  this.http.get<number>(this.url+'calculAll/'+matricule+'/'+annee) ;
+
+  }
+
   public findByYear(annee:number): Observable<Array<IndemniteAstreinte>>{
     return  this.http.get<Array<IndemniteAstreinte>>(this.url+'annee/'+annee+'/') ;
   }

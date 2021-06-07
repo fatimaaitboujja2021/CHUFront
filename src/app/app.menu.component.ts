@@ -201,7 +201,8 @@ export class AppMenuComponent implements OnInit {
                 {
                     label: 'Favorites', icon: 'pi pi-fw pi-home',
                     items: [
-                        {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/home']}
+                        {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/home']},
+                        {label: 'ToDo', icon: 'pi pi-fw pi-home', routerLink: ['/todo']}
                     ]
                 },
                 {
@@ -214,7 +215,8 @@ export class AppMenuComponent implements OnInit {
                 {
                     label: 'Valider la presence', icon: 'pi pi-fw pi-pencil', routerLink: ['/presence'],
                     items: [
-                        {label: 'Vérifier la présence', icon: 'pi pi-fw pi-star-o', routerLink: ['/presence']},
+                        {label: 'garde', icon: 'pi pi-fw pi-star-o', routerLink: ['/presence/garde']},
+                        {label: 'astreinte', icon: 'pi pi-fw pi-pencil', routerLink: ['/presence/astreinte']},
                     ]
 
                 },
@@ -268,7 +270,6 @@ export class AppMenuComponent implements OnInit {
                     items: [
                         // {label: 'Chefservice',icon: 'pi pi-fw pi-globe', routerLink: ['/view/chefservice']},
                         {label: 'liste de garde',icon: 'pi pi-fw pi-clone', routerLink: ['/view/listegarde']},
-                        {label: 'liste de astreinte',icon: 'pi pi-fw pi-clone', routerLink: ['view/listeastreinte']},
                         // {label: 'RAPPEL RÉGLEMENTAIRE  ', icon: 'pi pi-fw pi-mobile', routerLink: ['/view/RAPPELRÉGLEMENTAIRE']},
                        // {label: 'Fonctionnaire', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/view/fonctionnaire']},
                         ///{label: 'Valider Liste garde', icon: 'pi pi-fw pi-pencil', routerLink: ['/view/listegardevalider']},
@@ -295,6 +296,9 @@ export class AppMenuComponent implements OnInit {
                     label: 'RAPPEL RÉGLEMENTAIRE', icon: 'pi pi-fw pi-pencil', routerLink: ['/presence'],
                     items: [
                         {label: 'RAPPEL RÉGLEMENTAIRE  ', icon: 'pi pi-fw pi-mobile', routerLink: ['/view/RAPPELRÉGLEMENTAIRE']},
+                        {label: 'liste de astreinte',icon: 'pi pi-fw pi-clone', routerLink: ['view/listeastreinte']},
+
+
                     ]
 
                 },

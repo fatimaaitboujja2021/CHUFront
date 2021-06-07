@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+
             "outputPath": "dist/roma",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -40,7 +41,8 @@
               "@fullcalendar/daygrid",
               "@fullcalendar/timegrid",
               "@fullcalendar/interaction",
-              "chart.js"
+              "chart.js",
+              "xlsx"
             ]
           },
           "configurations": {

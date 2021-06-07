@@ -4,10 +4,10 @@
         <div class="card">
             <h5>les info</h5>
             <div class="p-grid p-formgrid">
-                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
-                    <label for="ref">Ref</label>
-                    <input type="text" formControlName="refFonctionnaire" pInputText placeholder="Default" id="ref" [(ngModel)]="selected.ref" required autofocus>
-                </div>
+<!--                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">-->
+<!--                    <label for="ref">Ref</label>-->
+<!--                    <input type="text" formControlName="refFonctionnaire" pInputText placeholder="Default" id="ref" [(ngModel)]="selected.ref" required autofocus>-->
+<!--                </div>-->
                 <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
                     <label for="nom">Nom</label>
                     <input type="text" formControlName="fname" pInputText placeholder="nom" id="nom" [(ngModel)]="selected.nom" required autofocus/>
@@ -322,10 +322,10 @@
                 <!--        <h3>les informations Conge</h3>-->
 
 
-                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
-                    <label for="refconge"> ref conge</label>
-                    <input type="text" formControlName="refconge" pInputText id="refconge" [(ngModel)]="selected.conge.ref" required autofocus />
-                </div>
+<!--                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">-->
+<!--                    <label for="refconge"> ref conge</label>-->
+<!--                    <input type="text" formControlName="refconge" pInputText id="refconge" [(ngModel)]="selected.conge.ref" required autofocus />-->
+<!--                </div>-->
                 <!--        <h3>les informations Specialite</h3>-->
                 <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
                     <label for="intitulespecialite"> intitule specialite</label>
@@ -351,19 +351,12 @@
             </div>
         </div>
     </div>
-    <div class="p-card-footer" >
-        <p class="ba" *ngIf="step!=1">
-            <button pButton pRipple label="Previous" icon="pi pi-chevron-circle-left" class="p-button-warning p-button-rounded" style="margin-top: 14px" (click)="previous()"></button>
+    <div class="p-card-footer tt" >
 
-        </p>
-        <p>        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-danger p-button-rounded" style="margin-top: 14px"   *ngIf="step >=1" (click)="hideEditDialog()"></button>
-        </p>
-        <p>        <button pButton pRipple label="Edit" icon="pi pi-pencil" class="p-button-success p-button-rounded" (click)="edit()"></button>
-        </p>
-
-<!--        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" *ngIf="step == 4" (click)="edit()"></button>-->
-        <p>        <button pButton pRipple type="submit"  label="Next" icon="pi pi-angle-double-right" class="p-button-info p-button-rounded " *ngIf="step < 4" (click)="submitt()"></button>
-        </p>
+        <button (click)="previous()"  *ngIf="step<=4 && step!=1" pButton pRipple type="button" icon="pi pi-angle-double-left" class="p-button-rounded b1 p-mr-2 p-mb-2 ba"></button>
+        <button (click)="hideEditDialog()" pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded b2 p-mr-2 p-mb-2"></button>
+        <button *ngIf="step == 4" (click)="edit()" pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded b3 p-mr-2 p-mb-2"></button>
+        <button *ngIf="step < 4" (click)="submitt()" pButton pRipple type="button" c icon="pi pi-angle-double-right" class="p-button-rounded b4 p-mr-2 p-mb-2"></button>
 
     </div>
 

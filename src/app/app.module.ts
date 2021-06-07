@@ -193,6 +193,16 @@ import { CalculDindemniteListeComponent } from './view/chefservice/calculDindemn
 import { AstreinteComponent } from './view/chefservice/calculDindemnite/calculDindemniteListeFonctionnaires/astreinte/astreinte.component';
 import { GardeComponent } from './view/chefservice/calculDindemnite/calculDindemniteListeFonctionnaires/garde/garde.component';
 import {Fonctionnaire} from './controller/model/fonctionnaire.model';
+import { ListedePresenceAstreinteComponent } from './view/chefservice/listegarde/check-attendance-astreinte/listede-presence-astreinte/listede-presence-astreinte.component';
+import { ListedePresenceAstreinteEditComponent } from './view/chefservice/listegarde/check-attendance-astreinte/listede-presence-astreinte-edit/listede-presence-astreinte-edit.component';
+import { ListedePresenceAstreinteViewComponent } from './view/chefservice/listegarde/check-attendance-astreinte/listede-presence-astreinte-view/listede-presence-astreinte-view.component';
+import { ListedePresenceAstreinteCreateComponent } from './view/chefservice/listegarde/check-attendance-astreinte/listede-presence-astreinte-create/listede-presence-astreinte-create.component';
+import {CheckAttendanceAstreinteComponent} from './view/chefservice/listegarde/check-attendance-astreinte/check-attendance-astreinte.component';
+import {ListegardeCreateAstreinteComponent} from './view/chefservice/listegarde/listegarde-createAstreinte/listegarde-create-astreinte.component';
+import { TodoComponent } from './view/chefservice/todo/todo.component';
+import { PrintleslisteComponent } from './view/chefservice/calculDindemnite/printlesliste/printlesliste.component';
+import { PrintastreinteComponent } from './view/chefservice/calculDindemnite/printlesliste/printastreinte/printastreinte.component';
+import { PrintgardeComponent } from './view/chefservice/calculDindemnite/printlesliste/printgarde/printgarde.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
 
@@ -385,7 +395,17 @@ registerLocaleData(localeFr, 'fr');
         ListeastreinteListComponent,
         CalculDindemniteListeComponent,
         AstreinteComponent,
-        GardeComponent
+        GardeComponent,
+        CheckAttendanceAstreinteComponent,
+        ListedePresenceAstreinteComponent,
+        ListedePresenceAstreinteEditComponent,
+        ListedePresenceAstreinteViewComponent,
+        ListedePresenceAstreinteCreateComponent,
+        ListegardeCreateAstreinteComponent,
+        TodoComponent,
+        PrintleslisteComponent,
+        PrintastreinteComponent,
+        PrintgardeComponent
 
     ],
     providers: [

@@ -1,24 +1,276 @@
-<p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Fonctionnaire Details" [modal]="true" styleClass="p-fluid">
-    <ng-template pTemplate="content">
-        <div class="p-field">
-            <label for="prenom">prenom</label>
-            <input type="text" pInputText id="prenom" [(ngModel)]="selected.prenom" disabled />
+<p-dialog [(visible)]="viewDialog" [style]="{width: '800px'}" header="Fonctionnaire Details" [modal]="true" styleClass="p-fluid">
+<!--        <div class="p-field">-->
+<!--            <label for="prenom">prenom</label>-->
+<!--            <input type="text" pInputText id="prenom" [(ngModel)]="selected.prenom" disabled />-->
+<!--        </div>-->
+<!--        <div class="p-field">-->
+<!--            <label for="nom">nom</label>-->
+<!--            <input type="text" pInputText id="nom" [(ngModel)]="selected.nom" disabled />-->
+<!--        </div>-->
+
+<!--        <div class="p-field">-->
+<!--            <label for="ref">ref</label>-->
+<!--            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref" disabled />-->
+<!--        </div>-->
+
+        <div  *ngIf="step == 1" >
+            <div class="card">
+                <h5>les info</h5>
+                <div class="p-grid p-formgrid">
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="ref">Ref</label>
+                        <input type="text" pInputText placeholder="Default" id="ref" [(ngModel)]="selected.ref" disabled>
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nom">Nom</label>
+                        <input type="text"  #nom  pInputText placeholder="nom" id="nom" [(ngModel)]="selected.nom" disabled/>
+
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="prenom">Prenom</label>
+                        <input type="text"   id="prenom" pInputText [(ngModel)]="selected.prenom" placeholder="prenom" disabled/>
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nom_Ar">nomAr</label>
+                        <input type="text"    id="nom_Ar" pInputText [(ngModel)]="selected.nom_Ar" placeholder="nomAr" disabled/>
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="prenom_Ar">prenomAr</label>
+                        <input type="text"    id="prenom_Ar" pInputText [(ngModel)]="selected.prenom_Ar" placeholder="prenom_Ar" disabled/>
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nationalite">nationalite</label>
+                        <input type="text"  minlength="2"  maxlength="28"   id="nationalite" pInputText [(ngModel)]="selected.nationalite" placeholder="nationalite" disabled/>
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="adresse">adresse</label>
+                        <input type="text"   id="adresse" pInputText [(ngModel)]="selected.adresse" placeholder="adresse" disabled/>
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="ville">ville</label>
+                        <input type="text"    id="ville" pInputText [(ngModel)]="selected.ville" placeholder="ville" disabled/>
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="situationFamiliale">situation Familiale</label>
+                        <input type="text"    id="situationFamiliale" pInputText [(ngModel)]="selected.situationFamiliale" placeholder="situationFamiliale" disabled/>
+
+
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="dateSituationFamiliale">date Situation Familiale</label>
+                        <input type="date"    id="dateSituationFamiliale" pInputText [(ngModel)]="selected.dateSituationFamiliale" placeholder="dateSituationFamiliale" disabled/>
+                    </div>
+
+
+
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nbEnfants">nombre des Enfants</label>
+                        <input type="text"   id="nbEnfants" pInputText [(ngModel)]="selected.nbEnfants" placeholder="nombre des Enfants" disabled/>
+                    </div>
+
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="dateNaissance">date de Naissance</label>
+                        <input type="date"  pInputText id="dateNaissance" [(ngModel)]="selected.dateNaissance" disabled />
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="lieuNaissance">lieu Naissance</label>
+                        <input type="text"  pInputText id="lieuNaissance" [(ngModel)]="selected.lieuNaissance" disabled />
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <h6>Genre</h6>
+                        <input type="text"  pInputText id="genre" [(ngModel)]="selected.genre" disabled />
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
         </div>
-        <div class="p-field">
-            <label for="nom">nom</label>
-            <input type="text" pInputText id="nom" [(ngModel)]="selected.nom" disabled />
+        <div  *ngIf="step == 2"  >
+            <div class="card">
+                <h5>les info</h5>
+                <div class="p-grid p-formgrid">
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nCIN">nCIN</label>
+                        <input type="number"  pInputText id="nCIN" [(ngModel)]="selected.nCIN" disabled />
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="dateExpirationCIN">dateExpirationCIN</label>
+                        <input type="date"  pInputText id="dateExpirationCIN" [(ngModel)]="selected.dateExpirationCIN" disabled />
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nPassport">nPassport</label>
+                        <input type="number"  pInputText id="nPassport" [(ngModel)]="selected.nPassport" disabled />
+                    </div>
+
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="dateExpirationPassport">date Expiration Passport</label>
+                        <input type="date"  pInputText id="dateExpirationPassport" [(ngModel)]="selected.dateExpirationPassport" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h5>les informations de Sejours</h5>
+                <div class="p-grid p-formgrid">
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nPermisSejours">nPermisSejours</label>
+                        <input type="number"  pInputText id="nPermisSejours" [(ngModel)]="selected.nPermisSejours" disabled />
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="dateExpirationPermisSejours">date Expiration Permis Sejours</label>
+                        <input type="date"  pInputText id="dateExpirationPermisSejours" [(ngModel)]="selected.dateExpirationPermisSejours" disabled />
+                    </div></div>
+            </div>
+            <div class="card">
+                <h5>les informations de Retraite</h5>
+                <div class="p-grid p-formgrid">
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nRetraite">nRetraite</label>
+                        <input type="number"  pInputText id="nRetraite" [(ngModel)]="selected.nRetraite" disabled />
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="regimeRetraite">regime Retraite</label>
+                        <input type="text"  pInputText id="regimeRetraite" [(ngModel)]="selected.regimeRetraite" disabled />
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="dateRecrutement">date Recrutement</label>
+                        <input type="date"  pInputText id="dateRecrutement" [(ngModel)]="selected.dateRecrutement" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div   *ngIf="step == 3" >
+            <div class="card">
+                <div class="p-grid p-formgrid">
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nAfficiationMutuelle">nAfficiationMutuelle</label>
+                        <input type="number"  pInputText id="nAfficiationMutuelle" [(ngModel)]="selected.nAfficiationMutuelle" disabled />
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="organismeMutuelle">organisme Mutuelle</label>
+                        <input type="text"  pInputText id="organismeMutuelle" [(ngModel)]="selected.organismeMutuelle" disabled />
+                    </div>
+
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="gradenom">gradenom</label>
+                        <input type="text"  pInputText id="gradenom" [(ngModel)]="selected.grade.gradenom" disabled />
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="echelonnom">echelon nom</label>
+                        <input type="text"  pInputText id="echelonnom" [(ngModel)]="selected.echelon.echelonnom" disabled />
+                    </div>
+
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="matriculeSub">matriculeSub</label>
+                        <input type="text"  pInputText id="matriculeSub" [(ngModel)]="selected.matriculeSub" disabled />
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="indice">indice</label>
+                        <input type="number"  pInputText id="indice" [(ngModel)]="selected.indice" disabled />
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="noImmatriculationAmo">noImmatriculationAmo</label>
+                        <input type="number"  pInputText id="noImmatriculationAmo" [(ngModel)]="selected.noImmatriculationAmo" disabled />
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="direction">direction</label>
+                        <input type="text" pInputText id="direction" [(ngModel)]="selected.direction" disabled />
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="division">division</label>
+                        <input type="text"  pInputText id="division" [(ngModel)]="selected.division" disabled />
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="dateAffectation">date Affectation</label>
+                        <input type="date"  pInputText id="dateAffectation" [(ngModel)]="selected.dateAffectation" disabled />
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="matriculeSuperieur">matriculeSuperieur</label>
+                        <input type="text"  pInputText id="matriculeSuperieur" [(ngModel)]="selected.matriculeSuperieur" disabled />
+                    </div>
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="validiterGarde">validiter Garde</label>
+                        <input type="text"  pInputText id="validiterGarde" [(ngModel)]="selected.validiterGarde" disabled />
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="p-field">
-            <label for="ref">ref</label>
-            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref" disabled />
+
+        <div   *ngIf="step == 4" >
+
+            <div class="card">
+                <div class="p-grid p-formgrid">
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="nCompte">nCompte banque</label>
+                        <input type="number"  pInputText id="nCompte" [(ngModel)]="selected.comptebancaire.nCompte" disabled />
+                    </div>
+
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0" *ngIf="selected.conge!=null">
+                        <label for="refconge"> ref conge</label>
+                        <input type="text"  pInputText id="refconge" [(ngModel)]="selected.conge.ref" disabled />
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="intitulespecialite"> intitule specialite</label>
+                        <input type="text"  pInputText id="intitulespecialite" [(ngModel)]="selected.specialite.intitule" disabled />
+                    </div>
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="intitulefonction"> intitule fonction</label>
+                        <input type="text" pInputText id="intitulefonction" [(ngModel)]="selected.fonction.intitule" disabled />
+                    </div>
+
+
+                    <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                        <label for="intituleservice"> intitule service</label>
+                        <input type="text"  pInputText id="intituleservice" [(ngModel)]="selected.servhopital.intitule" disabled />
+                    </div>
+                </div>
+            </div>
         </div>
 
 
+    <div class="p-card-footer tt" >
+        <button (click)="previous()"  *ngIf="step<=4 && step!=1" pButton pRipple type="button" icon="pi pi-angle-double-left" class="p-button-rounded b1 p-mr-2 p-mb-2 ba"></button>
+        <button *ngIf="step < 4" (click)="submitt()" pButton pRipple type="button" c icon="pi pi-angle-double-right" class="p-button-rounded b4 p-mr-2 p-mb-2"></button>
 
-    </ng-template>
-
-    <ng-template pTemplate="footer">
-        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
-    </ng-template>
+        <button pButton pRipple  icon="pi pi-times" class="p-button-rounded b2 p-mr-2 p-mb-2 " (click)="hideViewDialog()"></button>
+    </div>
 </p-dialog>

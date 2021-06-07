@@ -1,20 +1,21 @@
 <div class="card">
     <h3> Calcul Des Indemnites de la garde</h3>
     <div class="p-formgroup-inline">
-        <div class="p-field">
+        
+        <div class="p-field" style="margin-right: 20px">
             <label for="nom">annee</label>
             <input type="text" pInputText id="nom" [(ngModel)]="year" required  />
-        </div>
-        <div class="p-field">
             <label for="prenom">Trim</label>
             <input type="text" pInputText id="prenom" [(ngModel)]="trim" required  />
-        </div>
-        <div class="p-field">
-            <button (click)="searchFonctionnaire(year,trim)"  pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded b1 p-mr-2 p-mb-2"></button>
+            <button (click)="searchFonctionnaire(year,trim)"  pButton pRipple type="button" icon="pi pi-search" class=""></button>
 
-            <button (click)="reset()" pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded b2 p-mr-2 p-mb-2"></button>
+            <img src="assets/layout/images/calculator.png"  class="b33 img1 " (click)="calculall(matricule,year)">
+            <button (click)="reset()" pButton pRipple type="button" icon="pi pi-times" class="p-button-danger"></button>
+            <img src="assets/layout/images/print_50px.png"  style="margin-left: 15px;margin-bottom: 10px" (click)="valider()">
+
 
         </div>
+
     </div>
 
 </div>
@@ -45,10 +46,10 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-indemnite let-rowIndex="rowIndex">
-                <tr *ngIf="rowGroupMetadata[indemnite.ref.substring(10,14)].index === rowIndex">
+                <tr *ngIf="rowGroupMetadata[indemnite.ref.substring(12,15)].index === rowIndex">
                     <td colspan="10" class="rowspan">
                         <img  src="assets/layout/images/chulog.png" width="15" style="vertical-align: middle" />
-                        <span class="p-text-bold p-ml-2 rowspan" >{{indemnite.ref.substring(10,14)}}</span>
+                        <span class="p-text-bold p-ml-2 rowspan" >{{indemnite.ref.substring(10,15)}}</span>
                     </td>
                 </tr>
                 <tr>

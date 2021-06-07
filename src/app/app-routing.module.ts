@@ -63,6 +63,10 @@ import {ListeastreinteListComponent} from './view/chefservice/listegarde/listeas
 import {CalculDindemniteListeComponent} from './view/chefservice/calculDindemnite/calcul-dindemnite-liste/calcul-dindemnite-liste.component';
 import {AstreinteComponent} from './view/chefservice/calculDindemnite/calculDindemniteListeFonctionnaires/astreinte/astreinte.component';
 import {GardeComponent} from './view/chefservice/calculDindemnite/calculDindemniteListeFonctionnaires/garde/garde.component';
+import {CheckAttendanceAstreinteComponent} from './view/chefservice/listegarde/check-attendance-astreinte/check-attendance-astreinte.component';
+import {TodoComponent} from './view/chefservice/todo/todo.component';
+import {PrintastreinteComponent} from './view/chefservice/calculDindemnite/printlesliste/printastreinte/printastreinte.component';
+import {PrintgardeComponent} from './view/chefservice/calculDindemnite/printlesliste/printgarde/printgarde.component';
 
 const routes: Routes = [
 
@@ -86,8 +90,15 @@ const routes: Routes = [
             {path: 'home', component: HomeComponent},
             {path: 'profile/info', component: ProfileComponent},
             {path: 'listefonctionnaires', component: FonctionnaireChefComponent},
-            {path: 'presence', component: CheckattendanceComponent},
-            // { path: 'registration', component: RegisterComponent },
+            {path: 'presence/garde', component: CheckattendanceComponent},
+            {path: 'presence/astreinte', component: CheckAttendanceAstreinteComponent},
+            { path: 'todo', component: TodoComponent },
+            { path: 'printastreinte', component: PrintastreinteComponent },
+            { path: 'printgarde', component: PrintgardeComponent
+
+
+
+            },
             // { path: 'login', component: LoginComponent },
             {path: 'view/listegarde', component: ListegardeComponent},
             {path: 'view/listeastreinte', component: ListeastreinteListComponent},

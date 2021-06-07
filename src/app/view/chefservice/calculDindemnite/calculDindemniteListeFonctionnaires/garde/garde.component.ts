@@ -3,6 +3,8 @@ import {IndemniteAstreinte} from '../../../../../controller/model/indemniteAstre
 import {IndemniteAstreinteService} from '../../../../../controller/service/indemnite-astreinte.service';
 import {IndemniteGarde} from '../../../../../controller/model/indemnite-garde.model';
 import {IndemniteGardeService} from '../../../../../controller/service/indemnite-garde.service';
+import {TokenStorageService} from '../../../../../_services/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-garde',
@@ -10,7 +12,8 @@ import {IndemniteGardeService} from '../../../../../controller/service/indemnite
   styleUrls: ['./garde.component.scss']
 })
 export class GardeComponent implements OnInit {
-
+  matricule:string;
+  isLoggedIn = false;
   cols: any[];
   step:number=0;
   trim:number=0;
@@ -19,11 +22,17 @@ export class GardeComponent implements OnInit {
   indastreinte:IndemniteAstreinte;
   totalMontantNet:number;
 
-  constructor(private  service:IndemniteGardeService) { }
+  constructor(private  service:IndemniteGardeService,private route: Router,private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.service.findAll().subscribe(data => this.items = data);
-  }
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      //this.lastname=this.tokenStorageService.getUser().lastname
+
+      this.matricule=user.matricule;
+  }}
   filteredtrim: IndemniteAstreinte[] ;
   montanttt:number=0;
   rowGroupMetadata: any;
@@ -33,6 +42,19 @@ export class GardeComponent implements OnInit {
     this.service.findAll().subscribe(data => this.items = data);
     this.trim=null;
     this.year=null;
+    this.totalMontantNet=null;
+
+  }
+  p:number;
+  calculall(matricule:string,annee:number){
+    matricule=this.matricule;
+    annee=this.year;
+    this.service.calculAll(matricule,annee).subscribe(data => this.p = data);
+    // this.searchFonctionnaire(this.year,this.trim);
+  }
+  private valider(){
+    this.route.navigate(['/printgarde'])
+
   }
 
   searchFonctionnaire(year,trim) {
@@ -63,14 +85,14 @@ export class GardeComponent implements OnInit {
     if (this.items) {
       for (let i = 0; i < this.items.length; i++) {
         const rowData = this.items[i];
-        const representativeName = rowData.ref.substr(10.14);
+        const representativeName = rowData.ref.substring(12,15);
 
         if (i === 0) {
           this.rowGroupMetadata[representativeName] = { index: 0, size: 1 };
         }
         else {
           const previousRowData = this.items[i - 1];
-          const previousRowGroup = previousRowData.ref.substr(10.14);
+          const previousRowGroup = previousRowData.ref.substring(12,15);
           if (representativeName === previousRowGroup) {
             this.rowGroupMetadata[representativeName].size++;
           }

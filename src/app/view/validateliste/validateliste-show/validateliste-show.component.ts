@@ -65,7 +65,7 @@ console.log(this.maxdate);
     }
 // this.findBymatriculeSuperieur(this.matricule);
 //     this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
-this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate).subscribe(data=> this.items=data);
+this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate,'astreinte').subscribe(data=> this.items=data);
     this.findBymatriculeSuperieur(this.matricule);
 console.log('jajaj'+this.items);
 console.log(this.matricule);
@@ -114,7 +114,7 @@ step: any=0;
     n=this.matricule;
     d=this.mindate;
     f=this.maxdate;
-    this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate).subscribe(data=> this.items=data);
+    this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate,'astreinte').subscribe(data=> this.items=data);
 
   }
   public findBymatriculeSuperieur(matricule:String){

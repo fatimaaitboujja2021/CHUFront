@@ -3,6 +3,9 @@ import {IndemniteAstreinteService} from '../../../../../controller/service/indem
 import {IndemniteAstreinte} from '../../../../../controller/model/indemniteAstreinte.model';
 import {Fonctionnaire} from '../../../../../controller/model/fonctionnaire.model';
 import {iterator} from 'rxjs/internal-compatibility';
+import {TokenStorageService} from '../../../../../_services/token-storage.service';
+import {MenuItem} from 'primeng/api';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-astreinte',
@@ -17,14 +20,37 @@ year:number;
   totalMontantNet:number;
 x:String;
 indastreinte:IndemniteAstreinte;
-  rowGroupMetadata: any;
+  rowGroupMetadata: {};
+  matricule:string;
+  isLoggedIn = false;
+  rowData: any;
 
-  constructor(private  indemniteastreinteservice:IndemniteAstreinteService) { }
 
-  ngOnInit(): void {
-    this.indemniteastreinteservice.findAll().subscribe(data => this.items = data);
+  constructor(private  indemniteastreinteservice:IndemniteAstreinteService,private route: Router,private tokenStorageService: TokenStorageService) { }
+
+  private valider(){
+    this.route.navigate(['/printastreinte'])
 
   }
+  ngOnInit(): void {
+
+    this.indemniteastreinteservice.findAll().subscribe(data => this.items = data);
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+this.rowData=new  IndemniteAstreinte();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      //this.lastname=this.tokenStorageService.getUser().lastname
+
+      this.matricule=user.matricule;
+
+this.indemniteastreinteservice
+
+
+
+
+
+
+    }}
   filteredtrim: IndemniteAstreinte[] ;
 montanttt:number=0;
   searchFonctionnaire(year,trim) {
@@ -50,27 +76,32 @@ reset(){
   this.indemniteastreinteservice.findAll().subscribe(data => this.items = data);
 this.trim=null;
 this.year=null;
+this.totalMontantNet=null;
 }
 
-
+  substr(ref:string){
+const reff='h';
+reff === ref.substring(12,15);
+  return reff;
+}
   onSort() {
     this.updateRowGroupMetaData();
   }
-
   updateRowGroupMetaData() {
-    this.rowGroupMetadata = {};
+    this.rowGroupMetadata = <any> {};
 
     if (this.items) {
       for (let i = 0; i < this.items.length; i++) {
-        const rowData = this.items[i];
-        const representativeName = rowData.ref.substr(10.14);
+
+         this.rowData = this.items[i];
+        const representativeName = this.rowData.ref.substring(12,15)
 
         if (i === 0) {
           this.rowGroupMetadata[representativeName] = { index: 0, size: 1 };
         }
         else {
           const previousRowData = this.items[i - 1];
-          const previousRowGroup = previousRowData.ref.substr(10.14);
+          const previousRowGroup = previousRowData.ref.substring(12,15);
           if (representativeName === previousRowGroup) {
             this.rowGroupMetadata[representativeName].size++;
           }
@@ -82,13 +113,32 @@ this.year=null;
     }
   }
 
+p:number;
 
+calculall(matricule:string,annee:number){
+    matricule=this.matricule;
+    annee=this.year;
+  this.indemniteastreinteservice.calculAll(matricule,annee).subscribe(data => this.p = data);
+  this.indemniteastreinteservice.findAll().subscribe(data => this.items = data);
 
-
+}
 
   findByYear(y:number){
 y=this.year;
     this.indemniteastreinteservice.findByYear(this.year).subscribe(data => this.items = data);
+
+
+  }
+  classname:string='btn';
+  classname1:string='box';
+  private change(){
+    if(this.classname=='btn' && this.classname1=='box')
+      this.classname='btn active',
+          this.classname1='box open'
+    else   if(this.classname !=='btn' && this.classname1 !=='box'){
+      this.classname='btn';
+      this.classname1='box';
+    }
 
 
   }

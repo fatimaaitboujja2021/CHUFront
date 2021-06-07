@@ -47,13 +47,16 @@ export class ListegardeService {
   //       }
   //   );
   // }
-public findBydateminetmax(n:String,d:Date,f:Date) :Observable<Array<ListeGarde>>{
-    return this.http.get<Array<ListeGarde>>(this.url+'minetmaxdate/'+n+'/'+d+'/'+f) ;
+public findBydateminetmax(n:String,d:Date,f:Date,t:string) :Observable<Array<ListeGarde>>{
+    return this.http.get<Array<ListeGarde>>(this.url+'minetmaxdate/'+n+'/'+d+'/'+f+'/'+t) ;
 }
-  public findByListebymatriculeSuperieur(matricule:string): Observable<Array<ListeGarde>>{
-   return  this.http.get<Array<ListeGarde>>(this.url+'matriculesup/'+matricule) ;
+  public findByListebymatriculeSuperieurA(matricule:string): Observable<Array<ListeGarde>>{
+   return  this.http.get<Array<ListeGarde>>(this.url+'matriculesupA/'+matricule) ;
   }
 
+  public findByListebymatriculeSuperieurG(matricule:string): Observable<Array<ListeGarde>>{
+    return  this.http.get<Array<ListeGarde>>(this.url+'matriculesupG/'+matricule) ;
+  }
 
   public findbystatue(n:string): Observable<number>{
     return  this.http.get<number>(this.url+'statue/'+n) ;

@@ -11,6 +11,7 @@ export const environment = {
   urlUser:'/Chu/userWs',
   urlIndemniteGarde:'/Chu/indemniteGardeWs',
   urlIndemniteAstreinte:'/Chu/indemniteAstreinteWs',
+  urlTodo:'/api/todows',
 };
 
 /*

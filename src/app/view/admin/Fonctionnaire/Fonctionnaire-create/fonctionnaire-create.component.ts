@@ -37,8 +37,18 @@ export class FonctionnaireCreateComponent implements OnInit {
             {label: 'Homme', value: 'Homme'}
 
         ];
+        this.selected=new Fonctionnaire();
     }
 
+   public  checkvalidate(v:any){
+
+        if(v.isEmpty()){
+            return 1;
+        }else {
+            return 0;
+        }
+
+   }
 
     submitt() {
             this.stepsubmit = true;
@@ -71,7 +81,10 @@ export class FonctionnaireCreateComponent implements OnInit {
 
     public save() {
         this.submitted = true;
-        if (this.selected.ref.trim()) {
+
+        if (this.selected.matriculeSub.trim()) {
+            this.selected.ref=this.selected.nom+'chu'+this.selected.id;
+
             this.service.save().subscribe(data => {
                 this.items.push({...data});
                 this.messageService.add({

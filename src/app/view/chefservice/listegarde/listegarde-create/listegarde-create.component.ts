@@ -56,8 +56,8 @@ export class ListegardeCreateComponent implements OnInit {
       this.matricule=user.matricule;
     }
 // this.findBymatriculeSuperieur(this.matricule);
-    this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
-    this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(data => this.itemss = data);;
+//     this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
+   // this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(data => this.itemss = data);;
 
     // this.findBymatriculeSuperieur(this.matricule);
     console.log('jajaj'+this.itemss)
@@ -122,7 +122,11 @@ this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(dat
         console.log(this.selected.fonctionnaire.nom);
         this.items.push({...data});
         console.log("element OK");
-        this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+          this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
+
+
+
+
 
         this.messageService.add({
           severity: 'success',

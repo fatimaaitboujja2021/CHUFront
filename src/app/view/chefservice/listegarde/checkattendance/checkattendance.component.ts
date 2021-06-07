@@ -59,15 +59,16 @@ export class CheckattendanceComponent implements OnInit {
       this.lastname= user.lastname;
       this.matricule=user.matricule;
     }
-    this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+    this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
   }
+  type: string='garde';
 
   public findBydateminetmax(n:String,d:Date,f:Date){
 
     n=this.matricule;
     d=this.mindate;
     f=this.maxdate;
-    this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate).subscribe(data=> this.items=data);
+    this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate,this.type).subscribe(data=> this.items=data);
 
   }
 
@@ -109,7 +110,7 @@ export class CheckattendanceComponent implements OnInit {
             detail: 'Chefservice Deleted',
             life: 3000
           });
-          this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+          this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
 
         });
       }
@@ -165,7 +166,7 @@ export class CheckattendanceComponent implements OnInit {
             detail: 'ListeGarde Deleted',
             life: 3000
           });
-          this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+          this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
 
         });
       }

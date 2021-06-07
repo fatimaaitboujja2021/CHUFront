@@ -24,7 +24,7 @@
             </p-toolbar>
 
 
-            <p-table  #dt id="print-me" [value]="items" [totalRecords]="items.length" [columns]="cols" [rows]="nbrligne" [paginator]="true" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','garde.typeGarde','fonctionnaire.nom']"
+            <p-table  #dt id="print-me" [value]="items" [totalRecords]="totalRecords" [columns]="cols" [rows]="nbrligne" [paginator]="true" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','garde.typeGarde','fonctionnaire.nom']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" >
@@ -73,7 +73,7 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-listegarde >
-                    <tr *ngIf="listegarde.garde.typeGarde=='garde'">
+                    <tr >
 
                         <td>
                             <p-tableCheckbox [value]="listegarde"></p-tableCheckbox>

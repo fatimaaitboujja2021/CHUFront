@@ -25,6 +25,11 @@ export class IndemniteGardeService {
 
   constructor(private http: HttpClient) {
   }
+
+  public calculAll(matricule:string,annee:number): Observable<number>{
+    return  this.http.get<number>(this.url+'calculAll/'+matricule+'/'+annee) ;
+
+  }
   public findMontantnettotal(n:number): Observable<number>{
     return  this.http.get<number>(this.url+'montant/'+n+'/') ;
   }

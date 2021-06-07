@@ -1,10 +1,10 @@
 <p-dialog [(visible)]="editDialog" [style]="{width: '450px'}" header=" Edit" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
-        <div class="p-field">
-            <h6 for="ref">Ref</h6>
-            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref"   />
-            <!--            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>-->
-        </div>
+<!--        <div class="p-field">-->
+<!--            <h6 for="ref">Ref</h6>-->
+<!--            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref"   />-->
+<!--            &lt;!&ndash;            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>&ndash;&gt;-->
+<!--        </div>-->
         <div class="p-field">
             <h6 for="dateGarde">dateGarde</h6>
             <input type="date" pInputText  id="dateGarde" [(ngModel)]="selected.dateGarde"   />
@@ -17,7 +17,8 @@
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">
                 <h6 for="dureDeGarde">dureDeGarde</h6>
-                <p-inputNumber id="dureDeGarde" [(ngModel)]="selected.dureDeGarde"></p-inputNumber>
+                <p-inputNumber id="dureDeGarde" max="24" min="1" [(ngModel)]="selected.dureDeGarde"></p-inputNumber>
+                <p *ngIf="selected.dureDeGarde<=0 || selected.dureDeGarde>24" style="color: red;font-weight: bold">le maximum est 24 , le minimum est 1 </p>
             </div>
         </div>
 

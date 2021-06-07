@@ -40,11 +40,11 @@
                                    id="typeGarde1" style="margin-left: 15px"></p-radioButton>
                     <label for="typeGarde1">Astreinte</label>
                 </div>        <div class="p-field">
-
-        <button (click)="calculDindemnite(nom,prenom,year,montant,typedegarde)" pButton pRipple type="button" label="Calculer" class="p-button-success glow-on-hover"></button>
-            <button  pButton printTitle=""
-                     [useExistingCss]="true"
-                     printSectionId="print-me" ngxPrint  label="Print to pdf" icon="pi pi-file-pdf"></button>
+<div class="p-field">    <button (click)="calculDindemnite(nom,prenom,year,montant,typedegarde)" pButton pRipple type="button" label="Calculer" class="p-button-success glow-on-hover"></button>
+    <button  pButton printTitle="{{nom}} {{prenom}}"
+             [useExistingCss]="true"
+             printSectionId="print-me" ngxPrint  label="Print to pdf" icon="pi pi-file-pdf" class="p-button-danger b1"></button>
+</div>
 
         </div>
 

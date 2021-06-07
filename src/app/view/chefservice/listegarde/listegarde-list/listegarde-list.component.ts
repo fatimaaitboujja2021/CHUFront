@@ -32,14 +32,14 @@ export class ListegardeListComponent implements OnInit {
   email:string;
   maxdate:any=2029-10-17;
   mindate:any=2021-11-11;
-
+  totalRecords:number=0;
   type: any;
   public findBydateminetmax(n:String,d:Date,f:Date){
 
     n=this.matricule;
     d=this.mindate;
     f=this.maxdate;
-    this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate).subscribe(data=> this.items=data);
+    this.service.findBydateminetmax(this.matricule,this.mindate,this.maxdate,'garde').subscribe(data=> this.items=data);
     console.log('hhhh'+this.items);
 
   }
@@ -76,11 +76,21 @@ this.maxdate='jj/mm/aaaa';
       this.lastname= user.lastname;
       this.matricule=user.matricule;
     }
-this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data,
+);
 
   }
 
+ public initpaginator(){
+    for(let i=0;i<this.items.length;i++){
+      const j=this.items[i];
+      if (this.items[i].garde.typeGarde=='garde'){
+        this.totalRecords=this.totalRecords+1;
+      }
+    }
 
+
+ }
 
   public delete(selected: ListeGarde) {
     this.selected = selected;
@@ -98,7 +108,7 @@ this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> th
             detail: 'Chefservice Deleted',
             life: 3000
           });
-          this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+          this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
 
         });
       }
@@ -168,7 +178,7 @@ this.inedit(book);  }
         detail: 'ListeGarde Deleted',
         life: 3000
       });
-      this.service.findByListebymatriculeSuperieur(this.matricule).subscribe(data=> this.items=data);
+      this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
 
     });
     }
@@ -176,7 +186,6 @@ this.inedit(book);  }
   }
   public openCreate() {
     this.selected = new ListeGarde();
-    this.service.init();
 
     this.submitted = false;
     this.createDialog = true;

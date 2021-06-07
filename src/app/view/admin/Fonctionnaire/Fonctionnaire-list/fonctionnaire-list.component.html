@@ -41,6 +41,9 @@
                         <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>
                         <th pSortableColumn="nom">nom <p-sortIcon field="nom"></p-sortIcon></th>
                         <th pSortableColumn="prenom">prenom <p-sortIcon field="prenom"></p-sortIcon></th>
+                        <th pSortableColumn="matriculeSub">matriculeSub <p-sortIcon field="matriculeSub"></p-sortIcon></th>
+                        <th pSortableColumn="service">service <p-sortIcon field="service"></p-sortIcon></th>
+                        <th pSortableColumn="specialite">specialite <p-sortIcon field="specialite"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>
@@ -52,6 +55,9 @@
                         <td >{{fonctionnaire.ref}}</td>
                         <td>{{fonctionnaire.nom}}</td>
                         <td>{{fonctionnaire.prenom}}</td>
+                        <td>{{fonctionnaire.matriculeSub}}</td>
+                        <td>{{fonctionnaire.servhopital.intitule}}</td>
+                        <td>{{fonctionnaire.specialite.intitule}}</td>
 
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(fonctionnaire)"></button>

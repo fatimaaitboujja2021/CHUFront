@@ -28,6 +28,7 @@ export class FonctionnaireEditComponent implements OnInit {
 
     public edit() {
         this.submitted = true;
+        this.selected.ref=this.selected.nom+'chu'+this.selected.id;
         if (this.selected.ref.trim()) {
             if (this.selected.id) {
                 this.items[this.service.findIndexById(this.selected.id)] = this.selected;

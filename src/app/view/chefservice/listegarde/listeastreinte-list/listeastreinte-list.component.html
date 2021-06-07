@@ -72,32 +72,32 @@
                         <th></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-listegarde >
-                    <tr [pEditableRow]="listegarde" *ngIf="listegarde.garde.typeGarde=='astreinte'">
+                <ng-template pTemplate="body" let-listegardeAstreinte >
+                    <tr [pEditableRow]="listegardeAstreinte" >
 
                         <td>
-                            <p-tableCheckbox [value]="listegarde"></p-tableCheckbox>
+                            <p-tableCheckbox [value]="listegardeAstreinte"></p-tableCheckbox>
                         </td>
-                        <td>{{listegarde.dateGarde| date:'EEEE'}}</td>
+                        <td>{{listegardeAstreinte.dateGarde| date:'EEEE'}}</td>
                         <!--                        <td>{{listegarde.ref}}</td>-->
-                        <td>{{listegarde.dateGarde| date: 'dd/MM/yyyy'}}</td>
-                        <td><span [className]="getstatue(listegarde.jourounuit)"> {{listegarde.jourounuit}}</span>
+                        <td>{{listegardeAstreinte.dateGarde| date: 'dd/MM/yyyy'}}</td>
+                        <td><span [className]="getstatue(listegardeAstreinte.jourounuit)"> {{listegardeAstreinte.jourounuit}}</span>
                         </td>
 
-                        <td >{{listegarde.dureDeGarde}}</td>
+                        <td >{{listegardeAstreinte.dureDeGarde}}</td>
                         <td>
-                            <span [className]="getstatue(listegarde.garde.typeGarde)">{{listegarde.garde.typeGarde}}</span></td>
+                            <span [className]="getstatue(listegardeAstreinte.garde.typeGarde)">{{listegardeAstreinte.garde.typeGarde}}</span></td>
 
-                        <td>{{listegarde.fonctionnaire.nom}}
-                            {{listegarde.fonctionnaire.prenom}}
+                        <td>{{listegardeAstreinte.fonctionnaire.nom}}
+                            {{listegardeAstreinte.fonctionnaire.prenom}}
                         </td>
                         <!--                        <td>{{chefservice.fo}}</td>-->
 
 
                         <td>
-                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(listegarde)"></button>
-                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(listegarde)"></button>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(listegarde)"></button>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(listegardeAstreinte)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(listegardeAstreinte)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(listegardeAstreinte)"></button>
                         </td>
                     </tr>
 
@@ -110,7 +110,7 @@
             </p-table>
         </div>
 
-        <app-listegarde-create></app-listegarde-create>
+        <app-listegarde-create-astreinte></app-listegarde-create-astreinte>
         <app-listegarde-edit></app-listegarde-edit>
         <app-listegarde-view></app-listegarde-view>
 

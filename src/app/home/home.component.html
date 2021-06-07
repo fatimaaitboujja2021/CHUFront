@@ -1,7 +1,19 @@
 <div class="container">
   <header class="hr">
+
+      <div class="wrapper">
+          <div class="typing-demo">
+              <span>Bienvenu </span>
+
+              <span>{{firstname}}  </span>
+
+              <span>{{lastname}}</span>
+          </div>
+
+
+      </div>
 <!--    <p>{{ content }}</p>-->
-    Bienvenu  <span>{{firstname}}  {{lastname}}</span> </header>
+      <span>  </span> </header>
 </div>
 <div class="p-grid">
   <div class="p-col-12 p-md-6 p-lg-3">
@@ -93,4 +105,15 @@
         </div>
     </div>
 
+</div>
+<div class="p-grid layout-dashboard">
+
+<div class="p-col-12 p-xl-8">
+    <app-fonctionnaire-chef-list></app-fonctionnaire-chef-list>
+
+</div>
+<div class="p-col-12 p-xl-4">
+    
+   <app-todo ></app-todo>
+</div>
 </div>
