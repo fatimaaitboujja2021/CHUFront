@@ -1,5 +1,5 @@
 <div class="card">
-    <h3> Calcul Des Indemnites de la garde</h3>
+    <h3 > Calcul Des Indemnites de la garde</h3>
     <div class="p-formgroup-inline">
         
         <div class="p-field" style="margin-right: 20px">
@@ -24,6 +24,8 @@
 
 
 <div class="p-col-12">
+    <img src="assets/layout/images/chulogo.png"  class="center"  style="height: 100px;width: 500px;margin-left: auto;
+  margin-right: auto;">
     <div class="card">
         <h5></h5>
         <p-table [value]="items" sortField="ref.substring(10,14)" sortMode="single" (onSort)="onSort()" [scrollable]="true" scrollHeight="600px"
@@ -77,7 +79,7 @@
             </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        Montant Total Net de l'année {{year}}: <span  style="color: #108c94">{{totalMontantNet}} DH</span>
+                        Montant Total Net de l'année {{year}}: <span  style="color: #108c94">{{this.totalMontantNet}} DH</span>
                     </div>
                 </ng-template>
         </p-table>

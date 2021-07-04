@@ -46,7 +46,7 @@ export class Fonctionnaire {
   public  dateAffectation:string;
   public  validiterGarde:boolean;
 
-  public  conge=new Conge();
+  // public  conge=new Conge();
   public  grade=new Grade();
   public  comptebancaire=new Comptebancaire();
   public  indemniteGarde=new IndemniteGarde();

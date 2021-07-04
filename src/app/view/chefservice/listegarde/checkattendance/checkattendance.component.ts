@@ -108,7 +108,7 @@ export class CheckattendanceComponent implements OnInit {
             severity: 'success',
             summary: 'Successful',
             detail: 'Chefservice Deleted',
-            life: 3000
+            life: 1200
           });
           this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
 

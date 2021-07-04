@@ -6,18 +6,19 @@
         <div class="card">
             <p-toolbar styleClass="p-mb-2">
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
-                    <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length" ></button>
+                    <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
+                    <button pButton pRipple label="Supprimer" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length" ></button>
                     <span class="ll"><label>de</label>   <input type="date"  pInputText value="2020-01-08" [(ngModel)]="mindate" (change)="findBydateminetmax(matricule,mindate,maxdate)"  />
                 <label>à</label>     <input type="date" pInputText value="2022-01-08" [(ngModel)]="maxdate"  (change)="findBydateminetmax(matricule,mindate,maxdate)"/></span>
-                    <p-button icon="pi pi-times" class=" but1" (click)="ngOnInit()"></p-button>
+                    <p-button icon="pi pi-replay" class=" but1" (click)="ngOnInit()"></p-button>
 
                 </ng-template>
 
 
 
                 <ng-template pTemplate="right">
-                    <button pButton pRipple label="Enrgistrer" icon="pi pi-print" class="p-button-help p-mr-2 p-mb-2" (click)="valider()"></button>
+                    <button pButton pRipple label="imprimer" icon="pi pi-print
+" class="p-button-help p-mr-2 p-mb-2" (click)="valider()"></button>
                     <!--                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>-->
                     <!--                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>-->
                 </ng-template>
@@ -27,8 +28,7 @@
             <p-table editMode="row" #dt id="print-me" [value]="items" [columns]="cols" [rows]="nbrligne" [paginator]="false" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','garde.typeGarde','fonctionnaire.nom']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
-                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="false" >
-
+                     currentPageReportTemplate=" {first} á {last} des {totalRecords} entrées" [showCurrentPageReport]="false" >
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         Liste de Garde

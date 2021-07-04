@@ -42,7 +42,7 @@ prenom:any;
           // this.reloadPage();
           if(this.roles =='ROLE_ADMIN'){
 
-              this.router.navigateByUrl('/view/user');
+              this.router.navigateByUrl('/home');
 
           }else
               this.router.navigateByUrl('/home');

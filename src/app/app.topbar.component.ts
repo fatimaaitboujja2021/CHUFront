@@ -46,9 +46,9 @@ email:string;
         }
 
         if(this.roles=='ROLE_USER') {
-            this.img='./assets/layout/images/chulog.png'}
+            this.img='./assets/layout/images/team_40px.png'}
         else if(this.roles=='ROLE_ADMIN'){
-            this.img='./assets/layout/images/doctor.png'
+            this.img='./assets/layout/images/user_80px.png'
 
         }
     }

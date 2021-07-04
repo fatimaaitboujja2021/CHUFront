@@ -8,7 +8,7 @@
             />
             <form
                     *ngIf="!isSuccessful"
-                    name="form"
+                    name="selected"
                     (ngSubmit)="f.form.valid && save()"
                     #f="ngForm"
                     novalidate
@@ -91,7 +91,7 @@
                             maxlength="20"
                             #matricule="ngModel"
                     />
-                    <div class="alert-danger" *ngIf="f.submitted && lastName.invalid">
+                    <div class="alert-danger" *ngIf="f.submitted && matricule.invalid">
                         <div *ngIf="matricule.errors.required">Le matricule est requis</div>
                     </div>
                 </div>
@@ -169,12 +169,12 @@
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
-                    <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
+                    <button pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
+                    <button pButton pRipple label="Supprimer" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
                 </ng-template>
 
                 <ng-template pTemplate="right">
-                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
+<!--                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>-->
 <!--                    <button (click)="exportexcel()"    >Export to Excel.xlsx</button>-->
 
                     <button pButton pRipple label="Export to Excel.csv" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()" style="margin-right: 10px"></button>
@@ -185,7 +185,7 @@
             <p-table #dt [value]="items"  id="excel-table" [columns]="cols" [rows]="15" [paginator]="true" [globalFilterFields]="['username','lastname','firstname','email','password','enabled','locked','matricule']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
-                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+                     currentPageReportTemplate="{first} á {last} des {totalRecords} entrées" [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Manage utilisateurs</h5>
@@ -207,7 +207,7 @@
 <!--                        <th pSortableColumn="password">password <p-sortIcon field="password"></p-sortIcon></th>-->
                         <th pSortableColumn="usernam">Nom d'utilisateur <p-sortIcon field="usernam"></p-sortIcon></th>
                         <th pSortableColumn="enabled">activé <p-sortIcon field="enabled"></p-sortIcon></th>
-                        <th pSortableColumn="locked">désactivé <p-sortIcon field="locked"></p-sortIcon></th>
+                        <th pSortableColumn="locked">fermé <p-sortIcon field="locked"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>

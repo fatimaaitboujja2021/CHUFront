@@ -58,6 +58,7 @@ export class TodoComponent implements OnInit {
     this.todoService.items = value;
   }
   createTodo(todoForm: NgForm): void {
+    this.newTodo.user.matricule=this.matricule;
      this.todoService.createTodo(this.newTodo).subscribe(createTodo => {
        todoForm.reset();
        this.newTodo = new Todo();

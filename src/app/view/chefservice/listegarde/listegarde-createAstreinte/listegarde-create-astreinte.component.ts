@@ -110,13 +110,17 @@ this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(dat
   //
   //  // return this.http.get<Array<Fonctionnaire>>(this.url);
   // }
-
+  l:number=1;
   public save() {
     this.submitted = true;
-    if (this.selected.ref.trim()) {
+    this.l=Math.floor((Math.random() * 500000) + 1);
+
+    this.selected.ref=this.selected.dateGarde+this.selected.fonctionnaire.nom+this.l;
       this.service.save().subscribe(data => {
         console.log(this.value2);
         console.log(this.selected.fonctionnaire.nom);
+        console.log(this.selected.fonctionnaire.prenom);
+        console.log('reffffffff'+this.selected.ref);
         this.items.push({...data});
         console.log("element OK");
         this.service.findByListebymatriculeSuperieurA(this.matricule).subscribe(data=> this.items=data);
@@ -131,7 +135,7 @@ this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(dat
       });
       this.createDialog = false;
       this.selected = new ListeGarde();
-    }
+
   }
   get selected(): ListeGarde {
     return this.service.selected;

@@ -23,8 +23,8 @@ export class IndemniteAstreinteService {
 
   constructor(private http: HttpClient) { }
 
-  public calculDindemniteastreinte(nom:string,prenom:string,year:number,montant:number,typedegarde:string): Observable<Array<IndemniteAstreinte>>{
-    return  this.http.get<Array<IndemniteAstreinte>>(this.url+'calcule/'+nom+'/'+prenom+'/'+year+'/'+montant+'/'+typedegarde) ;
+  public calculDindemniteastreinte(nom:string,prenom:string,year:number,typedegarde:string): Observable<Array<IndemniteAstreinte>>{
+    return  this.http.get<Array<IndemniteAstreinte>>(this.url+'calcule/'+nom+'/'+prenom+'/'+year+'/'+typedegarde) ;
   }
 
 public findByyearTrim(annee:number,trim:number){

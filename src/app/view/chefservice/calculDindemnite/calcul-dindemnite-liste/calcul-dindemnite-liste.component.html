@@ -7,20 +7,22 @@
 
     <div class="card">
         <h3> Calcul Des Indemnites de la garde et l'astreinte</h3>
-        <div class="p-formgroup-inline">
+        <div class="p-formgroup-inline label1">
             <div class="p-field">
                 <label for="nom">nom</label>
-                <input type="text" pInputText id="nom" [(ngModel)]="nom" required  />
+<!--                <input type="text" pInputText id="nom" [(ngModel)]="nom" required  />-->
+                <p-autoComplete [(ngModel)]="nom" id="nom" [suggestions]="filteredFonctionnairenom" (completeMethod)="searchFonctionnaire($event)"></p-autoComplete>
+
             </div>
             <div class="p-field">
                 <label for="prenom">prenom</label>
-                <input type="text" pInputText id="prenom" [(ngModel)]="prenom" required  />
+<!--                <input type="text" pInputText id="prenom" [(ngModel)]="prenom" required  />-->
+                <p-autoComplete [(ngModel)]="prenom" id="prenom"  [suggestions]="filteredFonctionnaireprenom" (completeMethod)="searchFonctionnaire($event)"></p-autoComplete>
+
             </div>
             <div class="p-field">
                 <label for="year">Annee</label>
                 <input type="number" pInputText id="year" [(ngModel)]="year" required  />
-                <label for="montant">montant</label>
-                <input type="text" pInputText id="montant" [(ngModel)]="montant" required  />
             </div>
 
             <div class="p-field">
@@ -34,16 +36,16 @@
 
                 <div class="p-field-radiobutton">
                     <label for="typegarde">Type de Garde:  </label>
-                    <p-radioButton (click)="step=0" name="typeGarde" value="garde" [(ngModel)]="typedegarde" id="typeGarde"></p-radioButton>
+                    <p-radioButton (change)="initmontant(nom,prenom,typedegarde)" (click)="step=0" name="typeGarde" value="garde" [(ngModel)]="typedegarde" id="typeGarde"></p-radioButton>
                     <label for="typeGarde">Garde</label>
-                    <p-radioButton (click)="step=0" name="typeGarde" value="astreinte" [(ngModel)]="typedegarde"
-                                   id="typeGarde1" style="margin-left: 15px"></p-radioButton>
+                    <p-radioButton (change)="initmontant(nom,prenom,typedegarde)" (click)="step=0" name="typeGarde" value="astreinte" [(ngModel)]="typedegarde"
+                                   id="typeGarde1" ></p-radioButton>
                     <label for="typeGarde1">Astreinte</label>
                 </div>        <div class="p-field">
-<div class="p-field">    <button (click)="calculDindemnite(nom,prenom,year,montant,typedegarde)" pButton pRipple type="button" label="Calculer" class="p-button-success glow-on-hover"></button>
+<div class="p-field">    <button (click)="calculDindemnite(nom,prenom,year,typedegarde)" pButton pRipple type="button" label="Calculer" class="p-button-success glow-on-hover"></button>
     <button  pButton printTitle="{{nom}} {{prenom}}"
              [useExistingCss]="true"
-             printSectionId="print-me" ngxPrint  label="Print to pdf" icon="pi pi-file-pdf" class="p-button-danger b1"></button>
+             printSectionId="print-me" ngxPrint  label="imprimer en pdf" icon="pi pi-file-pdf" class="p-button-danger b1"></button>
 </div>
 
         </div>
@@ -81,11 +83,17 @@
 
 
 <div id="print-me">
-    <div class="p-formgroup-inline title" *ngIf="step==1">
-        <div class="p-field">
-            <h5 for="nom"> {{prenom}} </h5>
-        </div><div class="p-field">
-        <h5 for="nom">  {{nom}}</h5>
+    <img src="assets/layout/images/chulogo.png"  class="center" *ngIf="step==1" style="height: 100px;width: 500px;margin-left: auto;
+  margin-right: auto;">
+
+    <div class="p-formgroup-inline title " *ngIf="step==1">
+        <div class="p-field  ">
+            <h3 for="nom"> {{prenom}} {{nom}}</h3>
+        </div><div class="p-field  center">
+<!--        <h3 for="nom">  {{nom}}</h3>-->
+    </div>
+        <div class="p-field ">
+        <h3 for="nom">  {{montant+'dhs / unité '}}</h3>
     </div>
     </div>
 
@@ -101,11 +109,13 @@
 <!--            <th>le jour</th>-->
             <!--                        <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>-->
         <tr>
-            <th >year </th>
+            <th >Année </th>
 
             <th >Trim </th>
             <th >Nbr{{typedegarde}}s </th>
             <th >Nbr_heures {{typedegarde}}s </th>
+            <th>NJrsOuvrable  </th>
+            <th>NJrsFeries  </th>
             <th>Nbr_heures Regl.</th>
             <th>Nbr_heures Suppl.  </th>
             <th>Nbre unités  </th>
@@ -131,6 +141,8 @@
             <!--                        <td>{{listegarde.ref}}</td>-->
             <td *ngIf="typedegarde=='garde'">{{indemnite.NbrHgardes}} h</td>
             <td *ngIf="typedegarde=='astreinte'">{{indemnite.nbrHAstreinte}} h</td>
+            <td>{{indemnite.nbr_JrsOuvrable}}j</td>
+            <td>{{indemnite.nbr_JrsFeries}}j</td>
             <td>{{indemnite.nbr_H_Regl}} h</td>
             <td>{{indemnite.nbr_H_Supp}} h</td>
             <td>{{indemnite.nbr_unite|number:'1.2-2'}} </td>
@@ -145,7 +157,7 @@
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            Montant Total Net: <span  style="color: #108c94">{{montanttotal}} DH</span>
+            Montant Total Net: <span  style="color: #108c94">{{montanttotal|number:'1.2-2'}} DH</span>
         </div>
     </ng-template>
 </p-table>

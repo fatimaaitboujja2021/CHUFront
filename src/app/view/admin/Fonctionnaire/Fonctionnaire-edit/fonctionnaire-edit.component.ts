@@ -27,6 +27,8 @@ export class FonctionnaireEditComponent implements OnInit {
     }
 
     public edit() {
+        this.step=1;
+
         this.submitted = true;
         this.selected.ref=this.selected.nom+'chu'+this.selected.id;
         if (this.selected.ref.trim()) {
@@ -34,6 +36,8 @@ export class FonctionnaireEditComponent implements OnInit {
                 this.items[this.service.findIndexById(this.selected.id)] = this.selected;
                 this.service.edit().subscribe(data => {
                     this.selected = data;
+                    this.step=1;
+
                     this.messageService.add({
                         severity: 'success',
                         summary: 'Successful',
@@ -44,6 +48,7 @@ export class FonctionnaireEditComponent implements OnInit {
             }
             this.editDialog = false;
             this.selected = new Fonctionnaire();
+            this.step=1;
         }
     }
 
@@ -72,6 +77,8 @@ export class FonctionnaireEditComponent implements OnInit {
 
     set submitted(value: boolean) {
         this.service.submitted = value;
+        this.step=1;
+
     }
 
     get items(): Array<Fonctionnaire> {

@@ -35,9 +35,9 @@ export class UserComponent implements OnInit {
       case "1":
       case "on":
       case "yes":
-        return true;
+        return "Oui";
       default:
-        return false;
+        return "Non";
     }
 
   }
@@ -50,9 +50,9 @@ export class UserComponent implements OnInit {
       case "1":
       case "on":
       case "yes":
-        return true;
+        return "Oui";
       default:
-        return false;
+        return "Non";
     }
 
   }
@@ -187,6 +187,8 @@ else{
     if (this.form.username.trim()) {
       this.authService.register(this.form).subscribe(data => {
             // this.items.push({...data});
+
+        console.log('mk'+this.form.matricule)
             this.isSuccessful = true;
             this.isSignUpFailed = false;
             this.service.findAll().subscribe(data => this.items = data);

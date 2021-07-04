@@ -4,6 +4,7 @@ import {Commande} from '../../../../controller/model/commande.model';
 import {CommandeService} from '../../../../controller/service/commande.service';
 import {Fonctionnaire} from '../../../../controller/model/fonctionnaire.model';
 import {FonctionnaireService} from '../../../../controller/service/fonctionnaire.service';
+import * as XLSX from 'xlsx';
 
 // import {ConfirmationService} from 'primeng/api';
 
@@ -16,6 +17,7 @@ import {FonctionnaireService} from '../../../../controller/service/fonctionnaire
 export class FonctionnaireListComponent implements OnInit {
     cols: any[];
     nbrligne:any=30;
+    fileName= 'ExcelSheet.xlsx';
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
                 private service: FonctionnaireService) {
@@ -65,6 +67,21 @@ export class FonctionnaireListComponent implements OnInit {
            // }
       //  });
     }
+
+
+    exportexcel(): void
+    {
+        /* pass here the table id */
+        let element = document.getElementById('excel-table');
+        const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+        /* generate workbook and add the worksheet */
+        const wb: XLSX.WorkBook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+        /* save to file */
+        XLSX.writeFile(wb, this.fileName);
+
+    }
     public openCreate() {
         this.selected = new Fonctionnaire();
         this.submitted = false;
@@ -74,6 +91,7 @@ export class FonctionnaireListComponent implements OnInit {
     public edit(fonctionnaire: Fonctionnaire) {
         this.selected = {...fonctionnaire};
         this.editDialog = true;
+
     }
     public view(fonctionnaire: Fonctionnaire) {
         this.selected = {...fonctionnaire};

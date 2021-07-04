@@ -39,7 +39,7 @@ export class ListeastreinteListComponent implements OnInit {
 
   }
   private valider(){
-    this.route.navigate(['/view/listegardevalider'])
+    this.route.navigate(['view/listeastreinteshow'])
 
   }
   constructor(private messageService: MessageService, private confirmationService: ConfirmationService,

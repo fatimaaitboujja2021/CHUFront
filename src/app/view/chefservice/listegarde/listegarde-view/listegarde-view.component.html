@@ -1,10 +1,10 @@
-<p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Commande Details" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header=" Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
-        <div class="p-field">
-            <label for="ref">Ref</label>
-            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref"  disabled />
-            <!--            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>-->
-        </div>
+<!--        <div class="p-field">-->
+<!--            <label for="ref">Ref</label>-->
+<!--            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref"  disabled />-->
+<!--            &lt;!&ndash;            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>&ndash;&gt;-->
+<!--        </div>-->
         <div class="p-field">
             <label for="dateGarde">dateGarde</label>
             <input type="text" pInputText id="dateGarde" [(ngModel)]="selected.dateGarde" disabled  />

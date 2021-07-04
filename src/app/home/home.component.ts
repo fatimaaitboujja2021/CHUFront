@@ -8,6 +8,7 @@ import {Fonctionnaire} from '../controller/model/fonctionnaire.model';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {CongeService} from '../controller/service/conge.service';
 
 @Component({
   selector: 'app-home',
@@ -20,12 +21,12 @@ export class HomeComponent implements OnInit {
 jour:string='jour';
 nuit:string='nuit';
 present:string='present(e)';
-  absent:string='absent';
+  absent:string='absent(e)';
 garde:string='garde';
 astreinte:string='astreinte';
   currentDate = new Date();
 
-  constructor(private http: HttpClient,private userService: UserService,private tokenStorageService: TokenStorageService,private service: FonctionnaireService,private listeGardeservice: ListegardeService) {
+  constructor(private http: HttpClient,private congeService: CongeService,private userService: UserService,private tokenStorageService: TokenStorageService,private service: FonctionnaireService,private listeGardeservice: ListegardeService) {
 
   }
   roles: string[];
@@ -75,6 +76,7 @@ this.d1=this.m;
       this.lastname= user.lastname;
       this.matricule=user.matricule;
     }
+
 this.chart(this.matricule)
 
   }
@@ -90,8 +92,8 @@ chart(matricule:string){
     this.listeGardeservice.findbystatue(this.absent,matricule).subscribe(data=> this.nbrabsent=data);
     this.listeGardeservice.findBygarde(this.garde,matricule).subscribe(data=> this.nbrgarde=data);
     this.listeGardeservice.findBygarde(this.astreinte,matricule).subscribe(data=> this.nbrastreinte=data);
-    this.service.findbyconge().subscribe(data=>this.nombredefoncConge=data)
-
+    // this.service.findbyconge().subscribe(data=>this.nombredefoncConge=data)
+this.congeService.nombredefonc(matricule).subscribe(data=>this.nombredefoncConge=data);
 
 }
 

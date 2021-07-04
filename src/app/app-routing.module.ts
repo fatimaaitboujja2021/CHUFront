@@ -67,43 +67,36 @@ import {CheckAttendanceAstreinteComponent} from './view/chefservice/listegarde/c
 import {TodoComponent} from './view/chefservice/todo/todo.component';
 import {PrintastreinteComponent} from './view/chefservice/calculDindemnite/printlesliste/printastreinte/printastreinte.component';
 import {PrintgardeComponent} from './view/chefservice/calculDindemnite/printlesliste/printgarde/printgarde.component';
+import {ListeastreinteShowComponent} from './view/validateliste/listeastreinte-show/listeastreinte-show.component';
+import {ListedePresenceAstreinteComponent} from './view/chefservice/listegarde/check-attendance-astreinte/listede-presence-astreinte/listede-presence-astreinte.component';
+import {ListedePresenceAstreinteEditComponent} from './view/chefservice/listegarde/check-attendance-astreinte/listede-presence-astreinte-edit/listede-presence-astreinte-edit.component';
 
 const routes: Routes = [
 
-    //{path:'',redirectTo:'/user/login',pathMatch:'full'},
-
             { path: 'registration', component: RegisterComponent },
             { path: 'login', component: LoginComponent },
-    // { path: 'home', component: HomeComponent },
-    // { path: 'login', component: LoginComponent },
-    // { path: 'register', component: RegisterComponent },
-    // { path: 'profile', component: ProfileComponent },
-    // { path: 'user', component: BoardUserComponent },
-    // { path: 'admin', component: BoardAdminComponent },
-    //  { path: '', redirectTo: 'home', pathMatch: 'full' },
 
 
     {path: '', component: AppMainComponent,canActivate:[AuthGuard],
         children: [
 
             {path: 'logout', component: LogoutComponent},
-            {path: 'home', component: HomeComponent},
-            {path: 'profile/info', component: ProfileComponent},
+            {path: 'home', component: HomeComponent,canActivate:[AuthGuard]},
+            {path: 'profile/info', component: ProfileComponent,canActivate:[AuthGuard]},
             {path: 'listefonctionnaires', component: FonctionnaireChefComponent},
             {path: 'presence/garde', component: CheckattendanceComponent},
             {path: 'presence/astreinte', component: CheckAttendanceAstreinteComponent},
             { path: 'todo', component: TodoComponent },
+            { path: 'presence/edite', component: ListedePresenceAstreinteEditComponent },
+
             { path: 'printastreinte', component: PrintastreinteComponent },
-            { path: 'printgarde', component: PrintgardeComponent
-
-
-
-            },
-            // { path: 'login', component: LoginComponent },
+            { path: 'printgarde', component: PrintgardeComponent},
             {path: 'view/listegarde', component: ListegardeComponent},
             {path: 'view/listeastreinte', component: ListeastreinteListComponent},
             {path: 'view/listedepresence', component: ListedepresenceComponent},
+            {path: 'view/listeastreintedepresence', component: ListedePresenceAstreinteComponent},
             {path: 'view/listegardevalider', component: ValidatelisteComponent},
+            {path: 'view/listeastreinteshow', component: ListeastreinteShowComponent},
             {path: 'view/Calculdindemnite', component: CalculDindemniteListeComponent},
             {path: 'view/CalculdindemniteAstreinte', component: AstreinteComponent},
             {path: 'view/CalculdindemniteGarde', component: GardeComponent},

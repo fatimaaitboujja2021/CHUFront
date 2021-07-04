@@ -10,6 +10,7 @@ import {FonctionnaireService} from '../../../../controller/service/fonctionnaire
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {TokenStorageService} from '../../../../_services/token-storage.service';
+import {newArray} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-listegarde-create',
@@ -39,6 +40,8 @@ export class ListegardeCreateComponent implements OnInit {
   ngOnInit(): void {
     // this.service.findAll().subscribe(data => this.itemsfonctionnaire = data);
     this.service.init();
+      this.service.selected=new ListeGarde();
+
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
@@ -55,41 +58,34 @@ export class ListegardeCreateComponent implements OnInit {
       this.lastname= user.lastname;
       this.matricule=user.matricule;
     }
-// this.findBymatriculeSuperieur(this.matricule);
-//     this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
-   // this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(data => this.itemss = data);;
-
-    // this.findBymatriculeSuperieur(this.matricule);
-    console.log('jajaj'+this.itemss)
-    console.log(this.matricule)
 
   }
 
 
 
-  itemss:any[];
+  itemss:any=new Array(Fonctionnaire) ;
 
 
   searchFonctionnaire(event) {
-    // in a real application, make a request to a remote url with the query and
-    // return filtered results, for demo we filter at client side
-    const filterednom: any[] = [];
-    const filteredprenom: any[] = [];
-    console.log(this.itemss +'ñññ')
-this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(data => this.itemss = data);;
-    const query = event.query;
-    // this.findBynom(query);
-    console.log(this.itemss +'ll')
 
-    for (let i = 0; i < this.itemss.length; i++) {
-      const nom = this.itemss[i];
-      console.log( 'haha'+this.itemss[i]);
-      if (this.itemss[i].nom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filterednom.push(this.itemss[i].nom);
-        console.log('d'+nom);
+     const filterednom: string[] = [];
+    const filteredprenom: string[] = [];
+
+    this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(data => this.itemsfonctionnaire = data);;
+    const query = event.query;
+
+
+    for (let i = 0; i < this.itemsfonctionnaire.length; i++) {
+      const f = this.itemsfonctionnaire[i];
+      console.log( 'items i'+this.itemss[i]);
+      if (this.itemsfonctionnaire[i].nom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filterednom.push(this.itemsfonctionnaire[i].nom);
+        console.log('d'+this.itemsfonctionnaire[i].nom);
       }
-      if (this.itemss[i].prenom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filteredprenom.push(this.itemss[i].prenom);
+      if (this.itemsfonctionnaire[i].prenom.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filteredprenom.push(this.itemsfonctionnaire[i].prenom);
+        console.log('di'+this.itemsfonctionnaire[i].prenom);
+
       }
 
       // this.service.init().subscribe(data => this.items = data);
@@ -113,10 +109,13 @@ this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(dat
   //
   //  // return this.http.get<Array<Fonctionnaire>>(this.url);
   // }
-
+l:number=1;
   public save() {
     this.submitted = true;
-    if (this.selected.ref.trim()) {
+    this.l=Math.floor((Math.random() * 500000) + 1);
+
+    this.selected.ref=this.selected.dateGarde+this.selected.fonctionnaire.nom+this.l;
+    // if (this.selected.ref.trim()) {
       this.service.save().subscribe(data => {
         console.log(this.value2);
         console.log(this.selected.fonctionnaire.nom);
@@ -131,14 +130,14 @@ this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(dat
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
-          detail: 'element Created',
+          detail: 'élément créé',
           life: 3000
         });
 
       });
       this.createDialog = false;
       this.selected = new ListeGarde();
-    }
+
   }
   get selected(): ListeGarde {
     return this.service.selected;
@@ -163,6 +162,7 @@ this.servicefonctionnaire.findBymatriculeSuperieur(this.matricule).subscribe(dat
   set submitted(value: boolean) {
     this.service.submitted = value;
   }
+
 
   get items(): Array<ListeGarde> {
     return this.service.items;

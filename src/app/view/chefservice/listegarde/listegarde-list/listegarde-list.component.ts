@@ -95,7 +95,7 @@ this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> t
   public delete(selected: ListeGarde) {
     this.selected = selected;
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete ' + selected.ref + '?',
+      message: 'Etes-vous sûr que vous voulez supprimer ' + selected.fonctionnaire.nom +selected.fonctionnaire.prenom + '?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -105,7 +105,7 @@ this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> t
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
-            detail: 'Chefservice Deleted',
+            detail: 'élément supprimé',
             life: 3000
           });
           this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
@@ -165,7 +165,7 @@ this.inedit(book);  }
 
   public deleteMultiple() {
     this.confirmationService.confirm({
-        message: 'Are you sure you want to delete the selected Fonctionnaires?',
+        message: 'Êtes-vous sûr de vouloir supprimer les éléments sélectionnés?',
         header: 'Confirm',
         icon: 'pi pi-exclamation-triangle',
         accept: () => {
@@ -175,7 +175,7 @@ this.inedit(book);  }
       this.messageService.add({
         severity: 'success',
         summary: 'Successful',
-        detail: 'ListeGarde Deleted',
+        detail: 'éléments supprimee ',
         life: 3000
       });
       this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);

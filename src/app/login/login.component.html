@@ -11,28 +11,28 @@
                   #f="ngForm"
                   novalidate
             >
-                <h1>Login</h1>
+                <h1>se connecter</h1>
 
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username" ><img src="assets/layout/images/team_40px.png " style="height: 30px ;width: 30px">Nom d'utilisateur</label>
+
                     <input
                             type="text"
-                            class="form-control "
+                            class="form-control pi pi-user "
                             name="username"
                             [(ngModel)]="form.username"
                             required
                             #username="ngModel"
-                   placeholder="username" />
+                   placeholder="Nom d'utilisateur" />
                     <div
                             class="alert alert-danger"
                             role="alert"
                             *ngIf="f.submitted && username.invalid"
                     >
-                        Username is required!
-                    </div>
+                        Nom d'utilisateur est nécessaire!!                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password"><img src="assets/layout/images/lock_64px.png " style="height: 30px ;width: 30px">mot de passe</label>
                     <input
                             type="password"
                             class="form-control"
@@ -41,33 +41,35 @@
                             required
                             minlength="6"
                             #password="ngModel"
-                     placeholder="Password"/>
+                     placeholder="mot de passe"/>
                     <div
                             class="alert alert-danger"
                             role="alert"
                             *ngIf="f.submitted && password.invalid"
                     >
-                        <div *ngIf="password.errors.required">Password is required</div>
+                        <div *ngIf="password.errors.required">mot de passe  est nécessaire!!  </div>
                         <div *ngIf="password.errors.minlength">
-                            Password must be at least 6 characters
-                        </div>
+                            Le mot de passe doit être au moins de 6 caractères                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-danger">
-                        Login
-                    </button>
-
-
                 </div>
                 <div class="form-group">
                     <div
-                            class="alert alert-danger"
+                            class="alert alert-danger inc"
                             role="alert"
                             *ngIf="f.submitted && isLoginFailed"
                     >
-                        Login failed: {{ errorMessage }}
+                        Identifiants incorrects
+                        {{ errorMessage }}
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-danger">
+                        Connexion
+
+                    </button>
+
+
                 </div>
             </form>
         </div>

@@ -1,9 +1,8 @@
 .hr{
-    font-size: 18px;
-    font-family: Consolas;
-    font-weight: bold;
-    margin-left: 400px;
+    font-size: 20px;
+    font-weight: bolder;
     margin-bottom: 10px;
+    text-align: center;
 
 }
 /*span{*/
@@ -17,47 +16,78 @@
     font-weight: bold;
 }
 .wrapper {
-    background: linear-gradient(to bottom,#108c94,  #2e236b);
+    background: linear-gradient(to right,#108c94,  #2e236b);
     background: -webkit-linear-gradient(#108c94, #2e236b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font: 16px chilanka, segoe script, purisa, comic sans ms, cursive;
-font-weight: bold;
-
+    /*font: 16px chilanka, segoe script, purisa, comic sans ms, cursive;*/
+font-weight: bolder;
+/*text-align: center;*/
+    /*margin-left: 70px;*/
 }
 
 .typing-demo {
-    width: 22ch;
-    animation: typing 10s steps(22), blink .5s step-end infinite alternate;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid;
-    font-family: monospace;
-    font-size: 2em;
+/*    width: 30ch;*/
+/*    !*animation: center,typing 10s steps(22), blink .5s step-end infinite alternate;*!*/
+/*    !*white-space: nowrap;*!*/
+/*    !*overflow: hidden;*!*/
+/*    border-right: 3px solid;*/
+/*    font-family: monospace;*/
+/*    font-size: 3em;*/
+/*    text-align: center;*/
+    font-size: 35px;
+
 }
 
-@keyframes typing {
-    from {
-        width: 0
-    }
-}
+/*@keyframes typing {*/
+/*    from {*/
+/*        width: 0;*/
+/*        text-align: center;*/
 
-@keyframes blink {
-    50% {
-        border-color: transparent
-    }
-}
+/*    }*/
+
+/*}*/
+
+/*@keyframes blink {*/
+/*    50% {*/
+/*        border-color: transparent;*/
+/*        text-align: center;*/
+
+/*    }*/
+
+/*}*/
 input{
    border-color:#108c94 ;
     border-style: groove;
-
+margin-right: 10px;
     color: #108c94;
-    width: 250px;
-    margin-left: 28px;
-    border-radius: 20px;
-    margin-right: 5px;
+    width: 400px;
+    /*border-radius: 20px;*/
 }
 .searchchart,button{
 margin-top: 22px;
 margin-bottom: 22px;
+}
+h4{
+    font-weight: bold;
+    font-size: 20px;
+    color:dodgerblue ;
+    margin-top: 40px;
+    /*margin-left: 400px;*/
+    margin-bottom: 40px;
+    position: center;
+    text-align: center;
+
+}
+/*.statistique{*/
+/*    margin-left: 15px;*/
+/*}*/
+
+.center,.wrapper,.statistique {
+    display: block;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
 }

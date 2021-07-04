@@ -78,12 +78,15 @@ export class FonctionnaireCreateComponent implements OnInit {
         this.service.findAll().subscribe(data=>{
             this.items = data  });
     }
+    l:number=1;
 
     public save() {
         this.submitted = true;
 
         if (this.selected.matriculeSub.trim()) {
-            this.selected.ref=this.selected.nom+'chu'+this.selected.id;
+            this.l=Math.floor((Math.random() * 500000) + 1);
+
+            this.selected.ref=this.l+this.selected.nom;
 
             this.service.save().subscribe(data => {
                 this.items.push({...data});

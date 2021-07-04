@@ -31,7 +31,7 @@ export class IndemniteGardeService {
 
   }
   public findMontantnettotal(n:number): Observable<number>{
-    return  this.http.get<number>(this.url+'montant/'+n+'/') ;
+    return  this.http.get<number>(this.url+'montant/'+n) ;
   }
   public findByyearTrim(annee:number,trim:number){
     return  this.http.get<Array<IndemniteGarde>>(this.url+'anneetrim/'+annee+'/'+trim) ;
@@ -50,8 +50,8 @@ export class IndemniteGardeService {
     return this.http.get<Array<IndemniteGarde>>(this.url);
   }
 
-  public calculDindemnite(nom:string,prenom:string,year:number,montant:number,typedegarde:string): Observable<Array<IndemniteGarde>>{
-    return  this.http.get<Array<IndemniteGarde>>(this.url+'calcul/'+nom+'/'+prenom+'/'+year+'/'+montant+'/'+typedegarde) ;
+  public calculDindemnite(nom:string,prenom:string,year:number,typedegarde:string): Observable<Array<IndemniteGarde>>{
+    return  this.http.get<Array<IndemniteGarde>>(this.url+'calcul/'+nom+'/'+prenom+'/'+year+'/'+typedegarde) ;
   }
 
   get items(): Array<IndemniteGarde> {

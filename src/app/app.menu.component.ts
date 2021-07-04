@@ -202,13 +202,15 @@ export class AppMenuComponent implements OnInit {
                     label: 'Favorites', icon: 'pi pi-fw pi-home',
                     items: [
                         {label: ' Accueil', icon: 'pi pi-fw pi-home', routerLink: ['/home'] },
+                        // {label: 'Calendar', icon: 'pi pi-fw pi-calendar-plus', routerLink: ['/pages/calendar']},
+
                     ]
                 },
                 {
-                    label: ' préparation des listes de garde', icon: 'pi pi-fw pi-bars', routerLink: ['/Admin'],
+                    label: ' Préparation des listes de garde', icon: 'pi pi-fw pi-bars', routerLink: ['/Admin'],
                     items: [
-                        {label: 'liste de garde',icon: 'pi pi-fw pi-list', routerLink: ['/view/listegarde']},
-                        {label: 'liste de astreinte',icon: 'pi pi-fw pi-list', routerLink: ['view/listeastreinte']},
+                        {label: 'Liste de garde',icon: 'pi pi-fw pi-list', routerLink: ['/view/listegarde']},
+                        {label: 'Liste d\' astreinte',icon: 'pi pi-fw pi-list', routerLink: ['view/listeastreinte']},
 
                     ]
                 },

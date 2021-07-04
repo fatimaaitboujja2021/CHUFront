@@ -2,6 +2,9 @@ h3{
   text-align: center;
   font-weight: bolder;
   font-family: Consolas;
+  color: #108c94;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 h4{
@@ -16,7 +19,7 @@ h4{
    font-family: Consolas;
    font-size: 16px;
  }
-input{
+p-autoComplete{
   margin: 15px;
   border-radius: 15px;
 }
@@ -116,17 +119,33 @@ th{
   font-weight: bolder;
 }
 .title{
-  margin-left: 600px;
+  //margin-left: 500px;
   font-weight: bolder;
 
 }
 
+.p1{
+  font-weight: bolder;
+  color: #108c94;
+  font-family: Consolas;
+  text-align: center;
 
+}
 
+.label1{
+  margin-left: 200px;
+}
 
+#typeGarde1{
+  margin-left: 15px;
+}
 
-
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
 
 

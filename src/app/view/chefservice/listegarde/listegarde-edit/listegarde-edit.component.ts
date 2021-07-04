@@ -26,7 +26,6 @@ export class ListegardeEditComponent implements OnInit {
     lastname:string;
     matricule:string;
     email:string;
-
     constructor(private tokenStorageService: TokenStorageService,private messageService: MessageService,private servicefonctionnaire :FonctionnaireService, private service: ListegardeService) {
     }
 
@@ -57,13 +56,19 @@ export class ListegardeEditComponent implements OnInit {
                 this.items[this.service.findIndexById(this.selected.id)] = this.selected;
                 this.service.edit().subscribe(data => {
                     this.selected = data;
+                    console.log(data+'jjjjkr85')
+                    // if(this.selected.garde.typeGarde=='garde')
+                    //     this.service.findByListebymatriculeSuperieurG(this.matricule).subscribe(data=> this.items=data);
+                    // else if('astreinte' === this.selected.garde.typeGarde){
+                    //     this.service.findByListebymatriculeSuperieurA(this.matricule).subscribe(data=> this.items=data);
+                    // }
                     this.messageService.add({
                         severity: 'success',
                         summary: 'Successful',
-                        detail: 'Commande Updated',
-                        life: 3000
+                        detail: 'édite avec succès',
+                        life: 1200
                     });
-                    this.service.init();
+
                 });
             }
             this.editDialog = false;
@@ -72,7 +77,8 @@ export class ListegardeEditComponent implements OnInit {
     }
 
 
-    itemss:any[];
+    itemss1:any[];
+    itemss:any=[ ];
 
 
     searchFonctionnaire(event) {

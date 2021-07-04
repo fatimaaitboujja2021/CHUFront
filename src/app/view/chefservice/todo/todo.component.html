@@ -1,6 +1,6 @@
 <div class="todo-content">
 
-    <h1 class="page-title">Mes Tâches</h1>
+    <h1 class="page-title">To do list</h1>
     <div class="todo-create">
         <form #todoForm="ngForm" (ngSubmit) = "createTodo(todoForm)" novalidate>
             <input type="text" id="title" class="form-control" placeholder="Tapez une tâche et appuyez sur Entrée...."
@@ -26,7 +26,7 @@
                 <span class="todo-title">
               {{todo.title}}
             </span>
-                <span class="todo-title">
+                <span class="todo-title tododate">
               {{todo.createdAt| date: 'dd/MM/yyyy  HH:mm'}}
             </span>
                 <span class="todo-actions">

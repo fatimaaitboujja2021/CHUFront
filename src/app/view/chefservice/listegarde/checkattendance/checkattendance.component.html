@@ -7,16 +7,16 @@
             <p-toolbar styleClass="p-mb-4">
                 <ng-template pTemplate="left">
 <!--                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>-->
-                    <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
+                    <button pButton pRipple label="Supprimer" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>
 
                     <span class="ll"><label>de</label>   <input type="date"  pInputText value="2020-01-08" [(ngModel)]="mindate" (change)="findBydateminetmax(matricule,mindate,maxdate)"  />
                 <label>à</label>     <input type="date" pInputText value="2022-01-08" [(ngModel)]="maxdate"  (change)="findBydateminetmax(matricule,mindate,maxdate)"/></span>
-                    <p-button icon="pi pi-times" class=" but1" (click)="ngOnInit()"></p-button>
+                    <p-button icon="pi pi-replay" class=" but1" (click)="ngOnInit()"></p-button>
                 </ng-template>
 
 
                 <ng-template pTemplate="right">
-                    <button pButton pRipple label="valider" icon="pi pi-bookmark" class="p-button-help " (click)="valider()"></button>
+                    <button pButton pRipple label="Imprimer" icon="pi pi-print" class="p-button-help " (click)="valider()"></button>
 <!--                    <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>-->
 <!--                    <button pButton pRipple label="Export excel.csv" icon="pi pi-file-excel" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>-->
                 </ng-template>
@@ -34,7 +34,7 @@
 
                         <span class="p-input-icon-right">
                     <i class="pi pi-bars"></i>
-                            <p-inputNumber style="text-align: center" type="number"  [(ngModel)]="nbrligne" placeholder="nombre de ligne"></p-inputNumber>
+                            <p-inputNumber class="input" type="number"  [(ngModel)]="nbrligne" placeholder="nombre de ligne"></p-inputNumber>
 
                 </span>
                         <span class="p-input-icon-left">

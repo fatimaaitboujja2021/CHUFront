@@ -50,6 +50,8 @@ export class GardeComponent implements OnInit {
     matricule=this.matricule;
     annee=this.year;
     this.service.calculAll(matricule,annee).subscribe(data => this.p = data);
+    this.service.findMontantnettotal(this.year).subscribe(data=>this.totalMontantNet=data);
+this.searchFonctionnaire(annee,this.trim);
     // this.searchFonctionnaire(this.year,this.trim);
   }
   private valider(){
@@ -70,7 +72,7 @@ export class GardeComponent implements OnInit {
 
     }
     return this.montanttt;
-
+console.log('hello'+this.totalMontantNet);
   }
 
 

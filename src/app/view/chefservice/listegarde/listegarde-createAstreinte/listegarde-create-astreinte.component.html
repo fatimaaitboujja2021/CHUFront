@@ -1,10 +1,10 @@
 <p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header=" Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
-        <div class="p-field">
-            <h6 for="ref">Ref</h6>
-            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref"   />
-            <!--            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>-->
-        </div>
+<!--        <div class="p-field">-->
+<!--            <h6 for="ref">Ref</h6>-->
+<!--            <input type="text" pInputText id="ref" [(ngModel)]="selected.ref"   />-->
+<!--            &lt;!&ndash;            <small class="p-invalid" *ngIf="submitted && !selected.reference">ref is required.</small>&ndash;&gt;-->
+<!--        </div>-->
         <div class="p-field">
             <h6 for="dateGarde">dateGarde</h6>
             <input type="date" pInputText  id="dateGarde" [(ngModel)]="selected.dateGarde"   />
@@ -75,8 +75,8 @@
 
         <h6>type garde</h6>
         <div class="p-field-radiobutton">
-            <p-radioButton name="typeGarde" value="garde" [(ngModel)]="selected.garde.typeGarde" id="typeGarde"></p-radioButton>
-            <label for="typeGarde">Garde</label>
+<!--            <p-radioButton name="typeGarde" value="garde" [(ngModel)]="selected.garde.typeGarde" id="typeGarde"></p-radioButton>-->
+<!--            <label for="typeGarde">Garde</label>-->
             <p-radioButton name="typeGarde" value="astreinte" [(ngModel)]="selected.garde.typeGarde"
                            id="typeGarde1" style="margin-left: 15px"></p-radioButton>
             <label for="typeGarde1">Astreinte</label>
@@ -84,7 +84,7 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()" ></button>
+        <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Sauvegarder" icon="pi pi-check" class="p-button-text" (click)="save()" ></button>
     </ng-template>
 </p-dialog>

@@ -1,0 +1,95 @@
+.jour{
+  background-color: #0a80bb;
+  font-family: Consolas;
+}
+.nuit{
+  background-color: #4CAF50;
+}
+th{
+  margin-top: 1px;
+  font-family: Consolas;
+  font-size: 15px;
+  font-weight: bold;
+
+}
+span{
+  color: black;
+  background-color: skyblue;
+  border-width: 15px;
+  font-family: Arial;
+font-size: 15px;
+}
+td{
+  font-family: Consolas;
+  font-size: 14px;
+  margin: 1px;
+  font-weight: bold;
+}
+.hi{
+  white-space:nowrap;
+
+}
+h4{
+  color: crimson;
+  margin-right: 100px;
+}
+.conge{
+  font-family: Consolas;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+
+}
+img{
+  height: 100px;
+  width: 300px;
+}
+.pconge{
+  font-family: Consolas;
+  font-size: 10px;
+  font-weight: bold;
+
+}
+
+input{
+  border-width: 9px;
+  font-family: Consolas;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.card{
+  width: 200px;
+  height: 100px;
+  display: grid;
+  margin-left: 2px;
+  color: white;
+  background-color: #108c94 ;
+  font-size: 14px;
+  font-weight: bold;
+
+}
+.a{
+  background-color: transparent;
+  border-radius: 0px;
+  height: 50px;
+  border-color: transparent;
+  font-weight: bolder;
+
+}
+button{
+  color: white;
+  font-size: 14px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.return{
+margin-left: 25px;
+}
+.img1{
+  width: 30px;
+  height: 30px;
+  margin-left: 321px;
+}
+label{
+  //font-weight: bold;
+}

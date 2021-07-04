@@ -82,13 +82,14 @@
   display:inline-block;
   background:  linear-gradient(#43b29f, #452e62);
   padding:15px 40px;
-  border-radius: 20px;
+  border-radius: 50px;
   color:#fff;
   font-size:14px;
   border:0 none;
-  margin:5px;
-  width:100%;
+  /*margin:5px;*/
+  width:200px;
   cursor:pointer;
+  margin-left: 20px;
 }
 
 .container:hover .top:before,
@@ -114,7 +115,7 @@
 }
 h1{
   font-family: Consolas;
-margin-left: 50px;
+margin-left: 20px;
 
   background: -webkit-linear-gradient(#452e62, #43b29f);
   -webkit-background-clip: text;
@@ -141,4 +142,7 @@ label{
   border: 1px solid #636b7b;
 font-weight: bold;
   font-family: Consolas;
+}
+.inc{
+  /*margin-bottom: 30px;*/
 }

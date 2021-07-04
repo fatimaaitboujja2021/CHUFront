@@ -1,6 +1,6 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
@@ -163,7 +163,7 @@ import {ListegardeViewComponent} from './view/chefservice/listegarde/listegarde-
 import {ListegardePreparerComponent} from './view/chefservice/listegarde/listegarde-preparer/listegarde-preparer.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { ValidatelisteShowComponent } from './view/Validateliste/validateliste-show/validateliste-show.component';
+import { ValidatelisteShowComponent } from './view/validateliste/listegarde-show/validateliste-show.component';
 import { ValidatelisteComponent } from './view/validateliste/validateliste.component';
 import { ProfileComponent } from './view/chefservice/profile/profile.component';
 import {NgxPrintModule} from 'ngx-print';
@@ -203,6 +203,8 @@ import { TodoComponent } from './view/chefservice/todo/todo.component';
 import { PrintleslisteComponent } from './view/chefservice/calculDindemnite/printlesliste/printlesliste.component';
 import { PrintastreinteComponent } from './view/chefservice/calculDindemnite/printlesliste/printastreinte/printastreinte.component';
 import { PrintgardeComponent } from './view/chefservice/calculDindemnite/printlesliste/printgarde/printgarde.component';
+import {AuthInterceptor} from './auth/auth.interceptor';
+import { ListeastreinteShowComponent } from './view/validateliste/listeastreinte-show/listeastreinte-show.component';
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
 
@@ -405,13 +407,19 @@ registerLocaleData(localeFr, 'fr');
         TodoComponent,
         PrintleslisteComponent,
         PrintastreinteComponent,
-        PrintgardeComponent
+        PrintgardeComponent,
+        ListeastreinteShowComponent,
+
 
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService,{provide: LOCALE_ID, useValue: 'fr' }
+        PhotoService, ProductService, MenuService,{provide: LOCALE_ID, useValue: 'fr' }, {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })

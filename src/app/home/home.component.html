@@ -5,21 +5,27 @@
           <div class="typing-demo">
               <span>Bienvenu </span>
 
-              <span>{{firstname}}  </span>
+              <span>{{firstname}} </span>
 
               <span>{{lastname}}</span>
           </div>
 
 
       </div>
-      <label class="searchchart">
-          <input [(ngModel)]="matricule1"  type="text" style="color: #0a80bb">
-      </label>
-      <button pButton pRipple label="Save" icon="pi pi-search" (click)="chart(matricule1)"></button>
+      <div *ngIf="roles=='ROLE_ADMIN'" class="center">
+
+          <label class="searchchart ">
+              <input [(ngModel)]="matricule1"  type="text" value="le matricule de chef de service" style="color: #0a80bb">
+          </label>
+          <button pButton pRipple label="chercher" icon="pi pi-search" (click)="chart(matricule1)"></button>
+      </div>
+
 
       <!--    <p>{{ content }}</p>-->
       <span>  </span> </header>
 </div>
+<h4><img src="assets/layout/images/statistics_40px.png" ><span class="statistique">les statistiques de la semaine</span></h4>
+
 <div class="p-grid">
   <div class="p-col-12 p-md-6 p-lg-3">
     <div class="overview-box card">
@@ -57,7 +63,7 @@
     <div class="p-col-12 p-md-6 p-lg-3">
         <div class="overview-box card">
             <div class="overview-box-value">{{nombredefoncConge}}</div>
-            <div class="overview-box-title">Nombre de fonctionnaire avec Conge</div>
+            <div class="overview-box-title">Le nombre de fonctionnaires en congés</div>
 
             <img src="assets/layout/images/dashboard/graph-tasks.svg" alt="roma-layout" />
             <div class="overview-box-status">

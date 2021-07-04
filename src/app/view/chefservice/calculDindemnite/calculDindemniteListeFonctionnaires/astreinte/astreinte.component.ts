@@ -43,7 +43,7 @@ this.rowData=new  IndemniteAstreinte();
 
       this.matricule=user.matricule;
 
-this.indemniteastreinteservice
+// this.indemniteastreinteservice
 
 
 
@@ -119,7 +119,8 @@ calculall(matricule:string,annee:number){
     matricule=this.matricule;
     annee=this.year;
   this.indemniteastreinteservice.calculAll(matricule,annee).subscribe(data => this.p = data);
-  this.indemniteastreinteservice.findAll().subscribe(data => this.items = data);
+  // this.indemniteastreinteservice.findAll().subscribe(data => this.items = data);
+  this.searchFonctionnaire(annee,this.trim);
 
 }
 

@@ -3,6 +3,7 @@ import {EventService} from '../demo/service/eventservice';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import {ListegardeService} from '../controller/service/listegarde.service';
 
 @Component({
     templateUrl: './app.calendar.component.html',
@@ -28,20 +29,19 @@ export class AppCalendarComponent implements OnInit{
     changedEvent: any;
 
     clickedEvent = null;
-    eventClick:any;
 
-    constructor(private eventService: EventService) {}
+    constructor(private eventService: ListegardeService) {}
 
     ngOnInit() {
-        this.eventService.getEvents().then(events => {this.events = events; });
-        this.changedEvent = {title: '', start: null, end: '', allDay: null};
+        this.eventService.init().subscribe(events => {this.events = events; });
+        this.changedEvent = {dateGarde: '', dureDeGarde: '', statue: ''};
 
         this.options = {
-            plugins: [ dayGridPlugin, timeGridPlugin, interactionPlugin ],
-            defaultDate: '2017-02-01',
+            plugins: [ dayGridPlugin],
+            defaultDate: '2021-06-01',
             header: {
                 left: 'prev,next',
-                center: 'title',
+                center: 'dateGarde',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
             editable: true,
@@ -50,27 +50,12 @@ export class AppCalendarComponent implements OnInit{
 
                 this.clickedEvent = e.event;
 
-                this.changedEvent.title = this.clickedEvent.title;
-                this.changedEvent.start = this.clickedEvent.start;
-                this.changedEvent.end = this.clickedEvent.end;
+                this.changedEvent.dureDeGarde = this.clickedEvent.dureDeGarde;
+                this.changedEvent.dateGarde = this.clickedEvent.dateGarde;
+                this.changedEvent.statue = this.clickedEvent.statue;
             }
         };
     }
 
-    save() {
-        this.eventDialog = false;
 
-        this.clickedEvent.setProp('title', this.changedEvent.title);
-        this.clickedEvent.setStart(this.changedEvent.start);
-        this.clickedEvent.setEnd(this.changedEvent.end);
-        this.clickedEvent.setAllDay(this.changedEvent.allDay);
-
-        this.changedEvent = {title: '', start: null, end: '', allDay: null};
-    }
-
-    reset() {
-        this.changedEvent.title = this.clickedEvent.title;
-        this.changedEvent.start = this.clickedEvent.start;
-        this.changedEvent.end = this.clickedEvent.end;
-    }
 }

@@ -35,6 +35,13 @@ private _noms:Array<String>;
     return this.http.post<Fonctionnaire>(this.url, this.selected);
   }
 
+  public montantdegarde(nom:string,prenom:string): Observable<number>{
+    return  this.http.get<number>(this.url+'montantdegarde/'+nom+'/'+prenom+'/') ;
+  }
+
+  public montantdastreinte(nom:string,prenom:string): Observable<number>{
+    return  this.http.get<number>(this.url+'montantDastreinte/'+nom+'/'+prenom+'/') ;
+  }
   public edit(): Observable<Fonctionnaire> {
     return this.http.put<Fonctionnaire>(this.url, this.selected);
   }
@@ -46,32 +53,11 @@ private _noms:Array<String>;
   public deleteMultipleByReference(): Observable<number> {
     return this.http.post<number>(this.url + 'delete-multiple-by-reference' , this.selectes);
   }
-//  public findBymatriculeSuperieur(): Observable<Array<Fonctionnaire>> {
-//   return this.http.get(<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+this.selected.matriculeSuperieur));
-// }
 
-
-  // public findBymatriculeSuperieur(matricule:String){
-  //   this.http.get<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+matricule).subscribe(
-  //       data=>{
-  //         this.items = data;
-  //       },error=>{
-  //         console.log('erreur findBymatriculeSuperieur');
-  //       }
-  //   );
-  // }
   public findBymatriculeSuperieur(matricule:string): Observable<Array<Fonctionnaire>>{
     return  this.http.get<Array<Fonctionnaire>>(this.url+'matriculeSuperieur/'+matricule) ;
   }
-  public findBynom(nom:String){
-    this.http.get<Array<String>>(this.url+'d/'+nom).subscribe(
-        data=>{
-          this.noms = data;
-        },error=>{
-          console.log('erreur findbynom');
-        }
-    );
-  }
+
 
   public findIndexById(id: number): number {
     let index = -1;
@@ -84,8 +70,7 @@ private _noms:Array<String>;
     return index;
   }
 
-  public findbyconge(): Observable<number>{
-    return  this.http.get<number>(this.url+'r') ;}
+
   public deleteIndexById(id: number) {
     this.items.splice(this.findIndexById(id), 1);
   }
@@ -97,6 +82,9 @@ private _noms:Array<String>;
   }
 
   get items(): Array<Fonctionnaire> {
+    if (this._items == null) {
+      this._items = new Array<Fonctionnaire>();
+    }
     return this._items;
   }
 

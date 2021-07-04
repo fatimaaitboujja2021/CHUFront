@@ -16,6 +16,7 @@ export class ListegardeService {
   private _items: Array<ListeGarde>;
   private _itemss: Array<ListeGarde>;
   private _selected: ListeGarde;
+  private _selectedAstreinte: ListeGarde;
   private _selectes: Array<ListeGarde>;
   private _itemsfonctionnaire: Array<Fonctionnaire>;
   private _selectedfonctionnaire: Fonctionnaire;
@@ -54,6 +55,7 @@ public findBydateminetmax(n:String,d:Date,f:Date,t:string) :Observable<Array<Lis
    return  this.http.get<Array<ListeGarde>>(this.url+'matriculesupA/'+matricule) ;
   }
 
+
   public findByListebymatriculeSuperieurG(matricule:string): Observable<Array<ListeGarde>>{
     return  this.http.get<Array<ListeGarde>>(this.url+'matriculesupG/'+matricule) ;
   }
@@ -77,9 +79,11 @@ public findBydateminetmax(n:String,d:Date,f:Date,t:string) :Observable<Array<Lis
 
 
   public edit(): Observable<ListeGarde> {
-    return this.http.put<ListeGarde>(this.url, this.selected);
+    return this.http.put<ListeGarde>(this.url+'update', this.selected);
   }
-
+  public editAstreinte(): Observable<ListeGarde> {
+    return this.http.put<ListeGarde>(this.url+'update', this.selectedAstreinte);
+  }
   public deleteByReference(): Observable<number> {
     return this.http.delete<number>(this.url + 'reference/' + this.selected.ref);
   }
@@ -112,6 +116,9 @@ public findBydateminetmax(n:String,d:Date,f:Date,t:string) :Observable<Array<Lis
 
 
   get itemsfonctionnaire(): Array<Fonctionnaire> {
+    if (this._itemsfonctionnaire == null) {
+      this._itemsfonctionnaire = new Array<Fonctionnaire>();
+    }
     return this._itemsfonctionnaire;
   }
 
@@ -138,6 +145,9 @@ public findBydateminetmax(n:String,d:Date,f:Date,t:string) :Observable<Array<Lis
 
 
   get items(): Array<ListeGarde> {
+    if (this._items == null) {
+      this._items = new Array<ListeGarde>();
+    }
     return this._items;
   }
 
@@ -145,6 +155,9 @@ public findBydateminetmax(n:String,d:Date,f:Date,t:string) :Observable<Array<Lis
     this._items = value;
   }
   get itemss(): Array<ListeGarde> {
+    if (this._itemss == null) {
+      this._itemss = new Array<ListeGarde>();
+    }
     return this._itemss;
   }
 
@@ -158,6 +171,16 @@ public findBydateminetmax(n:String,d:Date,f:Date,t:string) :Observable<Array<Lis
 
   set selected(value: ListeGarde) {
     this._selected = value;
+  }
+  get selectedAstreinte(): ListeGarde {
+    if (this._selectedAstreinte == null) {
+      this._selectedAstreinte = new ListeGarde();
+    }
+    return this._selectedAstreinte;
+  }
+
+  set selectedAstreinte(value: ListeGarde) {
+    this._selectedAstreinte = value;
   }
 
   get selectes(): Array<ListeGarde> {

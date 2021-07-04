@@ -1,36 +1,59 @@
-<div class="p-grid">
-	<div class="p-col-12">
-		<div class="card">
-			<h5>Calendar</h5>
-			<p-fullCalendar [events]="events" [options]="options" (click)="eventClick"></p-fullCalendar>
+<!--&lt;!&ndash; Spinner &ndash;&gt;-->
+<!--<app-loader></app-loader>-->
 
-			<p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true" [closable]="true">
-				<ng-template pTemplate="content">
-					<div class="p-fluid">
-						<div class="p-field">
-							<label for="title">Title</label>
-							<input id="title" type="text" pInputText *ngIf="clickedEvent" [(ngModel)]="changedEvent.title" [required]="true">
-						</div>
-						<div class="p-field">
-							<label for="start">From</label>
-							<p-calendar id="start"  [(ngModel)]="changedEvent.start" [showTime]="true" appendTo="body"></p-calendar>
-						</div>
-						<div class="p-field">
-							<label for="end">To</label>
-							<p-calendar id="end"  [(ngModel)]="changedEvent.end" [showTime]="true" appendTo="body"></p-calendar>
-						</div>
-						<div class="p-field-checkbox">
-							<p-checkbox id="allday" [(ngModel)]="changedEvent.allday"></p-checkbox>
-							<label for="allday">All Day</label>
-						</div>
-					</div>
-				</ng-template>
+<!--&lt;!&ndash; Doğum Günü Detayları Penceresi &ndash;&gt;-->
+<!--<button class="btn btn-lg btn-outline-primary" id="infoEventButton" [hidden]="true"-->
+<!--		(click)="openEventView(contentEventView)">Open Event View Modal</button>-->
+<!--<ng-template #contentEventView let-c="close" let-d="dismiss">-->
+<!--	<div class="modal-header">-->
+<!--		<h4 class="modal-title" id="modal-basic-title">Doğum Günü Detayları</h4>-->
+<!--		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">-->
+<!--			<span aria-hidden="true">&times;</span>-->
+<!--		</button>-->
+<!--	</div>-->
+<!--	<div class="modal-body">-->
+<!--		<p><i class="text-primary fa fa-user mr-2"></i> {{infoEventTitle}}</p>-->
+<!--		<p><i class="text-primary fa fa-calendar mr-2"></i>{{infoEventDate}}</p>-->
+<!--	</div>-->
+<!--</ng-template>-->
 
-				<ng-template pTemplate="footer">
-					<button pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
-					<button pButton label="Reset" icon="pi pi-refresh" class="p-button-text" (click)="reset()"></button>
-				</ng-template>
-			</p-dialog>
-		</div>
-	</div>
+<!--&lt;!&ndash; Doğum Günü Ekle Penceresi &ndash;&gt;-->
+<!--<div class="text-center">-->
+<!--	<button class="btn btn-lg btn-outline-success" [hidden]="true" id="addBirthdayButton"-->
+<!--			(click)="openEventAdd(contentEventAdd)">Doğum Günü Ekle</button>-->
+<!--</div>-->
+<!--<ng-template #contentEventAdd let-modal>-->
+<!--	<div class="modal-header">-->
+<!--		<h4 class="modal-title" id="modal-basic-title">Doğum Günü Ekle</h4>-->
+<!--		<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">-->
+<!--			<span aria-hidden="true">&times;</span>-->
+<!--		</button>-->
+<!--	</div>-->
+<!--	<div class="modal-body">-->
+<!--		<form #birthdayAddForm="ngForm" (ngSubmit)="onSubmitSave()">-->
+<!--			<div class="form-group ">-->
+<!--				<div class="form-group">-->
+<!--					<div class="input-group mb-3">-->
+<!--						<input [hidden]="true" type="date" class="form-control" data-date-format="YYYY-MM-DD" id="date"-->
+<!--							   #date="ngModel" [(ngModel)]="saveTempDate" name="date" required>-->
+<!--					</div>-->
+<!--					<label for="title">Kimin Doğum Günü?</label>-->
+<!--					<input type="input" class="form-control" id="title" placeholder="İsim giriniz" #title="ngModel"-->
+<!--						   [(ngModel)]="birthdayObject.title" name="title" required><br>-->
+<!--					<label for="saveYearCounter">Kaç Yıl Boyunca Takvime Kaydedilsin?</label>-->
+<!--					<input id="yearCount" class="form-control" type="number" name="yearCount" placeholder="Yıl giriniz"-->
+<!--						   #yearCount="ngModel" [(ngModel)]="saveYearCounter"><br>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="modal-footer">-->
+<!--				<button type="submit" class="btn btn-primary" [disabled]="birthdayAddForm.invalid">Kaydet</button>-->
+<!--			</div>-->
+<!--		</form>-->
+<!--	</div>-->
+<!--</ng-template>-->
+
+<!-- Takvim Yüklemesi -->
+
+<div id="calendar"   style="text-align: center;">
+    <p-fullCalendar #calendar [events]="events" [options]="options"></p-fullCalendar>
 </div>

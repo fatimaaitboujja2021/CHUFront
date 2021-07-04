@@ -2,33 +2,42 @@
 
 <!--<input [(ngModel)]="mindate" type="date">-->
 <!--<input type="date" pInputText  [(ngModel)]="maxdate"   />-->
-<p-button icon="pi pi-times" style="margin-bottom: 10px"  (click)="returnto()" class="p-mr-2 p-mb-2"></p-button>
 
-<div class="p-formgroup-inline" style="margin-top:{{x}}">
+<div class="p-formgroup-inline" >
     <div class="p-field">
         <input type="date" pInputText value="2020-01-08" [(ngModel)]="mindate"   />
-    </div>
-    <div class="p-field">
         <input type="date" pInputText value="2022-01-08" [(ngModel)]="maxdate"   />
-    </div>
-    <div class="p-field">
         <input type="number" pInputText  [(ngModel)]="nbrligne"   />
+        <button  pButton class="p-button-plain p-mb-2" icon="pi pi-filter"
+                 (click)="findBydateminetmax(matricule,mindate,maxdate)"   label="filtrer"></button>
+        <button pButton pRipple label="Excel" icon="pi pi-file-excel" class="p-button-success p-mb-2" (click)="exportexcel()"></button>
+        <button  pButton class="p-button-danger p-mb-2" printTitle="votre liste"
+                 [useExistingCss]="true"
+                 printSectionId="print-me" ngxPrint icon="pi pi-file-pdf" label="Pdf"></button>
+        <img src="assets/layout/images/cancel_64px.png" (click)="returnto()" class="img1">
     </div>
     <div class="p-field">
-        <button  pButton class="p-button-success p-mb-2"
-                (click)="findBydateminetmax(matricule,mindate,maxdate)"   label="show liste"></button>    </div>
+
+
+    </div>
+    <div class="p-field">
+
+        <!--        <button pButton pRipple label="Exit" icon="pi pi-times" class="p-button-success p-mb-2" (click)="returnto()"></button>-->
+    </div>
+    <div class="p-field">
+
+    </div>
 <!--    <button  pButton class="p-button-danger rotated-icon p-mb-2"-->
 <!--             (click)="returnto()"    style="margin-right: 8px"></button>-->
 
 
 
-    <div class="p-field" *ngIf="step==1">
-            <button  pButton class="p-button-danger p-mb-2"
-                     (click)="hide()"   label="hide liste" style="margin-right: 8px"></button>
-        <button pButton pRipple label="Export Excel" icon="pi pi-file-excel" class="p-button-plain p-mb-2" (click)="exportexcel()"></button>
-        <button style="margin-left: 8px" pButton class="p-button-warning p-mb-2" printTitle="votre liste"
-                 [useExistingCss]="true"
-                 printSectionId="print-me" ngxPrint  label="Print to pdf"></button>
+    <div class="p-field" >
+<!--            <button  pButton class="p-button-danger p-mb-2"-->
+<!--                     (click)="hide()"   label="hide liste" style="margin-right: 8px"></button>-->
+
+<!--        <p-button icon="pi pi-times"  (click)="returnto()" class="p-mr-2 p-mb-2 return"></p-button>-->
+
     </div>
 
 
@@ -41,7 +50,7 @@
 
 <!--<button (click)="click(nbrligne,mindate)"></button>-->
 <!--<input [(ngModel)]="maxdate" type="date">-->
-<div  id="print-me"  *ngIf="step==1"><div class="p-grid">
+<div  id="print-me"  ><div class="p-grid">
     <div class="p-col">
         <div class="box"></div>
     </div>
@@ -66,31 +75,21 @@
     <div class="p-col-12">
 
 
-        <div class="card">
+        <div class="card1">
 
 
 
-            <p-table [value]="items" [columns]="cols" [rows]="nbrligne" [paginator]="true" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','garde.typeGarde','fonctionnaire.nom']"
+            <p-table [value]="items" [columns]="cols" [rows]="nbrligne" [globalFilterFields]="['ref','dureDeGarde','dateGarde','jourounuit','garde.typeGarde','fonctionnaire.nom']"
                      [(selection)]="selectes" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
-                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+                      [showCurrentPageReport]="true">
 
 
 
-                <!--                <ng-template pTemplate="caption">-->
-                <!--                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">-->
-                <!--                        <h5 class="p-m-0">Manage Liste Garde</h5>-->
-                <!--                        <span class="p-input-icon-left">-->
-                <!--                        <i class="pi pi-search"></i>-->
-                <!--                        <input pInputText type="text"  placeholder="Search..." />-->
-                <!--                    </span>-->
-                <!--                    </div>-->
-                <!--                </ng-template>-->
+
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="width: 3rem">
-                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                        </th>
+
                         <th>le jour</th>
                         <!--                        <th pSortableColumn="ref">Reference <p-sortIcon field="ref"></p-sortIcon></th>-->
                         <th pSortableColumn="dateGarde"><div class="p-d-flex p-jc-between p-ai-center">date Garde <p-sortIcon field="dategarde"></p-sortIcon><p-columnFilter type="date" field="dategarde" display="menu" class="p-ml-auto"></p-columnFilter>  </div></th>
@@ -105,9 +104,7 @@
                     <tr *ngIf="((mindate| date: 'yyyy-MM-dd') <=(listegarde.dateGarde| date: 'yyyy-MM-dd')) ">
 
 
-    <td>
-        <p-tableCheckbox [value]="listegarde"></p-tableCheckbox>
-    </td>
+
     <td>{{listegarde.dateGarde| date:'EEEE'}}</td>
     <!--                        <td>{{listegarde.ref}}</td>-->
     <td  >{{listegarde.dateGarde| date: 'yyyy-MM-dd'}}</td>
@@ -118,40 +115,76 @@
     <td>{{listegarde.fonctionnaire.nom}}
         {{listegarde.fonctionnaire.prenom}}
     </td>
-    <!--                        <td>{{chefservice.fo}}</td>-->
-
-
-<!--    <td>-->
-<!--        &lt;!&ndash;                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(listegarde)"></button>&ndash;&gt;-->
-<!--        &lt;!&ndash;                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(listegarde)"></button>&ndash;&gt;-->
-<!--        &lt;!&ndash;                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(listegarde)"></button>&ndash;&gt;-->
-<!--    </td>-->
-
-
-                    </tr>
+          </tr>
 
                 </ng-template>
 
             </p-table>
         </div>
 
-<!--        <app-listegarde-create></app-listegarde-create>-->
-<!--        <app-listegarde-edit></app-listegarde-edit>-->
-<!--        <app-listegarde-view></app-listegarde-view>-->
-
-<!--        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>-->
     </div>
 </div>
+    <h4 style="font-weight: bold;font-size: 12px"> N.B:</h4><br>
+    <div  *ngFor="let c of itemsconge; index as i"  >
+<div  *ngIf="c.dateDebutConge>=mindate || c.dateFinConge<=maxdate"> <p class="conge">{{c.fonctionnaire.nom}}   {{c.fonctionnaire.prenom}}  en conge: <span class="conge"> {{c.typeConge}}</span> :
+    à partir du {{c.dateDebutConge}}<span class="hi"> => </span>
+    {{c.dateFinConge}}
+
+</p>  </div>
+
+    </div>
+<!--        <div class="p-grid">-->
+<!--    <div *ngFor="let c of itemsconge; index as i" >-->
+<!--&lt;!&ndash;        p-shadow-{{i + 1}}&ndash;&gt;-->
+<!--&lt;!&ndash;        {{c.fonctionnaires.nom}}&ndash;&gt;-->
+<!--&lt;!&ndash;        {{c.fonctionnaires.prenom}}&ndash;&gt;-->
+<!--       <strong style="margin-left: 15px">{{c.typeConge}}</strong> :-->
+<!--        {{c.dateDebutConge}}-->
+<!--=>-->
+<!--        {{c.dateFinConge}}-->
+<!--        {{c.fonctionnaire.nom}}-->
+<!--        {{c.fonctionnaire.prenom}}-->
+
+<!--    </div>-->
+<!--</div>-->
 
 
-<div *ngFor="let c of itemss; index as i ">
+<!--    <p-table [value]="fonctionnairesitems" [columns]="cols" [rows]="nbrligne" [globalFilterFields]="['nom','prenom','dateDebutConge','dateFinConge','typeConge']"-->
+<!--            [rowHover]="true" dataKey="id"-->
+<!--             [showCurrentPageReport]="true">-->
 
-<div *ngIf="c.conge!=null " >
-<div></div>
-    <ul>
-        <li><strong>{{c.nom}}  {{c.prenom}}</strong> : est en conge <strong>{{c.conge.typeConge}}</strong> a partir du <i>{{c.conge.dateDebutConge}} </i>=> <i>{{c.conge.dateFinConge}}</i></li>
-    </ul>
-</div>
-</div>
+
+
+
+<!--        <ng-template pTemplate="header">-->
+<!--            <tr>-->
+
+<!--                <th>nom</th>-->
+<!--                <th>prenom</th>-->
+<!--                <th>dateDebutConge</th>-->
+<!--                <th>dateFinConge</th>-->
+<!--                <th>typeConge</th>-->
+
+<!--            </tr>-->
+<!--        </ng-template>-->
+<!--        <ng-template pTemplate="body" let-conge >-->
+<!--            <tr *ngIf="conge.dateDebutConge>=mindate">-->
+<!--<td>{{conge.fonctionnaire.nom}}</td>-->
+<!--<td>{{conge.fonctionnaire.prenom}}</td>-->
+<!--<td>{{conge.dateDebutConge}}</td>-->
+<!--<td>{{conge.dateFinConge}}</td>-->
+<!--<td>{{conge.typeConge}}</td>-->
+
+
+<!--            </tr>-->
+
+<!--        </ng-template>-->
+
+<!--    </p-table>-->
+
+
+
+
+
 </div>
 </div>

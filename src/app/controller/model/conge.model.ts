@@ -11,6 +11,6 @@ export class Conge {
   public  dateFinConge:Date;
 
   public  ref:string;
-  public fonctionnaires =new Array<Fonctionnaire>();
+  public fonctionnaire =new Fonctionnaire();
   
 }
